@@ -2,15 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Site from '../manifest.json'
+import Header from '../components/utils/Header'
 
 export default function Home() {
   return (
     // <div className={styles.container}>
     <div>
+      <Header />
       <Head>
         <title>{Site.appName}</title>
         <meta name="description" content="Drop the needle!" />
-        <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="https://use.typekit.net/ntq1bol.css"></link>
       </Head>
 
@@ -20,6 +21,8 @@ export default function Home() {
         </h1> */}
 
         {/* <h1>Hello world</h1> */}
+
+        <h1 className="text-9xl">Hello</h1>
 
         <p className={styles.description}>
           Get started by editing{' '}
