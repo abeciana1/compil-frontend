@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Site from '../manifest.json'
-import Header from '../components/utils/Header'
+import HeadTag from '../components/utils/Header'
 
 export default function Home() {
   return (
     // <div className={styles.container}>
     <div>
-      <Header />
+      <HeadTag />
       <Head>
         <title>{Site.appName}</title>
         <meta name="description" content="Drop the needle!" />
@@ -62,13 +63,13 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://www.alexbeciana.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          Created by{' '}Alex Beciana{" "}
+          <span className="flex items-center">
+            <Image src="https://www.alexbeciana.com/static/profile-pic-942ff21fde4f338dc11fe09b617b1130.png" alt="Vercel Logo" width={35} height={35} />
           </span>
         </a>
       </footer>

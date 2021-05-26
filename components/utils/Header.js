@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const Header = () => {
+const HeadTag = () => {
 
     return (
         <Head>
@@ -10,4 +10,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default HeadTag

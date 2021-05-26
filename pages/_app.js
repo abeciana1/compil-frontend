@@ -3,7 +3,8 @@ import '../styles/globals.css'
 
 // import Head from 'next/head'
 import React from 'react'
-import Header from '../components/utils/Header'
+import HeadTag from '../components/utils/Header'
+import NavBar from '../components/utils/NavBar'
 import {useRouter} from 'next/router'
 
 function MyApp({ Component, pageProps }) {
@@ -15,7 +16,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <React.Fragment>
-      <Header />
+      <HeadTag />
+      <NavBar />
       <Component {...pageProps} />
     </React.Fragment>
   )
