@@ -25,7 +25,7 @@ const NavBar = () => {
                     <Link href="/">
                     <img
                         className="w-24"
-                        src="/compil-logo.png"
+                        src="/static/images/compil-logo.png"
                         alt="Compil logo"
                         />
                     </Link>
