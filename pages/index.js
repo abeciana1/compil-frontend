@@ -5,31 +5,17 @@ import styles from '../styles/Home.module.css'
 import Site from '../manifest.json'
 import HeadTag from '../components/utils/Header'
 import VideoPlayer from '../components/utils/VideoPlayer'
-import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player'
 import React, {useState} from 'react'
 
 
-export default function Home() {
-
-  const vids = [
-    "https://www.youtube.com/watch?v=st747WQNvEs",
-    "https://www.youtube.com/watch?v=SqjKAXKG5e8",
-    "https://www.youtube.com/watch?v=PGYIRu-mJ4s",
-    "https://www.youtube.com/watch?v=X3rNjkPfOqc",
-    "https://www.youtube.com/watch?v=hojVcCB2Xq0",
-    "https://www.youtube.com/watch?v=WcgwB9y9hRE",
-    "https://www.youtube.com/watch?v=j1yp1UZWKVc",
-    "https://www.youtube.com/watch?v=b9ywNbKz-Hk",
-    "https://www.youtube.com/watch?v=-qB58UH4v2I",
-    "https://www.youtube.com/watch?v=wEzfbq6QINk"
-  ]
-
+export default function Home(props) {
   // const [currentVid, setCurrentVid] = useState(null)
-  const [currentVid, setCurrentVid] = useState(vids[Math.floor(Math.random() * 9) + 1])
+  // const [currentVid, setCurrentVid] = useState(vids[Math.floor(Math.random() * 9) + 1])
+  const [currentVid, setCurrentVid] = useState(props.firstVideo)
 
   const playAnotherOne = () => {
-    console.log('ended')
-    return setCurrentVid(vids[Math.floor(Math.random() * 9) + 1])
+    return setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   }
 
   return (
@@ -41,20 +27,47 @@ export default function Home() {
         <meta name="description" content="Drop the needle!" />
         <link rel="stylesheet" href="https://use.typekit.net/ntq1bol.css"></link>
       </Head>
-      <main className="text-center">
-        <h1 className="text-5xl md:text-7xl">
+      <main className="text-center space-y-0">
+        <h1 className="text-5xl font-medium md:text-7xl">
             Drop the needle
         </h1>
         <br/>
         <br/>
-        <div className="flex items-center flex-col md:flex-row">
-          <img 
-            src={"/static/images/music-art.svg"}
-            alt="Music Art"
-            className="w-6/12"
-            />
-            <VideoPlayer currentVid={currentVid} playAnotherOne={playAnotherOne} />
+        <div className="text-4xl text-center md:text-5xl">
+          <h2>Discover. Create. Share.</h2>
+          {/* <h2>Create. </h2>
+          <h2>Share.</h2> */}
         </div>
+        <br/>
+        <br/>
+        <section className="grid grid-cols-2 md:grid-cols-6 gap-4 m-4">
+        <Link href="/login">
+        {/* //!f */}
+          <button className="text-black bg-blue-light p-2 md:col-start-3 md:col-end-4 rounded-full focus:outline-none text-xl">
+            Start Curating!
+          </button>
+        </Link>
+          <Link href="/signup" alt="Create An Account">
+            <button className="text-white bg-red p-2 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl">
+              Signup
+            </button>
+          </Link>
+        </section>
+        <br/>
+        <br/>
+        <section className="flex items-center flex-col-reverse md:flex-row space-y-0 justify-around">
+            <img 
+              src={"/static/images/music-art.svg"}
+              alt="Music Art"
+              className="w-10/12 lg:w-5/12"
+              />
+              <VideoPlayer currentVid={currentVid} playAnotherOne={playAnotherOne} />
+        </section>
+        <br/>
+        <br/>
+        <h2 className="text-5xl">
+          Recent Playlists
+        </h2>
       </main>
       <br />
       {/* <div className="relative w-full"> */}
@@ -75,4 +88,15 @@ export default function Home() {
       // </div>
     // </div>
   )
+}
+
+export const getStaticProps = async (context) => {
+  // let firstVideo = `/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`
+  let firstVideo = "/static/videos/5.mp4"
+
+  return {
+    props: {
+      firstVideo: firstVideo
+    }
+  }
 }

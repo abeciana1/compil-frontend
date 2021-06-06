@@ -115,7 +115,7 @@ const NavBar = () => {
                 </div>
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}
-                <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <Disclosure.Button className="bg-transparent-800 inline-flex items-center justify-center p-2 rounded-md text-#28262C-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -132,16 +132,18 @@ const NavBar = () => {
                 {navigation.map((item, itemIdx) =>
                     itemIdx === 0 ? (
                     <Fragment key={item}>
+                    {console.log(item)}
                       {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                        <a href="#" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">
+                        <a href={"/" + item.toLowerCase()} className="bg-transparent-900 text-##28262C block px-3 py-2 rounded-md text-base font-medium">
                         {item}
                         </a>
                     </Fragment>
                     ) : (
                     <a
                         key={item}
-                        href="#"
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        href={"/" + item.toLowerCase()}
+                        // className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                        className="text-#28262C-300 block px-3 py-2 rounded-md text-base font-medium"
                     >
                     {item}
                     </a>
@@ -158,10 +160,11 @@ const NavBar = () => {
                     />
                     </div>
                     <div className="ml-3">
-                    <div className="text-base font-medium leading-none text-white">Tom Cook</div>
-                    <div className="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+                    <div className="text-base font-medium leading-none text-#28262C">Tom Cook</div>
+                    <div className="text-sm font-medium leading-none text-#28262C-400">tom@example.com</div>
                     </div>
-                    <button className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    {/* hover:text-white */}
+                    <button className="ml-auto bg-transparent-800 flex-shrink-0 p-1 rounded-full text-#28262C-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
@@ -171,7 +174,8 @@ const NavBar = () => {
                     <a
                         key={item}
                         href="#"
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                        // hover:text-white hover:bg-gray-700
+                        className="block px-3 py-2 rounded-md text-base font-medium text-#28262C-400"
                     >
                         {item}
                     </a>

@@ -6,12 +6,13 @@ import React from 'react'
 import HeadTag from '../components/utils/Header'
 import NavBar from '../components/utils/NavBar'
 import {useRouter} from 'next/router'
+import tailwindcss from '../tailwind.config.js'
 
 function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
   // console.log(router)
-
+// console.log(tailwindcss.theme.extend.screens.xs)
   
 
   return (
