@@ -17,7 +17,7 @@ const VideoPlayer = (props) => {
                     <source
                         src={props.currentVid}
                         onEnded={() => props.playAnotherOne()}
-                        autoPlay muted
+                        autoPlay
                         />
                 </video>
             {/* </div> */}

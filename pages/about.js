@@ -1,18 +1,16 @@
 import Head from 'next/head'
 import React from 'react'
-import Site from '../manifest.json'
 
 
 const About = () => {
-
-    console.log(Site)
-
     return (
         <React.Fragment>
             <Head>
-                <title>{Site.appName} | About</title>
+                <title>Compil | About</title>
             </Head>
-            <h1>About</h1>
+            <section className="">
+                <aside className="flex text-9xl text-white fill-black hidden md:inline absolute">About</aside>
+            </section>
         </React.Fragment>
     )
 }
