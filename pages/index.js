@@ -10,12 +10,17 @@ import React, {useState} from 'react'
 
 
 export default function Home(props) {
+  // console.log(props)
   // const [currentVid, setCurrentVid] = useState(null)
-  // const [currentVid, setCurrentVid] = useState(vids[Math.floor(Math.random() * 9) + 1])
+  // const [currentVid, setCurrentVid] = useState(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   const [currentVid, setCurrentVid] = useState(props.firstVideo)
 
+  // console.log(props)
+
   const playAnotherOne = () => {
+    console.log("ended")
     return setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
+    // setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   }
 
   return (
@@ -61,7 +66,9 @@ export default function Home(props) {
               alt="Music Art"
               className="w-10/12 lg:w-5/12"
               />
+              {/* <VideoPlayer currentVid={props.firstVideo} /> */}
               <VideoPlayer currentVid={currentVid} playAnotherOne={playAnotherOne} />
+              {/* <VideoPlayer /> */}
         </section>
         <br/>
         <br/>
