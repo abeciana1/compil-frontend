@@ -18,7 +18,7 @@ export default function Home(props) {
   // console.log(props)
 
   const playAnotherOne = () => {
-    console.log("ended")
+    // console.log("ended")
     return setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
     // setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   }

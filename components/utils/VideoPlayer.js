@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player'
 import React, {useState} from 'react'
 
 const VideoPlayer = (props) => {
-    console.log(props)
+    // console.log(props)
 
     // const [currentVid, setCurrentVid] = useState(props.currentVid)
 

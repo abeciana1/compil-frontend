@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
+
 import Link from 'next/link'
 
 const navigation = ['About', 'Login', 'Signup']
@@ -132,6 +133,7 @@ const NavBar = () => {
                 {navigation.map((item, itemIdx) =>
                     itemIdx === 0 ? (
                     <Fragment key={item}>
+
                       {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                         <a href={"/" + item.toLowerCase()} className="bg-transparent-900 text-##28262C block px-3 py-2 rounded-md text-base font-medium">
                         {item}
@@ -160,10 +162,10 @@ const NavBar = () => {
                     </div>
                     <div className="ml-3">
                     <div className="text-base font-medium leading-none text-#28262C">Tom Cook</div>
-                    <div className="text-sm font-medium leading-none text-#28262C-400">tom@example.com</div>
+                    <div className="text-sm font-medium leading-none text-#28262C">tom@example.com</div>
                     </div>
                     {/* hover:text-white */}
-                    <button className="ml-auto bg-transparent-800 flex-shrink-0 p-1 rounded-full text-#28262C-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <button className="ml-auto bg-#28262C flex-shrink-0 p-1 rounded-full text-#28262C hover:text-#28262C focus:outline-none focus:ring-2 focus:ring-#28262C">
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
