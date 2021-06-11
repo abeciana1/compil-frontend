@@ -15,6 +15,7 @@ const Signup = () => {
         <aside className="text-8xl md:text-9xl text-white inline z-10">Signup</aside>
         </div>
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-1 place-items-center place-content-start z-0 -mb-20">
+        {/* <br/> */}
         {/* <section className="grid grid-cols-3 place-items-center place-content-center"> */}
             {/* <aside className="text-9xl text-white text-left md:text-center hidden lg:inline lg:transform lg:-rotate-90 justify-self-center ml-20 mb-3">Login</aside> */}
             {/* <aside className="text-9xl text-white text-left md:text-center hidden lg:inline justify-self-center ml-20 mb-3">Login</aside> */}
@@ -26,6 +27,7 @@ const Signup = () => {
                 className="w-12/12"
             />
             {/* //! change - create signup form */}
+            {/* <br/ */}
             <SignupForm/>
         </section>
         {/* </div> */}

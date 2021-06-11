@@ -8,9 +8,9 @@ const About = () => {
             <Head>
                 <title>Compil | About</title>
             </Head>
-            <section className="">
-                <aside className="flex text-9xl text-white fill-black hidden md:inline absolute">About</aside>
-            </section>
+            <div className="text-center">
+                <aside className="text-8xl md:text-9xl text-white inline z-10">About</aside>
+            </div>
         </React.Fragment>
     )
 }
