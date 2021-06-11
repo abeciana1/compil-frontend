@@ -12,7 +12,7 @@ const LoginForm = () => {
         <React.Fragment>
             {/* <h1 className="text-5xl">Login</h1> */}
             {/* <div className="bg-gray-600 w-4/12 m-auto"> */}
-            <div className="w-12/12">
+            <div className="w-4/5 lg:w-12/12 place-self-center">
                 <div style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
                     <form className="p-10 md:p-14 lg-p-10" onSubmit={submitHandler}>
                         <label>Email:</label>
