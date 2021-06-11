@@ -10,7 +10,7 @@ import React, {useState} from 'react'
 
 
 export default function Home(props) {
-  // console.log(props)
+  console.log(props)
   // const [currentVid, setCurrentVid] = useState(null)
   // const [currentVid, setCurrentVid] = useState(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   const [currentVid, setCurrentVid] = useState(props.firstVideo)
@@ -38,6 +38,11 @@ export default function Home(props) {
         </h1>
         <br/>
         <br/>
+        {props.signedIn ?
+        <h2>Signed in</h2>
+          :
+          null
+        }
         <div className="text-4xl text-center md:text-5xl">
           <h2>Discover. Create. Share.</h2>
           {/* <h2>Create. </h2>
@@ -103,7 +108,8 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      firstVideo: firstVideo
+      firstVideo: firstVideo,
+      // signedIn: true
     }
   }
 }
