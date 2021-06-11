@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import React from 'react'
-import LoginForm from '../components/forms/LoginForm'
+import SignupForm from '../components/forms/SignupForm'
 
 const Signup = () => {
     
     return (
         <React.Fragment>
+        {/* <div className="p-5"> */}
         <Head>
             <title>Compil | Signup</title>
         </Head>
@@ -25,8 +26,9 @@ const Signup = () => {
                 className="w-12/12"
             />
             {/* //! change - create signup form */}
-            <LoginForm/>
+            <SignupForm/>
         </section>
+        {/* </div> */}
         </React.Fragment>
     )
 }
