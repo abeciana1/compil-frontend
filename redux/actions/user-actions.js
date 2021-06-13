@@ -6,8 +6,10 @@ export const CHECK_USER_LOGGED_IN = "CHECK_USER_LOGGED_IN"
 export const TEST_USER = "TEST_USER"
 
 
+// const 
+
 export const loginUser = () => {
-    console.log("LOGGING IN USER FROM USER REDUX ACTION")
+    // console.log("LOGGING IN USER FROM USER REDUX ACTION")
 
     return (dispatch) => {
         dispatch({

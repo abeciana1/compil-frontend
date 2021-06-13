@@ -17,25 +17,19 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
     // console.log("state", state)
-    console.log("action", action.payload)
+    // console.log("action", action.payload)
     switch (action.type) {
-        case HYDRATE:
-            return {
-                // ...state,
-                ...action.payload
-            }
+        // case HYDRATE:
+        //     return {
+        //         // ...state,
+        //         ...action.payload
+        //     }
         case LOGIN_USER:
             return {
                 // ...state,
                 currentUser: action.payload
             }
             // return action.payload
-        case TEST_USER:
-            // return action.payload
-            return {
-                // ...state,
-                currentUser: action.payload
-            }
         default:
             return state
     }

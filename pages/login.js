@@ -34,21 +34,3 @@ const Login = (props) => {
 }
 
 export default Login
-
-// export const getServerSideProps = () => {
-// // export function getServerSideProps() {
-
-//     // const reduxStore = store
-
-//     // console.log(reduxStore)
-
-//     // console.log("FUNC", loginUser)
-//     // const logIn = loginUser
-
-//     return {
-//         props: {
-//             // loginUser,
-//             // reduxStore: reduxStore.getState()
-//         }
-//     }
-// }

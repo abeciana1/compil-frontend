@@ -15,8 +15,8 @@ export const store = (context) => createStore(
     composedEnhancer
 )
 
-export const wrapper = createWrapper(store, {debug: true})
+export const wrapper = createWrapper(store)
 
-console.log(wrapper)
+// console.log(wrapper)
 
 // export default initStore
