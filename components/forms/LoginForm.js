@@ -1,5 +1,7 @@
 import React from 'react'
-
+import { loginUser } from '../../redux/actions/user-actions'
+// import { store } from '../../redux/store'
+import { connect } from 'react-redux'
 
 class LoginForm extends React.Component {
 
@@ -16,11 +18,14 @@ class LoginForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault();
+        // this.props.loginUser()
         // console.log(this.state)
+        this.props.loginUser()
         console.log("submit")
     }
 
     render() {
+        // console.log(this.props.loginUser)
         return (
             <React.Fragment>
                 {/* <h1 className="text-5xl">Login</h1> */}
@@ -65,4 +70,8 @@ class LoginForm extends React.Component {
     }
 }
 
-export default LoginForm
+const mapDispatchToProps = {
+    loginUser
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)

@@ -8,30 +8,29 @@ import NavBar from '../components/utils/NavBar'
 import {useRouter} from 'next/router'
 import tailwindcss from '../tailwind.config.js'
 
+
 //! redux
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from '../redux/reducers'
+import { store } from '../redux/store'
+// import { Provider } from 'react-redux'
+import { wrapper } from '../redux/store'
+// import { createStore } from 'redux'
+// import rootReducer from '../redux/reducers'
 
 function MyApp({ Component, pageProps }) {
 
-  const router = useRouter()
-  // console.log(router)
-// console.log(tailwindcss.theme.extend.screens.xs)
+  // let redux = store.getState()
 
-  const store = createStore(
-    rootReducer
-  )
+  // console.log("REDUX", redux)
 
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
       <React.Fragment>
         <HeadTag />
         <NavBar />
-        <Component {...pageProps} />
+        <Component {...pageProps}  />
       </React.Fragment>
-    </Provider>
+    // </Provider>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

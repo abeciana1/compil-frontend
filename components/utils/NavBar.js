@@ -2,7 +2,8 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-
+// import { wrapper } from '../../redux/store'
+import { connect } from 'react-redux'
 
 import Link from 'next/link'
 
@@ -13,7 +14,10 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const NavBar = () => {
+const NavBar = (props) => {
+    
+    // console.log(props)
+
     return (
     <div>
     <Disclosure as="nav" className="bg-transparent-800">
@@ -31,6 +35,11 @@ const NavBar = () => {
                         />
                     </Link>
                 </div>
+                {props.user.currentUser ? 
+                    <h1>hello</h1>
+                    :
+                    null
+                }
                 <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item, itemIdx) =>
@@ -195,4 +204,8 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, null)(NavBar)

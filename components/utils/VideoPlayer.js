@@ -20,9 +20,10 @@ const VideoPlayer = (props) => {
             <ReactPlayer
             url={props.currentVid}
             width="100%"
-            onEnded={() => props.playAnotherOne()}
+            // onEnded={() => props.playAnotherOne()}
             muted={true}
             playing={true}
+            loop
             />
             {/* <div className="flex justify-center"> */}
                 {/* <video className="w-full md:w-5/12" autoPlay muted playing="true">

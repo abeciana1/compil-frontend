@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import React from 'react'
 import LoginForm from '../components/forms/LoginForm'
+// import { loginUser } from '../redux/actions/user-actions'
+// import { store } from '../redux/store'
 
-const Login = () => {
+const Login = (props) => {
     
+    // console.log(props)
     return (
         <React.Fragment>
         <Head>
@@ -31,3 +34,21 @@ const Login = () => {
 }
 
 export default Login
+
+// export const getServerSideProps = () => {
+// // export function getServerSideProps() {
+
+//     // const reduxStore = store
+
+//     // console.log(reduxStore)
+
+//     // console.log("FUNC", loginUser)
+//     // const logIn = loginUser
+
+//     return {
+//         props: {
+//             // loginUser,
+//             // reduxStore: reduxStore.getState()
+//         }
+//     }
+// }
