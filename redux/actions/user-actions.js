@@ -5,11 +5,35 @@ export const LOGIN_USER = "LOGIN_USER"
 export const LOGOUT_USER = "LOGOUT_USER"
 export const UPDATE_USER = "UPDATE_USER"
 export const CHECK_USER_LOGGED_IN = "CHECK_USER_LOGGED_IN"
-export const TEST_USER = "TEST_USER"
 
-
+//TODO add validation if email or password is incorrect
 
 const BASE_URL = "http://localhost:3001/api/v1"
+
+export const signupUser = (user) => {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+            user
+        })
+        }
+        return (dispatch) => {
+            fetch(BASE_URL + "/users", options)
+            .then(response => response.json())
+            .then(data => {
+                consol.log(data)
+                // dispatch({
+                //     type: SIGNUP_USER,
+
+                // })
+            })
+        }
+}
 
 export const loginUser = (user) => {
     const options = {
@@ -41,8 +65,6 @@ export const loginUser = (user) => {
 }
 
 export const checkUser = () => {
-    console.log("logging")
-    
     const options = {
         method: 'GET',
         credentials: 'include',
@@ -51,7 +73,6 @@ export const checkUser = () => {
         fetch(BASE_URL + "/session-renew", options)
         .then(response => response.json())
         .then(data => {
-            console.log("DATA", data)
             dispatch({
                 type: CHECK_USER_LOGGED_IN,
                 payload: data.user
