@@ -6,12 +6,10 @@ import { checkUser } from '../../redux/actions/user-actions'
 const HeadTag = (props) => {
 
     useEffect(() => {
-    if (localStorage.getItem('compilLogged')) {
-        console.log("header")
-        props.checkUser()
-    } else {
-        console.log("not here")
-    }})
+        if (localStorage.getItem('compilLogged')) {
+            props.checkUser()
+        }
+    })
 
     return (
         <Head>

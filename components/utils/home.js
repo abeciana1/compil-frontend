@@ -11,6 +11,7 @@ import { wrapper } from '../../redux/store'
 
 function HomePage(props) {
 
+    console.log(props)
   const [currentVid, setCurrentVid] = useState(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   // const [currentVid, setCurrentVid] = useState(props.firstVideo)
 
@@ -39,19 +40,29 @@ const playAnotherOne = () => {
         </div>
         <br/>
         <br/>
+        {props.user.currentUser ? 
+        <section className="grid grid-cols-1 m-auto justify-self-center">
+        {/* //TODO make href prop go to signed in dash */}
+        <Link href="/login"> 
+        <button className="text-black bg-blue-light px-4 py-2 justify-self-center rounded-full focus:outline-none text-xl">
+            Start Curating!
+        </button>
+        </Link>
+        </section>
+        :
         <section className="grid grid-cols-2 md:grid-cols-6 gap-4 m-4">
         <Link href="/login">
-        {/* //!f */}
-        <button className="text-black bg-blue-light p-2 md:col-start-3 md:col-end-4 rounded-full focus:outline-none text-xl">
+        <button className="text-black bg-blue-light px-4 py-2 md:col-start-3 md:col-end-4 rounded-full focus:outline-none text-xl">
             Start Curating!
         </button>
         </Link>
         <Link href="/signup" alt="Create An Account">
-            <button className="text-white bg-red p-2 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl">
+            <button className="text-white bg-red px-4 py-2 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl">
                 Signup
             </button>
         </Link>
         </section>
+        }
         <br/>
         <br/>
         <section className="flex items-center flex-col-reverse md:flex-row space-y-0 justify-around">

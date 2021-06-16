@@ -26,6 +26,10 @@ const usersReducer = (state = initialState, action) => {
             return {
                 currentUser: action.payload
             }
+        case SIGNUP_USER:
+            return {
+                currentUser: action.payload
+            }
         case CHECK_USER_LOGGED_IN:
             return {
                 currentUser: action.payload

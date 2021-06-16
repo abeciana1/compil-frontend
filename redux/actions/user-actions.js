@@ -11,6 +11,8 @@ export const CHECK_USER_LOGGED_IN = "CHECK_USER_LOGGED_IN"
 const BASE_URL = "http://localhost:3001/api/v1"
 
 export const signupUser = (user) => {
+    console.log("from action")
+    console.log(user)
     const options = {
         method: 'POST',
         headers: {
@@ -26,11 +28,12 @@ export const signupUser = (user) => {
             fetch(BASE_URL + "/users", options)
             .then(response => response.json())
             .then(data => {
-                consol.log(data)
-                // dispatch({
-                //     type: SIGNUP_USER,
-
-                // })
+                console.log(data)
+                localStorage.setItem("compilLogged", true)
+                dispatch({
+                    type: SIGNUP_USER,
+                    payload: data.user
+                })
             })
         }
 }

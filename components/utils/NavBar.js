@@ -2,7 +2,6 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-// import { wrapper } from '../../redux/store'
 import { connect } from 'react-redux'
 
 import Link from 'next/link'
@@ -16,8 +15,6 @@ function classNames(...classes) {
 }
 
 const NavBar = (props) => {
-    
-    console.log(props)
 
     return (
     <div>
@@ -39,25 +36,25 @@ const NavBar = (props) => {
                 <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                         <Link href={"/about"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 About
                             </div>
                         </Link>
                         {props.user.currentUser ?
                         <>
-                        <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                        <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                             Logout
                         </div>
                         </>
                             :
                         <>
                         <Link href={"/login"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 Login
                             </div>
                         </Link>
                         <Link href={"/signup"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 Signup
                             </div>
                         </Link>
@@ -103,7 +100,7 @@ const NavBar = (props) => {
                                 static
                                 className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                             >
-                            {profile.map((item) => (
+                            {/* {profile.map((item) => (
                                 <Menu.Item key={item}>
                                     {({ active }) => (
                                     <a
@@ -117,7 +114,7 @@ const NavBar = (props) => {
                                     </a>
                                     )}
                                 </Menu.Item>
-                                ))}
+                                ))} */}
                             </Menu.Items>
                             </Transition>
                         </>
@@ -142,7 +139,7 @@ const NavBar = (props) => {
             <Disclosure.Panel className="md:hidden">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <Link href={"/about"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 About
                             </div>
                         </Link>
@@ -151,12 +148,12 @@ const NavBar = (props) => {
                             :
                         <>
                         <Link href={"/login"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 Login
                             </div>
                         </Link>
                         <Link href={"/signup"}>
-                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                                 Signup
                             </div>
                         </Link>
@@ -185,7 +182,7 @@ const NavBar = (props) => {
                 <div className="mt-3 px-2 space-y-1">
                 {props.user.currentUser ?
                     <>
-                    <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                    <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                         Logout
                     </div>
                     </>
