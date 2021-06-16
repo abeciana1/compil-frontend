@@ -63,25 +63,6 @@ const NavBar = (props) => {
                         </Link>
                         </>
                         }
-                        {/* {navigation.map((item, itemIdx) =>
-                        itemIdx === 0 ? (
-                        <Fragment key={item}> */}
-                            {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                            {/* hover:bg-gray-700 hover:text-#E54B4B */}
-                            {/* <Link href={"/" + item.toLowerCase()} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium">
-                            {item}
-                            </Link>
-                        </Fragment>
-                        ) : ( */}
-                        {/* <Link
-                            key={item}
-                            href={"/" + item.toLowerCase()}
-                            className="text-#28262C-300 px-3 py-2 rounded-md text-sm font-medium"
-                        >
-                            {item}
-                        </Link>
-                        )
-                        )} */}
                     </div>
                 </div>
                 </div>
