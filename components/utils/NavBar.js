@@ -6,8 +6,9 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { connect } from 'react-redux'
 
 import Link from 'next/link'
+import { logoutUser } from '../../redux/actions/user-actions'
 
-const navigation = ['About', 'Login', 'Signup']
+// const navigation = ['About', 'Login', 'Signup']
 const profile = ['Your Profile', 'Settings', 'Sign out']
 
 function classNames(...classes) {
@@ -16,7 +17,7 @@ function classNames(...classes) {
 
 const NavBar = (props) => {
     
-    // console.log(props)
+    console.log(props)
 
     return (
     <div>
@@ -35,24 +36,44 @@ const NavBar = (props) => {
                         />
                     </Link>
                 </div>
-                {props.user.currentUser ? 
-                    <h1>hello</h1>
-                    :
-                    null
-                }
                 <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item, itemIdx) =>
+                        <Link href={"/about"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                About
+                            </div>
+                        </Link>
+                        {props.user.currentUser ?
+                        <>
+                        <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                            Logout
+                        </div>
+                        </>
+                            :
+                        <>
+                        <Link href={"/login"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                Login
+                            </div>
+                        </Link>
+                        <Link href={"/signup"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                Signup
+                            </div>
+                        </Link>
+                        </>
+                        }
+                        {/* {navigation.map((item, itemIdx) =>
                         itemIdx === 0 ? (
-                        <Fragment key={item}>
+                        <Fragment key={item}> */}
                             {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                             {/* hover:bg-gray-700 hover:text-#E54B4B */}
-                            <Link href={"/" + item.toLowerCase()} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium">
+                            {/* <Link href={"/" + item.toLowerCase()} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium">
                             {item}
                             </Link>
                         </Fragment>
-                        ) : (
-                        <Link
+                        ) : ( */}
+                        {/* <Link
                             key={item}
                             href={"/" + item.toLowerCase()}
                             className="text-#28262C-300 px-3 py-2 rounded-md text-sm font-medium"
@@ -60,14 +81,14 @@ const NavBar = (props) => {
                             {item}
                         </Link>
                         )
-                        )}
+                        )} */}
                     </div>
                 </div>
                 </div>
                 <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
                     {/* //! NEEDED FOR LOGGED IN USER */}
-                    <button className="bg-transparent-800 p-1 rounded-full text-#28262C-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <button className="bg-transparent-800 p-1 rounded-full text-#28262C-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
@@ -139,26 +160,27 @@ const NavBar = (props) => {
 
             <Disclosure.Panel className="md:hidden">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {navigation.map((item, itemIdx) =>
-                    itemIdx === 0 ? (
-                    <Fragment key={item}>
-
-                      {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                        <a href={"/" + item.toLowerCase()} className="bg-transparent-900 text-##28262C block px-3 py-2 rounded-md text-base font-medium">
-                        {item}
-                        </a>
-                    </Fragment>
-                    ) : (
-                    <a
-                        key={item}
-                        href={"/" + item.toLowerCase()}
-                        // className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        className="text-#28262C-300 block px-3 py-2 rounded-md text-base font-medium"
-                    >
-                    {item}
-                    </a>
-                )
-                )}
+                <Link href={"/about"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                About
+                            </div>
+                        </Link>
+                        {props.user.currentUser ?
+                        null
+                            :
+                        <>
+                        <Link href={"/login"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                Login
+                            </div>
+                        </Link>
+                        <Link href={"/signup"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                                Signup
+                            </div>
+                        </Link>
+                        </>
+                        }
                 </div>
                 <div className="pt-4 pb-3 border-t border-gray-700">
                 <div className="flex items-center px-5">
@@ -180,7 +202,16 @@ const NavBar = (props) => {
                     </button>
                 </div>
                 <div className="mt-3 px-2 space-y-1">
-                    {profile.map((item) => (
+                {props.user.currentUser ?
+                    <>
+                    <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
+                        Logout
+                    </div>
+                    </>
+                    :
+                    null
+                }
+                    {/* {profile.map((item) => (
                     <a
                         key={item}
                         href="#"
@@ -189,7 +220,7 @@ const NavBar = (props) => {
                     >
                         {item}
                     </a>
-                    ))}
+                    ))} */}
                 </div>
                 </div>
             </Disclosure.Panel>
@@ -208,4 +239,8 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps, null)(NavBar)
+const mapDispatchToProps = {
+    logoutUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

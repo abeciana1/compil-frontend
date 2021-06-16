@@ -1,6 +1,17 @@
 import Head from 'next/head'
+import React, {useEffect} from 'react'
+import { connect } from 'react-redux'
+import { checkUser } from '../../redux/actions/user-actions'
 
-const HeadTag = () => {
+const HeadTag = (props) => {
+
+    useEffect(() => {
+    if (localStorage.getItem('compilLogged')) {
+        console.log("header")
+        props.checkUser()
+    } else {
+        console.log("not here")
+    }})
 
     return (
         <Head>
@@ -10,4 +21,8 @@ const HeadTag = () => {
     )
 }
 
-export default HeadTag
+const mapDispatchToProps = {
+    checkUser
+}
+
+export default connect(null, mapDispatchToProps)(HeadTag)

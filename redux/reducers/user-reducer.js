@@ -7,7 +7,7 @@ import {
     TEST_USER
 } from '../actions/user-actions'
 
-import { HYDRATE } from 'next-redux-wrapper'
+// import { HYDRATE } from 'next-redux-wrapper'
 
 
 const initialState = {
@@ -16,8 +16,6 @@ const initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
-    // console.log("state", state)
-    // console.log("action", action.payload)
     switch (action.type) {
         // case HYDRATE:
         //     return {
@@ -26,10 +24,16 @@ const usersReducer = (state = initialState, action) => {
         //     }
         case LOGIN_USER:
             return {
-                // ...state,
                 currentUser: action.payload
             }
-            // return action.payload
+        case CHECK_USER_LOGGED_IN:
+            return {
+                currentUser: action.payload
+            }
+        case LOGOUT_USER:
+            return {
+                currentUser: null
+            }
         default:
             return state
     }

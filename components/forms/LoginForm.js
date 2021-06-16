@@ -16,12 +16,17 @@ class LoginForm extends React.Component {
         })
     }
 
+    // alex@test.com
+    // 1234
+
     submitHandler = (e) => {
         e.preventDefault();
         // this.props.loginUser()
         // console.log(this.state)
-        this.props.loginUser()
+        this.props.loginUser(this.state)
         console.log("submit")
+        e.target.reset()
+        // console.log(e)
     }
 
     render() {
