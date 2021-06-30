@@ -17,7 +17,3 @@ export const store = (context) => createStore(
 )
 
 export const wrapper = createWrapper(store)
-
-// console.log(wrapper)
-
-// export default initStore

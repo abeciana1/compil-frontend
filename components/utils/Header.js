@@ -8,8 +8,10 @@ const HeadTag = (props) => {
     useEffect(() => {
         if (localStorage.getItem('compilLogged')) {
             props.checkUser()
+        } else {
+            null
         }
-    })
+    }, [])
 
     return (
         <Head>
@@ -23,4 +25,8 @@ const mapDispatchToProps = {
     checkUser
 }
 
-export default connect(null, mapDispatchToProps)(HeadTag)
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeadTag)

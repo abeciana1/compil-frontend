@@ -1,12 +1,23 @@
 import Head from 'next/head'
-import React from 'react'
+import React, {useState}from 'react'
 import LoginForm from '../components/forms/LoginForm'
+
+import { useRouter } from 'next/router'
+import { connect } from 'react-redux'
+import { wrapper } from '../redux/store'
 // import { loginUser } from '../redux/actions/user-actions'
 // import { store } from '../redux/store'
 
 const Login = (props) => {
     
-    // console.log(props)
+    const router = useRouter()
+
+    if (props.user.currentUser) {
+        router.push("/dashboard")
+    }
+
+    const [forgotPass, setForgotPass] = useState(false)
+    
     return (
         <React.Fragment>
         <Head>
@@ -27,10 +38,14 @@ const Login = (props) => {
                 alt="Login Screen"
                 className="w-12/12"
             />
-            <LoginForm/>
+                <LoginForm forgotPassword={router.asPath === "/login?forgot-password" || forgotPass ? true : false} setForgotPass={setForgotPass} />
         </section>
         </React.Fragment>
     )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+    return state
+}
+
+export default connect(mapStateToProps, null)(Login)

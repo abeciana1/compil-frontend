@@ -19,12 +19,13 @@ class SignupForm extends React.Component {
     
     submitHandler = (e) => {
         e.preventDefault();
+        // TODO add step for email verification
+        // * if true => signup user via action
         this.props.signupUser(this.state)
-        console.log("submit")
+        e.target.reset()
     }
 
     render() {
-        console.log(this.props)
         return (
             <React.Fragment>
             <div className="w-4/5 lg:w-12/12 place-self-center">

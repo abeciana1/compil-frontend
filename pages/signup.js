@@ -2,7 +2,16 @@ import Head from 'next/head'
 import React from 'react'
 import SignupForm from '../components/forms/SignupForm'
 
-const Signup = () => {
+import { useRouter } from 'next/router'
+import { connect } from 'react-redux'
+
+const Signup = (props) => {
+    
+    const router = useRouter()
+
+    if (props.user.currentUser) {
+        router.push("/dashboard")
+    }
     
     return (
         <React.Fragment>
@@ -35,4 +44,8 @@ const Signup = () => {
     )
 }
 
-export default Signup
+const mapStateToProps = (state) => {
+    return state
+}
+    
+export default connect(mapStateToProps, null)(Signup)

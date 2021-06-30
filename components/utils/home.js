@@ -11,7 +11,6 @@ import { wrapper } from '../../redux/store'
 
 function HomePage(props) {
 
-    console.log(props)
   const [currentVid, setCurrentVid] = useState(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   // const [currentVid, setCurrentVid] = useState(props.firstVideo)
 
