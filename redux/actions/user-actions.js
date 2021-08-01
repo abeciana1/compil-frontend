@@ -1,5 +1,8 @@
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
+//! import playlist action types
+import { GET_LOG_USER_PLAYLIST } from './playlist-actions'
 
+//! user action types
 export const SIGNUP_USER = "SIGNUP_USER"
 export const LOGIN_USER = "LOGIN_USER"
 export const LOGOUT_USER = "LOGOUT_USER"
@@ -59,6 +62,9 @@ export const loginUser = (user) => {
             dispatch({
                 type: LOGIN_USER,
                 payload: data.user
+            },{
+                type: GET_PLAYLIST,
+                payload: data.user.playlists
             })
         })
     }
@@ -75,7 +81,11 @@ export const checkUser = () => {
         .then(data => {
             dispatch({
                 type: CHECK_USER_LOGGED_IN,
-                payload: data.user
+                payload: data.user,
+            })
+            dispatch({
+                type: GET_LOG_USER_PLAYLIST,
+                payload: data.user.playlists
             })
         })
     }
