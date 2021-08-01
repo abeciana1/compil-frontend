@@ -20,7 +20,11 @@ const Dashboard = (props) => {
                         <div className="text-6xl flex flex-wrap md:flex-row items-stretch">
                             Playlists 
                             <span className="text-lg lg:text-3xl self-center text-center pt-2 lg:pt-0 sm:pl-5">
-                                <button className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none" style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}>
+                                <button
+                                    className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                    style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
+                                    onClick={() => setModal(!modal)}
+                                >
                                     <span className="float-right pr-1 lg:pr-2 self-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -92,10 +96,31 @@ const Dashboard = (props) => {
                 : null}
             {modal ?
                 <div
-                    className=""
-                    style={{}}
+                    className="fixed container flex flex-col flex-1 mx-auto shadow-xl z-5 inset-1/4 w-1/2"
+                    style={{"backgroundColor":"#EAE9EC"}}
                 >
-                    
+                    {/* <div> */}
+                        <span>
+                            <div 
+                                className="text-xl sm:text-2xl font-medium pb-0 lg:pb-2 p-5"
+                                style={{"paddingLeft":"20px"}}
+                            >
+                            Create a playlist
+                                <button onClick={() => {
+                                    setModal(false)
+                                    }} 
+                                    className="z-40 float-right p-1.5 py-2.5 text-xl rounded-full focus:outline-none"
+                                    style={{"backgroundColor":"#E54B4B"}}
+                                >
+                                    <img
+                                        src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
+                                        className="w-7/12 mx-auto"
+                                    />
+                                </button>
+                            </div>
+                        </span>
+                        
+                    {/* </div> */}
                 </div> 
                 : null}
         </React.Fragment>
