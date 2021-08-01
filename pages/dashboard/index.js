@@ -96,13 +96,13 @@ const Dashboard = (props) => {
                 : null}
             {modal ?
                 <div
-                    className="fixed container flex flex-col flex-1 mx-auto shadow-xl z-5 inset-1/4 w-1/2"
+                    className="fixed container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-50 w-full top-1/4 h-4/6 md:inset-1/4 md:w-1/2"
                     style={{"backgroundColor":"#EAE9EC"}}
                 >
                     {/* <div> */}
                         <span>
                             <div 
-                                className="text-xl sm:text-2xl font-medium pb-0 lg:pb-2 p-5"
+                                className="text-xl sm:text-3xl font-semibold pb-0 lg:pb-2 p-5"
                                 style={{"paddingLeft":"20px"}}
                             >
                             Create a playlist
@@ -114,7 +114,7 @@ const Dashboard = (props) => {
                                 >
                                     <img
                                         src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
-                                        className="w-7/12 mx-auto"
+                                        className="w-7/12 mx-auto self-center"
                                     />
                                 </button>
                             </div>
