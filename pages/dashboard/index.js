@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 
@@ -8,6 +8,8 @@ import PageMargin from '../../components/utils/PageMargin'
 const Dashboard = (props) => {
 
     const { user } = props
+
+    const [modal, setModal] = useState(false)
 
     return (
         <React.Fragment>
@@ -87,7 +89,15 @@ const Dashboard = (props) => {
                         })}
                     </section> */}
                 </PageMargin>
-            : null}
+                : null}
+            {modal ?
+                <div
+                    className=""
+                    style={{}}
+                >
+                    
+                </div> 
+                : null}
         </React.Fragment>
     )
 }
