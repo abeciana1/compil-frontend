@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
+import PlaylistCreator from '../../components/forms/PlaylistCreator'
 
 //* utils
 import PageMargin from '../../components/utils/PageMargin'
@@ -96,7 +97,8 @@ const Dashboard = (props) => {
                 : null}
             {modal ?
                 <div
-                    className="fixed container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-50 w-full top-1/4 h-4/6 md:inset-1/4 md:w-1/2"
+                    // id="playlist-creator"
+                    className="fixed xl:absolute container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-50 w-full h-4/6 xl:h-4/6 2xl:h-2/5 md:left-1/4 md:right-1/4 md:bottom-1/4 top-32 md:w-1/2"
                     style={{"backgroundColor":"#EAE9EC"}}
                 >
                     {/* <div> */}
@@ -119,7 +121,7 @@ const Dashboard = (props) => {
                                 </button>
                             </div>
                         </span>
-                        
+                        <PlaylistCreator/>
                     {/* </div> */}
                 </div> 
                 : null}

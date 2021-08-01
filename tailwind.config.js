@@ -20,7 +20,7 @@ module.exports = {
       }
     },
     screens: {
-      ...defaultTheme.screens
+      ...defaultTheme.screens,
       // 'xs': '425px',
       // 'sm': '640px',
       // 'md': '768px',
@@ -30,8 +30,8 @@ module.exports = {
       // 'sm': {'min': '640px', 'max': '767px'},
       // 'md': {'min': '768px', 'max': '1023px'},
       // 'lg': '1024px',
-      // 'xl': '1280px',
-      // '2xl': '1536px',
+      'xl': '1280px',
+      '2xl': '1536px',
       // 'lg': {'min': '1024px'},
       // 'xl': {'min': '1280px'},
       // '2xl': {'min': '1536px'},

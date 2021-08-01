@@ -60,3 +60,7 @@ aside {
     /* -webkit-font-smoothing: antialiased; */
     /* font-size: 200px; */
   }
+
+.playlist-creator {
+  height: 50%;
+}

@@ -29,7 +29,7 @@ class SignupForm extends React.Component {
         return (
             <React.Fragment>
             <div className="w-4/5 lg:w-12/12 place-self-center">
-                <div style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
+                <div className="rounded-xl" style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
                     <form className="p-10 md:p-4 lg-p-10" onSubmit={this.submitHandler}>
                     <label>First Name:</label>
                         <br/>
