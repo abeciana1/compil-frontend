@@ -98,12 +98,12 @@ const Dashboard = (props) => {
             {modal ?
                 <div
                     // id="playlist-creator"
-                    className="fixed xl:absolute container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-30 w-full h-4/6 xl:h-4/6 2xl:h-2/5 md:left-1/4 md:right-1/4 md:bottom-1/4 top-32 md:w-1/2"
+                    className="rounded-xl fixed xl:absolute container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-30 w-full h-4/6 xl:h-4/6 2xl:h-2/5 md:left-1/4 md:right-1/4 md:bottom-1/4 top-32 md:w-1/2"
                     style={{"backgroundColor":"#EAE9EC"}}
                 >
                         <span>
                             <div 
-                                className="text-xl sm:text-3xl font-semibold pb-0 lg:pb-2 p-5"
+                                className="text-xl sm:text-3xl font-semibold pb-0 lg:pb-2 p-5 mx-5"
                                 style={{"paddingLeft":"20px"}}
                             >
                             Create a playlist

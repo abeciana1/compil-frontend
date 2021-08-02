@@ -42,7 +42,7 @@ const playAnotherOne = () => {
         {props.user.currentUser ? 
         <section className="grid grid-cols-1 m-auto justify-self-center">
         {/* //TODO make href prop go to signed in dash */}
-        <Link href="/login"> 
+        <Link href="/dashboard"> 
         <button className="text-black bg-blue-light px-4 py-2 justify-self-center rounded-full focus:outline-none text-xl">
             Start Curating!
         </button>
