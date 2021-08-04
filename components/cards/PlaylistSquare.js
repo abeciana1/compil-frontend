@@ -1,5 +1,6 @@
 import React from 'react'
-import Image from 'next/image';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Box = ({children}) => {
 
@@ -12,6 +13,10 @@ const Box = ({children}) => {
 
 const PlaylistSquare = (props) => {
 
+    const router = useRouter()
+
+    // console.log(router.pathname + "/playlists/" + playlist.id)
+
     const { playlist } = props
     
     //! created_at: "2021-06-15T02:08:11.586Z"
@@ -23,22 +28,26 @@ const PlaylistSquare = (props) => {
     //! title: "Playlist1"
     //! updated_at: "2021-06-15T02:08:11.586Z"
 
+    console.log(playlist.id)
+
     return (
-        <React.Fragment>
-            <div>
-                <Box>
-                    <img
-                        src={playlist.image}
-                        className=""
-                        alt={playlist.title}
-                    />
-                </Box>
-                <div>
-                <h4 className="text-xl lg:text-2xl font-semibold pt-3">{playlist.title}</h4>
-                <h5 className="text-base lg:text-lg">{playlist.description}</h5>
-                </div>
-            </div>
-        </React.Fragment>
+        <Link href={"/dashboard/playlists/" + playlist.id}>
+            <a>
+                {/* <div> */}
+                    <Box>
+                        <img
+                            src={playlist.image}
+                            className=""
+                            alt={playlist.title}
+                        />
+                    </Box>
+                    <div>
+                    <h4 className="text-xl lg:text-2xl font-semibold pt-3">{playlist.title}</h4>
+                    <h5 className="text-base lg:text-lg">{playlist.description}</h5>
+                    </div>
+                {/* </div> */}
+            </a>
+        </Link>
     )
 }
 

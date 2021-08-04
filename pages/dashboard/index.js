@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
+import Link from 'next/link'
 
 //* utils
 import PageMargin from '../../components/utils/PageMargin'
@@ -46,7 +47,7 @@ const Dashboard = (props) => {
                             </span>
                         </div>
                     </div>
-                    <section className="lg:fixed grid grid-flow-row grid-cols-1 lg:grid-cols-2 text-6xl">
+                    <section className="w-4/12 lg:fixed grid grid-flow-row grid-cols-1 text-6xl">
                         <div className="hidden lg:block">
                             <h1>Side Bar content</h1>
                             <h1>Side Bar content</h1>
@@ -64,14 +65,16 @@ const Dashboard = (props) => {
                             </React.Fragment>)
                         })}
                     </section> */}
+                        {/* lg:-ml-80 pl-2 */}
                     </section>
-                    <section className="grid block grid-flow-col auto-cols-min lg:ml-96 gap-x-5 lg:gap-x-10 pb-10 overflow-x-scroll">
+                    <section className="grid block grid-flow-col auto-cols-min gap-x-5 lg:ml-96 lg:gap-x-10 pb-10 overflow-x-scroll">
                     {/* <section className="grid hidden lg:block grid-flow-col auto-cols-min ml-96 gap-x-10 pb-10"> */}
                             {user.currentUser.playlists.map(playlist => {
                             return (
-                            <React.Fragment>
+                            <>
                                 <PlaylistSquare playlist={playlist} />
-                            </React.Fragment>)
+                            </>
+                            )
                         })}
                     </section>
 
