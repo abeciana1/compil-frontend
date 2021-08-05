@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 
-import { scrapePlaylist } from "youtube-playlist-scraper";
+// import { scrapePlaylist } from "youtube-playlist-scraper";
 
 
 //! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
@@ -50,7 +50,9 @@ const PlaylistShowPage = ({playlist}) => {
     //! updated_at: "2021-06-15T02:08:11.586Z"
     //! user_id: 1
 
-    console.log(songs)
+    // console.log(songs)
+
+    const [modal, setModal] = useState(false)
 
     return (
         <React.Fragment>
@@ -76,12 +78,56 @@ const PlaylistShowPage = ({playlist}) => {
                         {user ?
                             <p className="pt-2 text-black text-xl">Created by {user.f_name.charAt(0).toUpperCase() + user.f_name.substr(1).toLowerCase()} {user.l_name.charAt(0).toUpperCase() + user.l_name.substr(1).toLowerCase()} | {playlist.songs.length} {playlist.songs.length > 1 ? "songs" : "song"}</p>
                         : null}
+                        <div className="grid grid-cols-1 sm:grid-cols-2">
+                            <div className="pt-2">
+                                <button
+                                    className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                    style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
+                                    onClick={() => setModal(!modal)}
+                                >
+                                    <span className="float-right pr-1 lg:pr-2 self-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                    </span>
+                                    Import from YouTube playlist
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
 
                 </section>
             </PageMargin>
+            {modal ?
+                <div
+                    // id="playlist-creator"
+                    className="rounded-xl fixed xl:absolute container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-30 w-full h-4/6 xl:h-4/6 2xl:h-2/5 md:left-1/4 md:right-1/4 md:bottom-1/4 top-32 md:w-1/2"
+                    style={{"backgroundColor":"#EAE9EC"}}
+                >
+                        <span>
+                            <div 
+                                className="text-xl sm:text-3xl font-semibold pb-0 lg:pb-2 p-5 mx-5"
+                                style={{"paddingLeft":"20px"}}
+                            >
+                            Add Your YouTube Playlist
+                                <button onClick={() => {
+                                    setModal(false)
+                                    }} 
+                                    className="z-40 float-right p-1.5 py-2.5 text-xl rounded-full focus:outline-none"
+                                    style={{"backgroundColor":"#E54B4B"}}
+                                >
+                                    <img
+                                        src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
+                                        className="w-7/12 mx-auto self-center"
+                                    />
+                                </button>
+                            </div>
+                        </span>
+                        
+                </div> 
+                : null}
         </React.Fragment>
     )
 }
