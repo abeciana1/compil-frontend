@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 
+import { scrapePlaylist } from "youtube-playlist-scraper";
+
+
+//! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
+
 // import { useRouter } from 'next/router'
 
-const grabYouTube = () => {
-    fetch("https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi")
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-    })
-}
+// const grabYouTube = () => {
+//     fetch("https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi")
+//     .then(res => res.json())
+//     .then(data => {
+//         console.log(data)
+//     })
+// }
+
 
 const PlaylistShowPage = ({playlist}) => {
 
     const [user, setUser] = useState(null)
+
+    const [songs, setSongs] = useState(null)
 
     useEffect(() => {
         fetch("http://localhost:3001/api/v1/users/" + playlist.user_id)
@@ -21,9 +29,15 @@ const PlaylistShowPage = ({playlist}) => {
         .then(data => {
             setUser(data)
         })
-    }, [])
 
-    grabYouTube()
+        // const options = {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //     },
+        //     // body: JSON.stringify(jsObject)
+        // }
+    }, [])
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
@@ -36,7 +50,7 @@ const PlaylistShowPage = ({playlist}) => {
     //! updated_at: "2021-06-15T02:08:11.586Z"
     //! user_id: 1
 
-    // console.log(user.f_name.charAt(0))
+    console.log(songs)
 
     return (
         <React.Fragment>
@@ -93,14 +107,9 @@ export async function getStaticProps({params}) {
     
     const playlist = await res.json()
 
-    // const resUser = await fetch("http://localhost:3001/api/v1/profile")
-
-    // const foundUser = await resUser.json()
-
     return {
         props: {
             playlist: playlist,
-            // user: foundUser
         }
     }
 }
