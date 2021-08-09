@@ -1,29 +1,28 @@
-// import {
-//     GET_LOG_USER_PLAYLIST,
-//     CREATE_PLAYLIST
-// } from '../actions/playlist-actions'
+import {
+    GET_PLAYLIST,
+    IMPORT_YOUTUBE
+} from '../actions/playlist-actions'
 
 
-// const initialState = {
-//     playlists: null
-// }
+const initialState = {
+    playlist: null,
+    songs: null
+}
 
-// const playlistReducer = (state = initialState, action) => {
+const playlistReducer = (state = initialState, action) => {
 
-//     switch (action.type) {
-//         case GET_LOG_USER_PLAYLIST:
-//             return {
-//                 ...state,
-//                 playlists: action.payload.playlists
-//             }
-//         // case CREATE_PLAYLIST:
-//         //     return {
-//         //         ...state,
-//         //         playlists: [...state.playlists, action.payload.playlists]
-//         //     }
-//         default:
-//             return state
-//     }
-// }
+    console.log(action);
 
-// export default playlistReducer
+    switch (action.type) {
+        case GET_PLAYLIST:
+            return {
+                ...state,
+                playlist: action.payload,
+                songs: action.payload.songs
+            }
+        default:
+            return state
+    }
+}
+
+export default playlistReducer
