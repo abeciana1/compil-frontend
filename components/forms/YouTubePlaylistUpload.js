@@ -17,8 +17,8 @@ class YouTubePlaylistUpload extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log("click")
         this.props.importYouTube(this.state)
+        this.props.setModal(false)
     }
 
     render() {

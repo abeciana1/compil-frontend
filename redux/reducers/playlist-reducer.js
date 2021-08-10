@@ -6,7 +6,8 @@ import {
 
 const initialState = {
     playlist: null,
-    songs: null
+    songs: null,
+    importedYouTubeItems: null
 }
 
 const playlistReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const playlistReducer = (state = initialState, action) => {
                 ...state,
                 playlist: action.payload,
                 songs: action.payload.songs
+            }
+        case IMPORT_YOUTUBE:
+            return {
+                ...state,
+                importedYouTubeItems: action.payload
             }
         default:
             return state

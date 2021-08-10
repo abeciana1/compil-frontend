@@ -4,6 +4,8 @@ import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUplo
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 
+import TrackListing from '../../../components/containers/TrackListing'
+
 import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
 
@@ -11,13 +13,15 @@ import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
 const PlaylistShowPage = (props) => {
 
+    console.log(props)
+
     const {playlist} = props.playlist;
 
     const router = useRouter()
 
     useEffect(() => {
         props.getPlaylist(router.query.id)
-    })
+    }, [])
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
@@ -34,66 +38,71 @@ const PlaylistShowPage = (props) => {
 
     return (
         <React.Fragment>
-            {playlist ? 
+            {playlist ?
                 <>
-                <div>
-                    <img
-                    src={playlist.image}
-                    alt={playlist.title + " - Banner Photo"}
-                    className="w-screen max-h-72 filter blur-3xl"
-                    />
-                </div>
-                <PageMargin>
-                    <section className="relative bottom-32 mx-auto lg:ml-5 xl:ml-10 2xl:ml-16 grid grid-cols-1 md:grid-cols-2 place-content-center">
-                        <div className="w-full md:w-10/12 lg:w-7/12">
-                            <p className="text-white -mt-32 pb-10 text-5xl block sm:hidden">{playlist.title}</p> 
-                            <img
-                                src={playlist.image}
-                                alt={playlist.title}
-                            />
-                        </div>
-                        <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96">
-                            <p className="pt-2 text-black text-5xl hidden sm:block">{playlist.title}</p> 
-                            <p className="pt-2 text-black text-xl">{playlist.description}</p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2">
-                                <div className="pt-2">
-                                    <button
-                                        className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
-                                        style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
-                                        onClick={() => setModal(!modal)}
-                                    >
-                                        <span className="float-right pr-1 lg:pr-2 self-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                            </svg>
-                                        </span>
+                    <div>
+                        <img
+                            src={playlist.image}
+                            alt={playlist.title + " - Banner Photo"}
+                            className="w-screen max-h-72 filter blur-3xl"
+                        />
+                    </div>
+                    <PageMargin>
+                        <section className="relative bottom-32 mx-auto lg:ml-5 xl:ml-10 2xl:ml-16 grid grid-cols-1 md:grid-cols-2 place-content-center">
+                            <div className="w-full md:w-10/12 lg:w-7/12">
+                                <p className="text-white -mt-32 pb-10 text-5xl block sm:hidden">{playlist.title}</p>
+                                <img
+                                    src={playlist.image}
+                                    alt={playlist.title}
+                                />
+                            </div>
+                            <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96">
+                                <p className="pt-2 text-black text-5xl hidden sm:block">{playlist.title}</p>
+                                <p className="pt-2 text-black text-xl">{playlist.description}</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2">
+                                    <div className="pt-2">
+                                        <button
+                                            className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                            style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
+                                            onClick={() => setModal(!modal)}
+                                        >
+                                            <span className="float-right pr-1 lg:pr-2 self-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                </svg>
+                                            </span>
                                         Import from YouTube playlist
                                     </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
-
-                    </section>
-                </PageMargin>
-                {modal ?
-                    <div
-                        // id="playlist-creator"
-                        className="rounded-xl fixed container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-30 w-full xl:absolute md:left-1/4 md:right-1/4 top-56 md:w-1/2"
-                        style={{"backgroundColor":"#EAE9EC"}}
-                    >
+                        </section>
+                        <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
+                            <h1 className="text-4xl">Pending tracks:</h1>
+                            <TrackListing />
+                        </section>
+                        <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
+                            <h1 className="text-4xl">Added tracks:</h1>
+                            <TrackListing/>
+                        </section>
+                    </PageMargin>
+                    {modal ?
+                        <div
+                            // id="playlist-creator"
+                            className="rounded-xl fixed container flex flex-col flex-1 items-stretch mx-auto shadow-xl z-30 w-full xl:absolute md:left-1/4 md:right-1/4 top-56 md:w-1/2"
+                            style={{ "backgroundColor": "#EAE9EC" }}
+                        >
                             <span>
-                                <div 
+                                <div
                                     className="text-lg sm:text-3xl md:text-xl font-semibold pb-0 lg:pb-2 p-5 mx-3 sm:mx-5"
-                                    style={{"paddingLeft":"20px"}}
+                                    style={{ "paddingLeft": "20px" }}
                                 >
-                                Add Your YouTube Playlist
+                                    Add Your YouTube Playlist
                                     <button onClick={() => {
                                         setModal(false)
-                                        }} 
+                                    }}
                                         className="z-40 float-right p-1.5 py-2.5 text-xl rounded-full focus:outline-none"
-                                        style={{"backgroundColor":"#E54B4B"}}
+                                        style={{ "backgroundColor": "#E54B4B" }}
                                     >
                                         <img
                                             src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
@@ -102,11 +111,11 @@ const PlaylistShowPage = (props) => {
                                     </button>
                                 </div>
                             </span>
-                        <YouTubePlaylistUpload />
-                    </div> 
+                            <YouTubePlaylistUpload  setModal={setModal} />
+                        </div>
                         : null}
-                    </>
-            : null}
+                </>
+                : null}
         </React.Fragment>
     )
 }
