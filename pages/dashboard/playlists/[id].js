@@ -4,7 +4,7 @@ import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUplo
 import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 
-import TrackListing from '../../../components/containers/TrackListing'
+import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
 import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
@@ -12,8 +12,6 @@ import { getPlaylist } from '../../../redux/actions/playlist-actions'
 //! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
 
 const PlaylistShowPage = (props) => {
-
-    console.log(props)
 
     const {playlist} = props.playlist;
 
@@ -79,11 +77,11 @@ const PlaylistShowPage = (props) => {
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                             <h1 className="text-4xl">Pending tracks:</h1>
-                            <TrackListing />
+                            <PendingTrackListing pending={props.playlist.importYouTubeItems} />
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
                             <h1 className="text-4xl">Added tracks:</h1>
-                            <TrackListing/>
+                            {/* <TrackListing pending={props.playlist.importYouTubeItems} songs={props.playlist.songs} /> */}
                         </section>
                     </PageMargin>
                     {modal ?

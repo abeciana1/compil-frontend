@@ -7,12 +7,10 @@ import {
 const initialState = {
     playlist: null,
     songs: null,
-    importedYouTubeItems: null
+    importYouTubeItems: null
 }
 
 const playlistReducer = (state = initialState, action) => {
-
-    console.log(action);
 
     switch (action.type) {
         case GET_PLAYLIST:
@@ -24,7 +22,7 @@ const playlistReducer = (state = initialState, action) => {
         case IMPORT_YOUTUBE:
             return {
                 ...state,
-                importedYouTubeItems: action.payload
+                importYouTubeItems: action.payload
             }
         default:
             return state

@@ -11,8 +11,6 @@ export const getPlaylist = (playlistId) => {
         fetch(BASE_URL + "/playlists/" + playlistId)
         .then(response => response.json())
         .then(data => {
-            
-            console.log(data);
             dispatch({
                 type: GET_PLAYLIST,
                 payload: data,
