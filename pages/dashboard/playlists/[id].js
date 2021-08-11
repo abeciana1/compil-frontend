@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
-import { useRouter } from 'next/router'
-import { connect } from 'react-redux'
+// import { useRouter } from 'next/router'
+// import { connect } from 'react-redux'
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
-import { getPlaylist } from '../../../redux/actions/playlist-actions'
+// import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
 
 //! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
 
 const PlaylistShowPage = (props) => {
 
-    const {playlist} = props.playlist;
+    // console.log(props)
 
-    const router = useRouter()
+    const { playlist } = props;
+    const { songs } = props
+    
+    const [youtubeImport, setYoutubeImport] = useState(null)
+    const [modal, setModal] = useState(false)
 
-    useEffect(() => {
-        props.getPlaylist(router.query.id)
-    }, [])
+    // const [pending, setPending] = useState(null)
 
+    console.log(youtubeImport)
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
     //! id: 1
@@ -32,7 +35,13 @@ const PlaylistShowPage = (props) => {
     //! updated_at: "2021-06-15T02:08:11.586Z"
     //! user_id: 1
 
-    const [modal, setModal] = useState(false)
+    // useEffect(() => {
+
+    //     setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
+
+    // }, [pending])
+
+    
 
     return (
         <React.Fragment>
@@ -77,11 +86,13 @@ const PlaylistShowPage = (props) => {
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                             <h1 className="text-4xl">Pending tracks:</h1>
-                            <PendingTrackListing pending={props.playlist.importYouTubeItems} />
+                            {youtubeImport ?
+                            <PendingTrackListing youtubeImport={youtubeImport}/>
+                            : null}
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
                             <h1 className="text-4xl">Added tracks:</h1>
-                            {/* <TrackListing pending={props.playlist.importYouTubeItems} songs={props.playlist.songs} /> */}
+                            {/* <TrackListing songs={props.playlist.songs} /> */}
                         </section>
                     </PageMargin>
                     {modal ?
@@ -109,7 +120,7 @@ const PlaylistShowPage = (props) => {
                                     </button>
                                 </div>
                             </span>
-                            <YouTubePlaylistUpload  setModal={setModal} />
+                            <YouTubePlaylistUpload  setModal={setModal} setYoutubeImport={setYoutubeImport} />
                         </div>
                         : null}
                 </>
@@ -118,44 +129,44 @@ const PlaylistShowPage = (props) => {
     )
 }
 
-// export async function getStaticPaths() {
+export async function getStaticPaths() {
 
-//     const res = await fetch("http://localhost:3001/api/v1/playlists/")
+    const res = await fetch("http://localhost:3001/api/v1/playlists/")
 
-//     const playlists = await res.json()
+    const playlists = await res.json()
 
-//     const playlistIds = playlists.map((playlist) => playlist.id)
+    const playlistIds = playlists.map((playlist) => playlist.id)
 
-//     const params = playlistIds.map((pid) => ({params: {id: pid.toString()}}))
+    const params = playlistIds.map((pid) => ({params: {id: pid.toString()}}))
 
-//     return {
-//         paths: params,
-//         fallback: false
-//     }
-// }
+    return {
+        paths: params,
+        fallback: false
+    }
+}
 
-// export async function getStaticProps({params}) {
-//     const res = await fetch(`http://localhost:3001/api/v1/playlists/${params.id}`)
+export async function getStaticProps({params}) {
+    const res = await fetch(`http://localhost:3001/api/v1/playlists/${params.id}`)
     
-//     const playlist = await res.json()
+    const playlist = await res.json()
 
-//     return {
-//         props: {
-//             playlist: playlist,
-//             songs: playlist.songs
-//         }
-//     }
+    return {
+        props: {
+            playlist: playlist,
+            songs: playlist.songs
+        }
+    }
+}
+
+// const mapStateToProps = (state) => {
+//     return state
 // }
 
-const mapStateToProps = (state) => {
-    return state
-}
+// const mapDispatchToProps = {
+//     getPlaylist
+// }
 
-const mapDispatchToProps = {
-    getPlaylist
-}
-
-// export default PlaylistShowPage
+export default PlaylistShowPage
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)
+// export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)

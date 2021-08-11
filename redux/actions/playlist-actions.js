@@ -21,22 +21,25 @@ export const getPlaylist = (playlistId) => {
 
 export const importYouTube = (youtubePlaylistId) => {
 
+    // console.log(youtubePlaylistId)
+
     const options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
+            // 'Accept': 'application/json',
         },
         body: JSON.stringify({
             youtube: youtubePlaylistId
         })
     }
-
-    // .then(res => console.log(res))
     return (dispatch) => {
         fetch(BASE_URL + '/youtube-import', options)
         .then(res => res.json())
         .then(data => {
+            
+            console.log(data);
+
             dispatch({
                 type: IMPORT_YOUTUBE,
                 payload: data,

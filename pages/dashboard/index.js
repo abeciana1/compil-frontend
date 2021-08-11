@@ -77,7 +77,6 @@ const Dashboard = (props) => {
                             )
                         })}
                     </section>
-
                     {/* <h1 className="text-6xl ml-96 pt-5 pb-5">Favorite Artists</h1>
                     <section className="grid grid-flow-col auto-cols-min ml-96 gap-x-10 pb-10">
                             {user.currentUser.playlists.map(playlist => {

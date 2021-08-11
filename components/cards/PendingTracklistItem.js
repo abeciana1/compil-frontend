@@ -2,7 +2,7 @@ import React from 'react';
 
 const PendingTracklistItem = ({ track }) => {
     
-    console.log(track);
+    // console.log(track);
 
     return (
         <React.Fragment>
@@ -22,9 +22,11 @@ const PendingTracklistItem = ({ track }) => {
                         {track.snippet.title}
                     </div>
                 </div>
-                <span className="self-center float-right relative bottom-7 mr-5">
+                <span className="self-center float-right relative bottom-8 mr-5">
                     <a
                         href={"https://youtu.be/" + track.contentDetails.videoId}
+                        target="_blank"
+                        rel="noopener"
                     >
                         YouTube Link
                     </a>

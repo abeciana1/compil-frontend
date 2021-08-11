@@ -12,6 +12,8 @@ const initialState = {
 
 const playlistReducer = (state = initialState, action) => {
 
+    console.log("reducer", action)
+
     switch (action.type) {
         case GET_PLAYLIST:
             return {
