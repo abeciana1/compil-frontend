@@ -33,18 +33,19 @@ export const importYouTube = (youtubePlaylistId) => {
             youtube: youtubePlaylistId
         })
     }
+
     return (dispatch) => {
         fetch(BASE_URL + '/youtube-import', options)
         .then(res => res.json())
-        .then(data => {
-            
-            console.log(data);
-
+            .then(data => {
+                
             dispatch({
                 type: IMPORT_YOUTUBE,
                 payload: data,
             })
         })
+
+
     }
 }
 

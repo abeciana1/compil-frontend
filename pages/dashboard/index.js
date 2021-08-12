@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
+
+import { useRouter } from 'next/router'
 // import Link from 'next/link'
 
 //* utils
@@ -10,6 +12,13 @@ import PageMargin from '../../components/utils/PageMargin'
 const Dashboard = (props) => {
 
     const { user } = props
+
+    let router = useRouter()
+
+
+    if (user.currentUser === undefined) {
+        router.push('/login')
+    }
 
     const [modal, setModal] = useState(false)
 

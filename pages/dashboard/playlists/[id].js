@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
-// import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 // import { connect } from 'react-redux'
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
+import TrackListing from '../../../components/containers/TrackListing'
 
 // import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
@@ -13,17 +14,14 @@ import PendingTrackListing from '../../../components/containers/PendingTrackList
 
 const PlaylistShowPage = (props) => {
 
-    // console.log(props)
-
     const { playlist } = props;
     const { songs } = props
+
+    // console.log(youtubePlaylist);
     
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
-    // const [pending, setPending] = useState(null)
-
-    console.log(youtubeImport)
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
     //! id: 1
@@ -34,14 +32,6 @@ const PlaylistShowPage = (props) => {
     //! title: "Playlist1"
     //! updated_at: "2021-06-15T02:08:11.586Z"
     //! user_id: 1
-
-    // useEffect(() => {
-
-    //     setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
-
-    // }, [pending])
-
-    
 
     return (
         <React.Fragment>
@@ -63,18 +53,18 @@ const PlaylistShowPage = (props) => {
                                     alt={playlist.title}
                                 />
                             </div>
-                            <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96">
+                            <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                 <p className="pt-2 text-black text-5xl hidden sm:block">{playlist.title}</p>
                                 <p className="pt-2 text-black text-xl">{playlist.description}</p>
                                 <div className="grid grid-cols-1 sm:grid-cols-2">
                                     <div className="pt-2">
                                         <button
-                                            className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                            className="w-auto flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                             style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
                                             onClick={() => setModal(!modal)}
                                         >
-                                            <span className="float-right pr-1 lg:pr-2 self-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <span className="float-right -pr-4 lg:pr-2 self-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:h-3 sm:w-3 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
                                             </span>
@@ -86,13 +76,13 @@ const PlaylistShowPage = (props) => {
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                             <h1 className="text-4xl">Pending tracks:</h1>
-                            {youtubeImport ?
-                            <PendingTrackListing youtubeImport={youtubeImport}/>
+                            {youtubeImport || playlist.youtube_playlist ?
+                            <PendingTrackListing youtubeImport={youtubeImport} renderedPlaylist={playlist} />
                             : null}
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
                             <h1 className="text-4xl">Added tracks:</h1>
-                            {/* <TrackListing songs={props.playlist.songs} /> */}
+                            <TrackListing songs={props.playlist.songs} />
                         </section>
                     </PageMargin>
                     {modal ?
@@ -120,7 +110,7 @@ const PlaylistShowPage = (props) => {
                                     </button>
                                 </div>
                             </span>
-                            <YouTubePlaylistUpload  setModal={setModal} setYoutubeImport={setYoutubeImport} />
+                            <YouTubePlaylistUpload  setModal={setModal} setYoutubeImport={setYoutubeImport} playlist={playlist} />
                         </div>
                         : null}
                 </>

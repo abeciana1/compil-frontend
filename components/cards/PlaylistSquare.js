@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 const Box = ({children}) => {
 
@@ -13,7 +13,7 @@ const Box = ({children}) => {
 
 const PlaylistSquare = (props) => {
 
-    const router = useRouter()
+    // const router = useRouter()
 
     // console.log(router.pathname + "/playlists/" + playlist.id)
 
@@ -27,8 +27,6 @@ const PlaylistSquare = (props) => {
     //! status: "draft"
     //! title: "Playlist1"
     //! updated_at: "2021-06-15T02:08:11.586Z"
-
-    console.log(playlist.id)
 
     return (
         <Link href={"/dashboard/playlists/" + playlist.id}>

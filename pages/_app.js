@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/playlist.css'
 
 // import Head from 'next/head'
 import React, {useEffect} from 'react'

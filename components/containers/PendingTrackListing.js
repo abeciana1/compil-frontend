@@ -6,11 +6,15 @@ import { importYouTube } from '../../redux/actions/playlist-actions'
 
 const PendingTrackListing = (props) => {
 
+    // console.log(props)
+
     const [pending, setPending] = useState(null)
 
     useEffect(() => {
-        props.importYouTube(props.youtubeImport.youTubePlaylist)
-        setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
+        // props.importYouTube(props.youtubeImport.youTubePlaylist)
+        // setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
+        props.importYouTube(props.renderedPlaylist.youtube_playlist)
+        setPending(props.importYouTube(props.renderedPlaylist.youtube_playlist))
 
     }, [pending])
     
@@ -47,3 +51,4 @@ const mapDispatchToProps = {
 }
     
 export default connect(mapStateToProps, mapDispatchToProps)(PendingTrackListing)
+// export default connect(null, mapDispatchToProps)(PendingTrackListing)

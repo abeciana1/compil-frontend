@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { importYouTube } from '../../redux/actions/playlist-actions'
+import { getPlaylist, importYouTube } from '../../redux/actions/playlist-actions'
 
 class YouTubePlaylistUpload extends React.Component {
 
@@ -18,12 +18,31 @@ class YouTubePlaylistUpload extends React.Component {
     submitHandler = (e) => {
         e.preventDefault()
         this.props.setYoutubeImport(this.state)
+
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                youtube_playlist: this.state.youTubePlaylist
+            })
+        }
+
+        fetch(`http://localhost:3001/api/v1/playlists/${this.props.playlist.id}`, options)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            props.getPlaylist(data.id)
+        })
+
         // this.props.importYouTube(this.state)
         this.props.setModal(false)
     }
 
     render() {
-        // console.log(this.props)
+        // console.log(this.props.playlist.id)
         return (
             <React.Fragment>
                 <form
@@ -59,7 +78,8 @@ class YouTubePlaylistUpload extends React.Component {
 // export default YouTubePlaylistUpload
 
 const mapDispatchToProps = {
-    importYouTube
+    importYouTube,
+    getPlaylist
 }
 
 export default connect(null, mapDispatchToProps)(YouTubePlaylistUpload)
