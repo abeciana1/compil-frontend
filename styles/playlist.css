@@ -1,3 +1,7 @@
+#import-btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
 @media only screen and (min-width: 320px) {
     .track {

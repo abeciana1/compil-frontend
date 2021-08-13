@@ -56,14 +56,15 @@ const PlaylistShowPage = (props) => {
                             <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                 <p className="pt-2 text-black text-5xl hidden sm:block">{playlist.title}</p>
                                 <p className="pt-2 text-black text-xl">{playlist.description}</p>
-                                <div className="grid grid-cols-1 sm:grid-cols-2">
+                                <div className="grid grid-cols-1">
                                     <div className="pt-2">
                                         <button
-                                            className="w-auto flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                            id="import-btn"
+                                            className="w-auto text-lg flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                             style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
                                             onClick={() => setModal(!modal)}
                                         >
-                                            <span className="float-right -pr-4 lg:pr-2 self-center">
+                                            <span className="-pr-4 lg:pr-2 self-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:h-3 sm:w-3 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
