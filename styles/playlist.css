@@ -3,6 +3,11 @@
     padding-bottom: 5px;
 }
 
+#track-cover {
+    position: relative;
+    top: 0;
+}
+
 @media only screen and (min-width: 320px) {
     .track {
         display: grid;
@@ -16,7 +21,5 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-
-            /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
         }
 }

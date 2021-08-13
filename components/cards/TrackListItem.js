@@ -4,67 +4,41 @@ const TrackListItem = (props) => {
 
     console.log(props);
 
-    const {track} = props;
+    const { track } = props;
+
+//! {
+//!     "track": {
+//!         "id": 8,
+//!         "title": "Aqualung",
+//!         "artist": "Pink Floyd",
+//!         "album": "The Dark Side of the Moon",
+//!         "link": "https://www.youtube.com/watch?v=IIdNH-eraCQ",
+//!         "start_time": null,
+//!         "end_time": null,
+//!         "youtube_id": null
+//!     }
+//! }
 
     return (
         <React.Fragment>
             <li
                 className="border hover:bg-black hover:text-white"
             >
-                <div
-                    className="track"
-                >
-                    <img
-                        // src={track.snippet.thumbnails.default.url}
-                        className="h-10 w-10"
-                    />
-                    <div
-                        className="md:self-center -ml-16 md:ml-5 grid"
-                    >
-                        {track.title}
-                        <div>
-                            {track.artist}
-                        </div>
-                        <div>
-                            <span className="self-center float-left pt-3 relative mr-5 block md:hidden">
-                                {track.album}
-                            </span>
-                            <span className="self-center float-right pt-3 relative mr-5 block md:hidden">
-                                <a
-                                    // href={"https://youtu.be/" + track.contentDetails.videoId}
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    YouTube Link
-                                </a>
-                                <a
-                                    className="ml-5 cursor-pointer"
-                                    // onClick={}
-                                >
-                                    Remove song
-                                </a>
-                            </span>
-                        </div>
+                <div className="grid grid-cols-3 items-stretch">
+                    <div className="flex items-stretch">
+                        <img
+                            src={track.image}
+                            className="h-10 w-10"
+                        />
+                        <span className="self-center ml-5">
+                            {track.artist} | {track.title}
+                        </span>
                     </div>
+                    <div className="text-center self-center">
+                        {track.album}
+                    </div>
+                    <div></div>
                 </div>
-                <span className="self-center text-center relative bottom-8 mr-5 hidden md:block">
-                    {track.album}
-                </span>
-                <span className="self-center float-right relative bottom-14 mr-5 hidden md:block">
-                    <a
-                        // href={"https://youtu.be/" + track.contentDetails.videoId}
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        YouTube Link
-                    </a>
-                    <a
-                        className="ml-5 cursor-pointer"
-                        // onClick={}
-                    >
-                        Remove song
-                    </a>
-                </span>
             </li>
         </React.Fragment>
     )
