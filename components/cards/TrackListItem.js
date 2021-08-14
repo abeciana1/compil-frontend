@@ -37,7 +37,24 @@ const TrackListItem = (props) => {
                     <div className="text-center self-center">
                         {track.album}
                     </div>
-                    <div></div>
+                    <div className="self-center text-center justify-self-end pr-5">
+                        <div>
+                            <a
+                                className="cursor-pointer"
+                                onClick={() => console.log('youtube')}
+                            >
+                                Youtube link</a>
+                            <span
+                                className="pl-5 cursor-pointer"
+                                onClick={() => console.log("remove song")}
+                            >
+                                Remove song
+                            </span>
+                        </div>
+                        <div>
+                            
+                        </div>
+                    </div>
                 </div>
             </li>
         </React.Fragment>
