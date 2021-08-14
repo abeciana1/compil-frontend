@@ -83,6 +83,9 @@ const PlaylistShowPage = (props) => {
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
                             <h1 className="text-4xl">Added tracks:</h1>
+                            <p className="text-gray-500">
+                                Click on album cover to see track details
+                            </p>
                             <TrackListing songs={props.playlist.songs} />
                         </section>
                     </PageMargin>

@@ -7,7 +7,7 @@ const PendingTracklistItem = ({ track }) => {
     return (
         <React.Fragment>
             <li
-                className="border hover:bg-black hover:text-white"
+                className="border border-black hover:bg-black hover:text-white"
             >
                 <div
                     className="track"

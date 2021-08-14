@@ -8,8 +8,9 @@ import NavBar from '../components/utils/NavBar'
 import { wrapper } from '../redux/store'
 import { useRouter } from 'next/router'
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
 
+  const { Component, pageProps } = props
   
   // const router = useRouter()
   // useEffect(() => {

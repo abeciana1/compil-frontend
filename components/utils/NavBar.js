@@ -7,13 +7,6 @@ import { connect } from 'react-redux'
 import Link from 'next/link'
 import { logoutUser } from '../../redux/actions/user-actions'
 
-// const navigation = ['About', 'Login', 'Signup']
-const profile = ['Your Profile', 'Settings', 'Sign out']
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 const NavBar = (props) => {
 
     return (

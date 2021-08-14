@@ -5,6 +5,8 @@ import { checkUser } from '../../redux/actions/user-actions'
 
 const HeadTag = (props) => {
 
+    console.log(props)
+
     useEffect(() => {
         if (localStorage.getItem('compilLogged')) {
             props.checkUser()
@@ -14,10 +16,12 @@ const HeadTag = (props) => {
     }, [])
 
     return (
-        <Head>
-            <link rel="icon" href="/favicon.png" />
-            <link rel="stylesheet" href="https://use.typekit.net/ntq1bol.css"></link>
-        </Head>
+        <>
+            <Head>
+                <link rel="icon" href="/favicon.png" />
+                <link rel="stylesheet" href="https://use.typekit.net/ntq1bol.css"></link>
+            </Head>
+        </>
     )
 }
 

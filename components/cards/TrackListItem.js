@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 
 const TrackListItem = (props) => {
 
     console.log(props);
 
     const { track } = props;
+
+        const [showDetails, setShowDetails] = useState(false)
 
 //! {
 //!     "track": {
@@ -22,13 +25,14 @@ const TrackListItem = (props) => {
     return (
         <React.Fragment>
             <li
-                className="border hover:bg-black hover:text-white"
+                className="border border-black hover:bg-black hover:text-white"
             >
                 <div className="grid grid-cols-3 items-stretch">
                     <div className="flex items-stretch">
                         <img
                             src={track.image}
                             className="h-10 w-10"
+                            onClick={() => console.log("details")}
                         />
                         <span className="self-center ml-5">
                             {track.artist} | {track.title}
@@ -56,9 +60,23 @@ const TrackListItem = (props) => {
                         </div>
                     </div>
                 </div>
+                {showDetails ?
+                    <React.Fragment>
+                    </React.Fragment>
+                : null}
             </li>
         </React.Fragment>
     )
 }
 
-export default TrackListItem
+const mapStateToProps = (state) => {
+    return state
+}
+
+const mapDispatchToProps = {
+
+}
+
+// export default TrackListItem
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackListItem)
