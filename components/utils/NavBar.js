@@ -35,6 +35,11 @@ const NavBar = (props) => {
                         </Link>
                         {props.user.currentUser ?
                         <>
+                        <Link href={"/dashboard"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
+                                Dashboard
+                            </div>
+                        </Link>
                         <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                             Logout
                         </div>

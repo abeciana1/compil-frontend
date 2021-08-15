@@ -4,7 +4,6 @@ import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
 
 import { useRouter } from 'next/router'
-// import Link from 'next/link'
 
 //* utils
 import PageMargin from '../../components/utils/PageMargin'
@@ -16,7 +15,7 @@ import PageMargin from '../../components/utils/PageMargin'
 
 const sortUserPlaylistsByDate = (playlists) => {
 
-    let sorted = playlists.sort((a, b) => {
+    playlists.sort((a, b) => {
         let dateA = new Date(a.created_at)
         let dateB = new Date(b.created_at)
         return dateA - dateB

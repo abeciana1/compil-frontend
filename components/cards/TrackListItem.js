@@ -27,12 +27,12 @@ const TrackListItem = (props) => {
             <li
                 className="border border-black hover:bg-black hover:text-white"
             >
-                <div className="grid grid-cols-3 items-stretch">
+                <div className="md:grid md:grid-cols-3 md:items-stretch">
                     <div className="flex items-stretch">
                         <img
-                            src={track.image}
+                            src={track.album_cover}
                             className="h-10 w-10"
-                            onClick={() => console.log("details")}
+                            onClick={() => setShowDetails(!showDetails)}
                         />
                         <span className="self-center ml-5">
                             {track.artist} | {track.title}
@@ -41,7 +41,7 @@ const TrackListItem = (props) => {
                     <div className="text-center self-center">
                         {track.album}
                     </div>
-                    <div className="self-center text-center justify-self-end pr-5">
+                    <div className="self-center text-center justify-self-end md:pr-5 pt-3 md:pt-0">
                         <div>
                             <a
                                 className="cursor-pointer"
@@ -62,6 +62,31 @@ const TrackListItem = (props) => {
                 </div>
                 {showDetails ?
                     <React.Fragment>
+                        
+                        <div className="border-t-2 border-black focus:border-white">
+                            <div className="mx-5 my-5">
+                                <div className="flex flex-col sm:flex-row">
+                                    <div>
+                                        <img
+                                            src={track.album_cover}
+                                            className="h-32 w-32"
+                                            onClick={() => setShowDetails(!showDetails)}
+                                        />
+                                    </div>
+                                    <div className="sm:ml-5 pt-2 sm:pt-0">
+                                        <b>Title: </b>{track.title}
+                                        <br/>
+                                        <b>Artist: </b>{track.artist}
+                                        <br/>
+                                        <b>Album: </b>{track.album}
+                                    </div>
+                                    <div className="ml-10">
+                                        About the band:
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </React.Fragment>
                 : null}
             </li>
