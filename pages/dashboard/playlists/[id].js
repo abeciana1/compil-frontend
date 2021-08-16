@@ -22,6 +22,8 @@ const PlaylistShowPage = (props) => {
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
+    const [expandAll, setExpandAll] = useState(false)
+
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
     //! id: 1
@@ -86,7 +88,13 @@ const PlaylistShowPage = (props) => {
                             <p className="text-gray-500">
                                 Click on album cover to see track details
                             </p>
-                            <TrackListing songs={props.playlist.songs} />
+                            <p
+                                className="text-gray-500 cursor-pointer"
+                                onClick={() => setExpandAll(!expandAll)}
+                            >
+                                {expandAll ? "Collapse all" : "Expand all"}
+                            </p>
+                            <TrackListing songs={props.playlist.songs} expandAll={expandAll} />
                         </section>
                     </PageMargin>
                     {modal ?

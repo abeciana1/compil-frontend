@@ -3,11 +3,17 @@ import { connect } from 'react-redux'
 
 const TrackListItem = (props) => {
 
+    const [showDetails, setShowDetails] = useState(false)
+
+    // if (props.expandAll) {
+    //     setShowDetails(true)
+    // }
+
     console.log(props);
 
     const { track } = props;
 
-        const [showDetails, setShowDetails] = useState(false)
+    
 
 //! {
 //!     "track": {
@@ -60,10 +66,9 @@ const TrackListItem = (props) => {
                         </div>
                     </div>
                 </div>
-                {showDetails ?
+                {showDetails || props.expandAll ?
                     <React.Fragment>
-                        
-                        <div className="border-t-2 border-black focus:border-white">
+                        <div className="border-t-2 border-black hover:border-white">
                             <div className="mx-5 my-5">
                                 <div className="flex flex-col sm:flex-row">
                                     <div>
@@ -82,7 +87,9 @@ const TrackListItem = (props) => {
                                     </div>
                                     <div className="ml-10">
                                         About the band:
-                                        
+                                        <div className="overflow-auto">
+                                            Band bio
+                                        </div>
                                     </div>
                                 </div>
                             </div>

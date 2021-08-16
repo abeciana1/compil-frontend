@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import TracklistItem from '../cards/TrackListItem'
 
 const TrackListing = (props) => {
+
+    // TODO add expand / collapse all functionality
 
     return (
         <React.Fragment>
@@ -13,7 +15,7 @@ const TrackListing = (props) => {
                 <ul>
                     {props.songs.map((track) => {
                         return (
-                        <TracklistItem track={track} />
+                        <TracklistItem track={track} expandAll={props.expandAll} />
                         )
                     })}
                 </ul>
