@@ -48,3 +48,7 @@ aside {
 .playlist-creator {
   height: 50%;
 }
+
+#profile a {
+  text-decoration: underline;
+}

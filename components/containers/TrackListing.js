@@ -4,8 +4,6 @@ import TracklistItem from '../cards/TrackListItem'
 
 const TrackListing = (props) => {
 
-    // TODO add expand / collapse all functionality
-
     return (
         <React.Fragment>
             {props.songs ?

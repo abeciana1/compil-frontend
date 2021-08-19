@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
+// import { Parser } from "react-tiny-bbcode";
+import parser, {Tag} from 'bbcode-to-react';
+
+// class ATag extends Tag {
+
+//     toReact() {
+
+//         return (
+
+//         )
+//     }
+// }
+
 
 const TrackListItem = (props) => {
 
     const [showDetails, setShowDetails] = useState(false)
-
-    // if (props.expandAll) {
-    //     setShowDetails(true)
-    // }
+    const [artistBio, setArtistBio] = useState(null)
 
     console.log(props);
 
     const { track } = props;
-
-    
 
 //! {
 //!     "track": {
@@ -27,6 +35,57 @@ const TrackListItem = (props) => {
 //!         "youtube_id": null
 //!     }
 //! }
+    
+    useEffect(() => {
+        // fetchArtistBio()
+        fetchArtistBio(track.id)
+        // getArtistBio(fetchArtist(track.id))
+
+    }, [artistBio])
+    
+    // const fetchArtistBio = () => {
+
+    //     fetch()
+    // }
+
+    const fetchArtistBio = (trackId) => {
+
+
+
+        let artistBio 
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                songId: trackId
+            })
+        }
+
+        fetch('http://localhost:3001/api/v1/get-artist-bio', options)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data)
+                // debugger
+                // let profile = data.profile
+                setArtistBio(data)
+
+                //! remove [a || [a=
+                // profile.replace(/\[a=/g, "")
+
+                // ! 
+                // ! \[a|=|\[a|\]
+                
+
+                //! removes ]
+                // profile.replace(/]/g, "")
+            })
+    }
+
+
 
     return (
         <React.Fragment>
@@ -38,7 +97,10 @@ const TrackListItem = (props) => {
                         <img
                             src={track.album_cover}
                             className="h-10 w-10"
-                            onClick={() => setShowDetails(!showDetails)}
+                            onClick={() => {
+                                fetchArtistBio(track.id)
+                                setShowDetails(!showDetails)
+                            }}
                         />
                         <span className="self-center ml-5">
                             {track.artist} | {track.title}
@@ -68,6 +130,7 @@ const TrackListItem = (props) => {
                 </div>
                 {showDetails || props.expandAll ?
                     <React.Fragment>
+                        {() => setArtistBio(fetchArtist(track.id))}
                         <div className="border-t-2 border-black hover:border-white">
                             <div className="mx-5 my-5">
                                 <div className="flex flex-col sm:flex-row">
@@ -86,9 +149,12 @@ const TrackListItem = (props) => {
                                         <b>Album: </b>{track.album}
                                     </div>
                                     <div className="ml-10">
-                                        About the band:
-                                        <div className="overflow-auto">
-                                            Band bio
+                                        <b>About the artist:</b>
+                                        <div className="overflow-auto whitespace-pre-wrap">
+                                            <div dangerouslySetInnerHTML={{ __html: artistBio}} />
+
+                                            {/* </div> */}
+                                            {/* // {artistBio} */}
                                         </div>
                                     </div>
                                 </div>
