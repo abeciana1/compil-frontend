@@ -17,7 +17,7 @@ const PlaylistShowPage = (props) => {
     const { playlist } = props;
     const { songs } = props
 
-    // console.log(youtubePlaylist);
+    console.log(playlist);
     
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
@@ -60,17 +60,24 @@ const PlaylistShowPage = (props) => {
                                 <p className="pt-2 text-black text-xl">{playlist.description}</p>
                                 <div className="flex text-xl text-white py-2">
                                     <p
-                                        className="font-semibold cursor-pointer bg-blue py-0.5 px-2 rounded-full"
-                                        onClick={() => console.log('share')}
+                                        className="font-semibold cursor-pointer bg-blue-light py-0.5 px-2 rounded-full"
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(`./playlists/${playlist.id}/present`)
+                                            console.log('share')
+                                        }}
                                     >
                                         Share
                                     </p>
-                                    <p
-                                        className="ml-2 font-semibold cursor-pointer bg-blue py-1 px-2 rounded-full"
-                                        onClick={() => console.log('present')}
+                                    <a
+                                        href={`/playlists/${playlist.id}/present`}
                                     >
-                                        Present
-                                    </p>
+                                        <p
+                                            className="ml-2 font-semibold cursor-pointer bg-blue-light py-1 px-2 rounded-full"
+                                            onClick={() => console.log('present')}
+                                        >
+                                            Present
+                                        </p>
+                                    </a>
                                 </div>
                                 <div className="grid grid-cols-1">
                                     <div className="pt-2">
