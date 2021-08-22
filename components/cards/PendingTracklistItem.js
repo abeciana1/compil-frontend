@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
-const PendingTracklistItem = ({ track }) => {
-    
-    // console.log(track);
+import {
+    findAddSong
+} from '../../redux/actions/playlist-actions'
+
+const PendingTracklistItem = ({ track, playlistId }) => {
 
     return (
         <React.Fragment>
@@ -31,7 +34,10 @@ const PendingTracklistItem = ({ track }) => {
                                 </a>
                                 <a
                                     className="ml-5 cursor-pointer"
-                                    // onClick={}
+                                    onClick={() => {
+                                        findAddSong(track, playlistId)
+                                        console.log("add")
+                                    }}
                                 >
                                     Add song
                                 </a>
@@ -49,7 +55,10 @@ const PendingTracklistItem = ({ track }) => {
                     </a>
                     <a
                         className="ml-5 cursor-pointer"
-                        // onClick={}
+                        onClick={() => {
+                            findAddSong(track, playlistId)
+                            console.log("add")
+                        }}
                     >
                         Add song
                     </a>
@@ -59,4 +68,8 @@ const PendingTracklistItem = ({ track }) => {
     )
 }
 
-export default PendingTracklistItem
+const mapDispatchToProps = {
+    findAddSong
+}
+
+export default connect(null, mapDispatchToProps)(PendingTracklistItem)

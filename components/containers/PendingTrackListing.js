@@ -30,7 +30,7 @@ const PendingTrackListing = (props) => {
                 <ul>
                     {props.playlist.importYouTubeItems.map((track) => {
                         return (
-                        <PendingTracklistItem track={track} />
+                        <PendingTracklistItem track={track} playlistId={props.renderedPlaylist.id} />
                         )
                     })}
                 </ul>

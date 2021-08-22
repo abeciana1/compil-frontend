@@ -44,9 +44,12 @@ export const importYouTube = (youtubePlaylistId) => {
                 payload: data,
             })
         })
-
-
     }
+}
+
+export const findAddSong = (track, playlistId) => {
+    console.log("track", track)
+    console.log("playlistId", playlistId)
 }
 
 // {
