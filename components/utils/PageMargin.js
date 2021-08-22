@@ -7,7 +7,7 @@ const PageMargin = ({children}) => {
     return (
         <React.Fragment>
             <section className="mx-10 my-10">
-            {children}
+                {children}
             </section>
         </React.Fragment>
     )

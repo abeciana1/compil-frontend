@@ -1,25 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-// import { Parser } from "react-tiny-bbcode";
-import parser, {Tag} from 'bbcode-to-react';
-
-// class ATag extends Tag {
-
-//     toReact() {
-
-//         return (
-
-//         )
-//     }
-// }
-
 
 const TrackListItem = (props) => {
 
     const [showDetails, setShowDetails] = useState(false)
     const [artistBio, setArtistBio] = useState(null)
-
-    console.log(props);
 
     const { track } = props;
 
@@ -36,23 +21,14 @@ const TrackListItem = (props) => {
 //!     }
 //! }
     
-    useEffect(() => {
-        // fetchArtistBio()
-        fetchArtistBio(track.id)
-        // getArtistBio(fetchArtist(track.id))
+    // useEffect(() => {
+    //     // fetchArtistBio()
+    //     fetchArtistBio(track.id)
+    //     // getArtistBio(fetchArtist(track.id))
 
-    }, [artistBio])
-    
-    // const fetchArtistBio = () => {
-
-    //     fetch()
-    // }
+    // }, [artistBio])
 
     const fetchArtistBio = (trackId) => {
-
-
-
-        let artistBio 
 
         const options = {
             method: 'POST',
@@ -68,7 +44,7 @@ const TrackListItem = (props) => {
         fetch('http://localhost:3001/api/v1/get-artist-bio', options)
             .then(response => response.text())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 // debugger
                 // let profile = data.profile
                 setArtistBio(data)
@@ -131,30 +107,27 @@ const TrackListItem = (props) => {
                 {showDetails || props.expandAll ?
                     <React.Fragment>
                         {() => setArtistBio(fetchArtist(track.id))}
-                        <div className="border-t-2 border-black hover:border-white">
+                        <div className="border-t-2 border-black hover:border-white items-stretch">
                             <div className="mx-5 my-5">
-                                <div className="flex flex-col sm:flex-row">
-                                    <div>
+                                <div className="grid grid-cols-1 md:grid-cols-3 md:items-stretch">
+                                    <div className="flex flex-col sm:flex-row md:self-center">
                                         <img
                                             src={track.album_cover}
                                             className="h-32 w-32"
                                             onClick={() => setShowDetails(!showDetails)}
                                         />
+                                        <div className="sm:ml-5 flex-auto w-3/4 xl:w-1/4 pt-2 sm:pt-0">
+                                            <b>Title: </b>{track.title}
+                                            <br/>
+                                            <b>Artist: </b>{track.artist}
+                                            <br/>
+                                            <b>Album: </b>{track.album}
+                                        </div>
                                     </div>
-                                    <div className="sm:ml-5 pt-2 sm:pt-0">
-                                        <b>Title: </b>{track.title}
-                                        <br/>
-                                        <b>Artist: </b>{track.artist}
-                                        <br/>
-                                        <b>Album: </b>{track.album}
-                                    </div>
-                                    <div className="ml-10">
+                                    <div className="md:ml-5 lg:ml-10 2xl:mr-44 pt-5 self-center md:col-span-2">
                                         <b>About the artist:</b>
-                                        <div className="overflow-auto whitespace-pre-wrap">
+                                        <div className="overflow-auto whitespace-pre-wrap h-32">
                                             <div dangerouslySetInnerHTML={{ __html: artistBio}} />
-
-                                            {/* </div> */}
-                                            {/* // {artistBio} */}
                                         </div>
                                     </div>
                                 </div>
