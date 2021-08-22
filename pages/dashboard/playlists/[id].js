@@ -58,15 +58,15 @@ const PlaylistShowPage = (props) => {
                             <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                 <p className="pt-2 text-black text-5xl hidden sm:block">{playlist.title}</p>
                                 <p className="pt-2 text-black text-xl">{playlist.description}</p>
-                                <div className="flex">
+                                <div className="flex text-xl text-white py-2">
                                     <p
-                                        className="font-semibold cursor-pointer"
+                                        className="font-semibold cursor-pointer bg-blue py-0.5 px-2 rounded-full"
                                         onClick={() => console.log('share')}
                                     >
                                         Share
                                     </p>
                                     <p
-                                        className="ml-2 font-semibold cursor-pointer"
+                                        className="ml-2 font-semibold cursor-pointer bg-blue py-1 px-2 rounded-full"
                                         onClick={() => console.log('present')}
                                     >
                                         Present
