@@ -2,6 +2,7 @@
 // export const CREATE_PLAYLIST = "CREATE_PLAYLIST"
 export const GET_PLAYLIST = "GET_PLAYLIST"
 export const IMPORT_YOUTUBE = "IMPORT_YOUTUBE"
+export const FIND_ADD_SONG = "FIND_ADD_SONG"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -48,8 +49,31 @@ export const importYouTube = (youtubePlaylistId) => {
 }
 
 export const findAddSong = (track, playlistId) => {
-    console.log("track", track)
-    console.log("playlistId", playlistId)
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+            track: track,
+            playlistId: playlistId
+        })
+    }
+
+    return (dispatch) => {
+        fetch(BASE_URL + '/find-discogs-create-song', options)
+        .then(res => res.json())
+        .then(data => {
+            console.log("DATA",data)
+
+            dispatch({
+                type: FIND_ADD_SONG,
+                payload: data
+            })
+        })
+    }
 }
 
 // {

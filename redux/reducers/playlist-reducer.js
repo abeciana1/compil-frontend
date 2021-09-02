@@ -1,6 +1,7 @@
 import {
     GET_PLAYLIST,
-    IMPORT_YOUTUBE
+    IMPORT_YOUTUBE,
+    FIND_ADD_SONG
 } from '../actions/playlist-actions'
 
 
@@ -25,6 +26,11 @@ const playlistReducer = (state = initialState, action) => {
             return {
                 ...state,
                 importYouTubeItems: action.payload
+            }
+        case FIND_ADD_SONG:
+            return {
+                ...state,
+                song: [...state.songs, action.payload]
             }
         default:
             return state
