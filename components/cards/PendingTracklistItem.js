@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import Modal from 'react-modal';
-
+import AddPendingToPlaylist from '../forms/AddPendingToPlaylist'
 
 import {
     findAddSong
@@ -15,6 +15,29 @@ const PendingTracklistItem = (props) => {
     // const addSong = () => {
 
     // }
+
+  const modalStyles = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 100,
+      overflow: 'auto',
+    },
+    content: {
+      background: 'transparent',
+      position: 'relative',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      border: 0,
+    //   pointerEvents: 'none',
+    },
+  };
 
     return (
         <React.Fragment>
@@ -76,28 +99,35 @@ const PendingTracklistItem = (props) => {
             <Modal
                 isOpen={modal}
                 onRequestClose={() => setModal(false)}
-                contentLabel="Example Modal"
+                style={modalStyles}
             >
-                <div>
-                    <span>
-                        <div
-                            className="text-lg sm:text-3xl md:text-xl font-semibold pb-0 lg:pb-2 p-5 mx-3 sm:mx-5"
-                            style={{ "paddingLeft": "20px" }}
+                <div className="overflow-auto h-full flex justify-center">
+                    <div
+                        className="bg-gray-100 p-4 border-2 rounded-lg w-11/12 lg:w-7/12"
+                    >
+                        <span
+                            className="flex text-lg sm:text-3xl md:text-xl font-semibold pb-0 lg:pb-2 mx-3 sm:mx-5 items-stretch justify-between sm:justify-between pb-0 lg:pb-2"
                         >
-                            Add {track.snippet.title} to your playlist
-                            <button onClick={() => {
-                                setModal(false)
-                            }}
-                                className="z-40 float-right p-1.5 py-2.5 rounded-full focus:outline-none"
-                                style={{ "backgroundColor": "#E54B4B" }}
-                            >
-                                <img
-                                    src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
-                                    className="mx-auto w-7/12 self-center"
-                                />
-                            </button>
-                        </div>
-                    </span>
+                            {/* <div
+                                className=""
+                                // style={{ "paddingLeft": "20px" }}
+                            > */}
+                                Add to Your Playlist
+                                <button onClick={() => {
+                                    setModal(false)
+                                }}
+                                    className="z-40 float-right p-1.5 py-2.5 text-xl rounded-full focus:outline-none"
+                                    style={{ "backgroundColor": "#E54B4B" }}
+                                >
+                                    <img
+                                        src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
+                                        className="w-7/12 mx-auto self-center"
+                                    />
+                                </button>
+                            {/* </div> */}
+                        </span>
+                        <AddPendingToPlaylist />
+                    </div>
                 </div>
             </Modal>
             {/* {modal ?
