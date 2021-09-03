@@ -74,7 +74,7 @@ class PlaylistCreator extends React.Component {
         // console.log(this.state.pic)
         return (
             <React.Fragment>
-                <div className="overflow-scroll py-5 px-10">
+                <div className="overflow-auto py-5 px-10">
                     <form className="" onSubmit={this.submitHandler}>
                         <div>
                             <label>Title:</label>
@@ -89,7 +89,7 @@ class PlaylistCreator extends React.Component {
                             />
                         </div>
                         <div className="pt-5">
-                            <label>Playlist Cover:</label>
+                            <label>Power Hour Cover:</label>
                             <br />
                             <input
                                 type="file"

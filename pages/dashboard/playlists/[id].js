@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 // import { connect } from 'react-redux'
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
-import TrackListing from '../../../components/containers/TrackListing'
 
 // import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
@@ -98,19 +97,6 @@ const PlaylistShowPage = (props) => {
                             {youtubeImport || playlist.youtube_playlist ?
                             <PendingTrackListing youtubeImport={youtubeImport} renderedPlaylist={playlist} />
                             : null}
-                        </section>
-                        <section className="lg:ml-5 xl:ml-10 2xl:ml-16 pt-20">
-                            <h1 className="text-4xl">Added tracks:</h1>
-                            <p className="text-gray-500">
-                                Click on album cover to see track details
-                            </p>
-                            <p
-                                className="text-gray-500 cursor-pointer"
-                                onClick={() => setExpandAll(!expandAll)}
-                            >
-                                {expandAll ? "Collapse all" : "Expand all"}
-                            </p>
-                            <TrackListing songs={props.playlist.songs} expandAll={expandAll} />
                         </section>
                     </PageMargin>
                     {modal ?
