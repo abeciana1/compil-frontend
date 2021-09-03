@@ -93,8 +93,8 @@ const Dashboard = (props) => {
                     </section>
                     <section className="grid block grid-flow-col auto-cols-min gap-x-5 lg:ml-96 lg:gap-x-10 pb-10 overflow-x-auto">
                     {/* <section className="grid hidden lg:block grid-flow-col auto-cols-min ml-96 gap-x-10 pb-10"> */}
-                            {sortUserPlaylistsByDate(user.currentUser.playlists)}
-                            {(user.currentUser.playlists).map(playlist => {
+                            {sortUserPlaylistsByDate(user.currentUser.power_hours)}
+                            {(user.currentUser.power_hours).map(playlist => {
                             return (
                             <>
                                 <PlaylistSquare playlist={playlist} />

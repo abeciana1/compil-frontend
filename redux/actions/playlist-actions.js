@@ -9,9 +9,9 @@ const BASE_URL = "http://localhost:3001/api/v1"
 export const getPlaylist = (playlistId) => {
 
     return (dispatch) => {
-        fetch(BASE_URL + "/playlists/" + playlistId)
+        fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
-        .then(data => {
+            .then(data => {
             dispatch({
                 type: GET_PLAYLIST,
                 payload: data,

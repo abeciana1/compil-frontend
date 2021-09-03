@@ -149,7 +149,7 @@ export const createPlaylist = (playlist) => {
         body: formData
     }
     return (dispatch) => {
-        fetch(BASE_URL + "/playlists", options)
+        fetch(BASE_URL + "/power_hours", options)
         .then(response => response.json())
         .then(data => {
             console.log(data)

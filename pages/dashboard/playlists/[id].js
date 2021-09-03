@@ -2,26 +2,30 @@ import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
 import { useRouter } from 'next/router'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
-// import { getPlaylist } from '../../../redux/actions/playlist-actions'
+import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
 
 //! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
 
 const PlaylistShowPage = (props) => {
 
-    const { playlist } = props;
-    const { songs } = props
+    // console.log(props)
+    // console.log(router);
+    const router = useRouter()
+    useEffect(() => {
+        props.getPlaylist(router.query.id)
+    },[])
 
-    console.log(playlist);
+    const { playlist } = props.playlist;
     
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
-    const [expandAll, setExpandAll] = useState(false)
+    // const [expandAll, setExpandAll] = useState(false)
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
@@ -38,6 +42,7 @@ const PlaylistShowPage = (props) => {
         <React.Fragment>
             {playlist ?
                 <>
+                    {() => props.getPlaylist(router.query.id)}
                     <div>
                         <img
                             src={playlist.image}
@@ -66,11 +71,11 @@ const PlaylistShowPage = (props) => {
                                     >
                                         Share
                                     </p>
-                                        <a
-                                            href={`/playlists/${playlist.id}/present`}
-                                            className="ml-2 font-semibold cursor-pointer bg-blue-light py-1 px-2 rounded-full"
-                                        >
-                                            Present
+                                    <a
+                                        href={`/playlists/${playlist.id}/present`}
+                                        className="ml-2 font-semibold cursor-pointer bg-blue-light py-1 px-2 rounded-full"
+                                    >
+                                        Present
                                         </a>
                                 </div>
                                 <div className="grid grid-cols-1">
@@ -93,10 +98,10 @@ const PlaylistShowPage = (props) => {
                             </div>
                         </section>
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
-                            <h1 className="text-4xl">Pending tracks:</h1>
+                            <h1 className="text-4xl">Tracks:</h1>
                             {youtubeImport || playlist.youtube_playlist ?
-                            <PendingTrackListing youtubeImport={youtubeImport} renderedPlaylist={playlist} />
-                            : null}
+                                <PendingTrackListing youtubeImport={youtubeImport} renderedPlaylist={playlist} />
+                                : null}
                         </section>
                     </PageMargin>
                     {modal ?
@@ -124,7 +129,7 @@ const PlaylistShowPage = (props) => {
                                     </button>
                                 </div>
                             </span>
-                            <YouTubePlaylistUpload  setModal={setModal} setYoutubeImport={setYoutubeImport} playlist={playlist} />
+                            <YouTubePlaylistUpload setModal={setModal} setYoutubeImport={setYoutubeImport} playlist={playlist} />
                         </div>
                         : null}
                 </>
@@ -133,44 +138,17 @@ const PlaylistShowPage = (props) => {
     )
 }
 
-export async function getStaticPaths() {
 
-    const res = await fetch("http://localhost:3001/api/v1/playlists/")
 
-    const playlists = await res.json()
-
-    const playlistIds = playlists.map((playlist) => playlist.id)
-
-    const params = playlistIds.map((pid) => ({params: {id: pid.toString()}}))
-
-    return {
-        paths: params,
-        fallback: false
-    }
+const mapStateToProps = (state) => {
+    return state
 }
 
-export async function getStaticProps({params}) {
-    const res = await fetch(`http://localhost:3001/api/v1/playlists/${params.id}`)
-    
-    const playlist = await res.json()
-
-    return {
-        props: {
-            playlist: playlist,
-            songs: playlist.songs
-        }
-    }
+const mapDispatchToProps = {
+    getPlaylist
 }
 
-// const mapStateToProps = (state) => {
-//     return state
-// }
-
-// const mapDispatchToProps = {
-//     getPlaylist
-// }
-
-export default PlaylistShowPage
+// export default PlaylistShowPage
 
 
-// export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)
