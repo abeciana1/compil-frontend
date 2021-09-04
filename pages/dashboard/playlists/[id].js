@@ -13,7 +13,7 @@ import PendingTrackListing from '../../../components/containers/PendingTrackList
 
 const PlaylistShowPage = (props) => {
 
-    // console.log(props)
+    console.log(props)
     // console.log(router);
     // const router = useRouter()
     // useEffect(() => {

@@ -14,12 +14,12 @@ const PendingTracklistItem = (props) => {
                 >
                     <img
                         src={track?.album_cover}
-                        className="h-10 w-10"
+                        className="h-20 w-20"
                     />
                     <div
                         className="md:self-center -ml-16 md:ml-5 grid"
                     >
-                        {track?.title}
+                        {track?.title}!!!!
                         <div>
                             <span className="self-center float-right pt-3 relative mr-5 block md:hidden">
                                 <a
@@ -42,7 +42,7 @@ const PendingTracklistItem = (props) => {
                         </div>
                     </div>
                 </div>
-                <span className="self-center float-right relative bottom-8 mr-5 hidden md:block">
+                <span className="self-center float-right relative pt-1 bottom-14 mr-5 hidden md:block">
                     <a
                         href={track?.link}
                         target="_blank"

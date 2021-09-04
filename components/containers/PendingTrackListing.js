@@ -3,9 +3,18 @@ import PendingTracklistItem from '../cards/PendingTracklistItem'
 
 import { connect } from 'react-redux';
 import { importYouTube } from '../../redux/actions/playlist-actions'
+import { useRouter } from 'next/router'
 
 const PendingTrackListing = (props) => {
+
+    console.log(props);
+    const router = useRouter()
+
     const { songs } = props
+
+    if (props.user.currentUser === undefined) {
+        router.push('/login')
+    }
 
     return (
         <React.Fragment>
