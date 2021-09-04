@@ -38,7 +38,9 @@ const PendingTrackListing = (props) => {
                     })}
                 </ul>
             </section>
-            : null}
+                :
+                <h1>Sorry, there are no songs in this power hour</h1>
+            }
         </React.Fragment>
     )
 }
