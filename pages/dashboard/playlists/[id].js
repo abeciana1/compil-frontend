@@ -18,7 +18,7 @@ const PlaylistShowPage = (props) => {
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
-    // const [expandAll, setExpandAll] = useState(false)
+    const [expandAll, setExpandAll] = useState(false)
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."

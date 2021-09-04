@@ -2,7 +2,7 @@
 // export const CREATE_PLAYLIST = "CREATE_PLAYLIST"
 export const GET_PLAYLIST = "GET_PLAYLIST"
 export const IMPORT_YOUTUBE = "IMPORT_YOUTUBE"
-export const FIND_ADD_SONG = "FIND_ADD_SONG"
+export const DELETE_SONG = "DELETE_SONG"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -47,33 +47,22 @@ export const importYouTube = (youtubePlaylistId, powerHourId) => {
     }
 }
 
-// export const findAddSong = (track, playlistId) => {
+export const deleteSong = (songId) => {
 
-//     const options = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Accept': 'application/json',
-//         },
-//         body: JSON.stringify({
-//             track: track,
-//             playlistId: playlistId
-//         })
-//     }
-
-//     return (dispatch) => {
-//         fetch(BASE_URL + '/find-discogs-create-song', options)
-//         .then(res => res.json())
-//         .then(data => {
-//             console.log("DATA",data)
-
-//             dispatch({
-//                 type: FIND_ADD_SONG,
-//                 payload: data
-//             })
-//         })
-//     }
-// }
+    const options = {
+        method: 'DELETE',
+    }
+    return (dispatch) => {
+        fetch("http://localhost:3001/api/v1/songs/" + songId, options)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({
+                type: DELETE_SONG,
+                payload: data
+            })
+        })
+    }
+}
 
 // {
 //     "kind": "youtube#playlistItem",

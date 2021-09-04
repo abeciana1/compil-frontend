@@ -2,28 +2,38 @@ import React, {useState, useEffect} from 'react';
 import PendingTracklistItem from '../cards/PendingTracklistItem'
 
 import { connect } from 'react-redux';
-import { importYouTube } from '../../redux/actions/playlist-actions'
+import { importYouTube,deleteSong } from '../../redux/actions/playlist-actions'
 import { useRouter } from 'next/router'
 
 const PendingTrackListing = (props) => {
     const router = useRouter()
 
-    const { songs } = props
+    const { songs, deleteSong } = props
+
+    const [renderSongs, setRenderSongs] = useState(songs)
 
     if (props.user.currentUser === undefined) {
         router.push('/login')
     }
 
+    const deleteHandler = (songId) => {
+        let copySongs = [...renderSongs]
+        let foundSong = copySongs.find((song) => song.id === songId)
+        copySongs.splice(copySongs.indexOf(foundSong), 1)
+        setRenderSongs(copySongs)
+        deleteSong(songId)
+    }
+
     return (
         <React.Fragment>
-            {songs ? 
+            {songs || props.user.currentUser ? 
             <section
                 className="pt-5"
             >
                 <ul>
-                    {songs?.map((track) => {
+                    {renderSongs?.map((track) => {
                         return (
-                        <PendingTracklistItem track={track} />
+                        <PendingTracklistItem track={track} deleteHandler={deleteHandler} />
                         )
                     })}
                 </ul>
@@ -40,7 +50,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    importYouTube
+    importYouTube,
+    deleteSong
 }
     
 export default connect(mapStateToProps, mapDispatchToProps)(PendingTrackListing)

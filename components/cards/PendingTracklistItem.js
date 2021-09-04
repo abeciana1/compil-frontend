@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const PendingTracklistItem = (props) => {
 
-    const { track } = props;
+    const { track, deleteHandler } = props;
 
     return (
         <React.Fragment>
@@ -32,8 +32,7 @@ const PendingTracklistItem = (props) => {
                                 <a
                                     className="ml-5 cursor-pointer"
                                     onClick={() => {
-                                        // findAddSong(track, playlistId)
-                                        console.log("remove")
+                                        deleteHandler(track.id)
                                     }}
                                 >
                                     Remove song
@@ -52,9 +51,7 @@ const PendingTracklistItem = (props) => {
                     </a>
                     <a
                         className="ml-5 cursor-pointer"
-                        onClick={() => {
-                            console.log("remove")
-                        }}
+                        onClick={() => deleteHandler(track.id)}
                     >
                         Remove song
                     </a>
