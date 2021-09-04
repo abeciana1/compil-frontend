@@ -122,6 +122,12 @@ const PlaylistShowPage = (props) => {
                                     </button>
                                 </div>
                             </span>
+                            <div
+                                className="text-lg sm:text-3xl md:text-xl mx-3 sm:mx-5"
+                                style={{ "paddingLeft": "20px" }}
+                            >
+                                Uploading via individual songs .... coming soon
+                            </div>
                             <YouTubePlaylistUpload setModal={setModal} setYoutubeImport={setYoutubeImport} playlist={playlist} />
                         </div>
                         : null}

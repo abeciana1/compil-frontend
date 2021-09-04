@@ -19,7 +19,7 @@ const PendingTracklistItem = (props) => {
                     <div
                         className="md:self-center -ml-16 md:ml-5 grid"
                     >
-                        {track?.title}!!!!
+                        {track?.title}
                         <div>
                             <span className="self-center float-right pt-3 relative mr-5 block md:hidden">
                                 <a
