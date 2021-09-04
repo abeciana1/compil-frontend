@@ -30,11 +30,11 @@ class YouTubePlaylistUpload extends React.Component {
             })
         }
 
-        fetch(`http://localhost:3001/api/v1/playlists/${this.props.playlist.id}`, options)
+        fetch(`http://localhost:3001/api/v1/power_hours/${this.props.playlist.id}`, options)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
-            props.getPlaylist(data.id)
+            console.log(data)
+            this.props.getPlaylist(data.id)
         })
 
         // this.props.importYouTube(this.state)

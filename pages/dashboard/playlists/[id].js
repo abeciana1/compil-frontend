@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
-import { useRouter } from 'next/router'
-import { connect } from 'react-redux'
+// import { useRouter } from 'next/router'
+// import { connect } from 'react-redux'
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
-import { getPlaylist } from '../../../redux/actions/playlist-actions'
+// import { getPlaylist } from '../../../redux/actions/playlist-actions'
 
 
 //! https://www.youtube.com/playlist?list=PLAcSBHqyx4G3mjMwU-Xd1m_MsAHcaxHGi
@@ -15,17 +15,19 @@ const PlaylistShowPage = (props) => {
 
     // console.log(props)
     // console.log(router);
-    const router = useRouter()
-    useEffect(() => {
-        props.getPlaylist(router.query.id)
-    },[])
+    // const router = useRouter()
+    // useEffect(() => {
+    //     props.getPlaylist(router.query.id)
+    // },[])
 
-    const { playlist } = props.playlist;
+    const { playlist } = props;
     
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
     // const [expandAll, setExpandAll] = useState(false)
+
+    console.log(playlist);
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
@@ -42,7 +44,7 @@ const PlaylistShowPage = (props) => {
         <React.Fragment>
             {playlist ?
                 <>
-                    {() => props.getPlaylist(router.query.id)}
+                    {/* {() => props.getPlaylist(router.query.id)} */}
                     <div>
                         <img
                             src={playlist.image}
@@ -91,7 +93,7 @@ const PlaylistShowPage = (props) => {
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
                                             </span>
-                                        Import from YouTube playlist
+                                        Import songs
                                     </button>
                                     </div>
                                 </div>
@@ -100,7 +102,7 @@ const PlaylistShowPage = (props) => {
                         <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                             <h1 className="text-4xl">Tracks:</h1>
                             {youtubeImport || playlist.youtube_playlist ?
-                                <PendingTrackListing youtubeImport={youtubeImport} renderedPlaylist={playlist} />
+                                <PendingTrackListing songs={playlist.songs} />
                                 : null}
                         </section>
                     </PageMargin>
@@ -138,17 +140,46 @@ const PlaylistShowPage = (props) => {
     )
 }
 
+export async function getStaticPaths() {
 
+    const res = await fetch("http://localhost:3001/api/v1/power_hours/")
 
-const mapStateToProps = (state) => {
-    return state
+    const playlists = await res.json()
+
+    const playlistIds = playlists.map((playlist) => playlist.id)
+
+    const params = playlistIds.map((pid) => ({params: {id: pid.toString()}}))
+
+    return {
+        paths: params,
+        fallback: false
+    }
 }
 
-const mapDispatchToProps = {
-    getPlaylist
+export async function getStaticProps({params}) {
+    const res = await fetch(`http://localhost:3001/api/v1/power_hours/${params.id}`)
+    
+    const playlist = await res.json()
+
+    return {
+        props: {
+            playlist: playlist,
+            songs: playlist.songs
+        }
+    }
 }
 
-// export default PlaylistShowPage
+export default PlaylistShowPage
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)
+// const mapStateToProps = (state) => {
+//     return state
+// }
+
+// const mapDispatchToProps = {
+//     getPlaylist
+// }
+
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage)

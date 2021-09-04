@@ -6,31 +6,32 @@ import { importYouTube } from '../../redux/actions/playlist-actions'
 
 const PendingTrackListing = (props) => {
 
-    // console.log(props)
+    console.log(props)
+    const { playlist, renderedPlaylist, importYouTube, songs } = props
 
     const [pending, setPending] = useState(null)
 
-    useEffect(() => {
-        // props.importYouTube(props.youtubeImport.youTubePlaylist)
-        // setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
-        props.importYouTube(props.renderedPlaylist.youtube_playlist)
-        setPending(props.importYouTube(props.renderedPlaylist.youtube_playlist))
+    // useEffect(() => {
+    //     // props.importYouTube(props.youtubeImport.youTubePlaylist)
+    //     // setPending(props.importYouTube(props.youtubeImport.youTubePlaylist))
+    //     props.importYouTube(props.renderedPlaylist.youtube_playlist, props.renderedPlaylist.id)
+    //     setPending(props.importYouTube(props.renderedPlaylist.youtube_playlist, props.renderedPlaylist.id))
 
-    }, [pending])
+    // }, [pending])
     
     // setPending(props.playlist.importYouTubeItems)
     // console.log(pending);
     // props.importYouTube(props.youtubeImport)
     return (
         <React.Fragment>
-            {props.playlist.importYouTubeItems ? 
+            {songs ? 
             <section
                 className="pt-5"
             >
                 <ul>
-                    {props.playlist.importYouTubeItems.map((track) => {
+                    {songs?.map((track) => {
                         return (
-                        <PendingTracklistItem track={track} playlistId={props.renderedPlaylist.id} />
+                        <PendingTracklistItem track={track} />
                         )
                     })}
                 </ul>

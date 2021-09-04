@@ -20,7 +20,7 @@ export const getPlaylist = (playlistId) => {
     }
 }
 
-export const importYouTube = (youtubePlaylistId) => {
+export const importYouTube = (youtubePlaylistId, powerHourId) => {
 
     // console.log(youtubePlaylistId)
 
@@ -31,7 +31,8 @@ export const importYouTube = (youtubePlaylistId) => {
             // 'Accept': 'application/json',
         },
         body: JSON.stringify({
-            youtube: youtubePlaylistId
+            youtube: youtubePlaylistId,
+            power_hour: powerHourId
         })
     }
 
@@ -48,33 +49,33 @@ export const importYouTube = (youtubePlaylistId) => {
     }
 }
 
-export const findAddSong = (track, playlistId) => {
+// export const findAddSong = (track, playlistId) => {
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-            track: track,
-            playlistId: playlistId
-        })
-    }
+//     const options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//         },
+//         body: JSON.stringify({
+//             track: track,
+//             playlistId: playlistId
+//         })
+//     }
 
-    return (dispatch) => {
-        fetch(BASE_URL + '/find-discogs-create-song', options)
-        .then(res => res.json())
-        .then(data => {
-            console.log("DATA",data)
+//     return (dispatch) => {
+//         fetch(BASE_URL + '/find-discogs-create-song', options)
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log("DATA",data)
 
-            dispatch({
-                type: FIND_ADD_SONG,
-                payload: data
-            })
-        })
-    }
-}
+//             dispatch({
+//                 type: FIND_ADD_SONG,
+//                 payload: data
+//             })
+//         })
+//     }
+// }
 
 // {
 //     "kind": "youtube#playlistItem",
