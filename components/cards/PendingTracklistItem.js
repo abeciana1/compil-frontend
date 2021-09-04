@@ -4,6 +4,8 @@ const PendingTracklistItem = (props) => {
 
     const { track, deleteHandler } = props;
 
+    const [ expand, setExpand ] = useState(false)
+
     return (
         <React.Fragment>
             <li
@@ -15,6 +17,7 @@ const PendingTracklistItem = (props) => {
                     <img
                         src={track?.album_cover}
                         className="h-20 w-20"
+                        onClick={() => setExpand(!expand)}
                     />
                     <div
                         className="md:self-center -ml-16 md:ml-5 grid"
@@ -56,6 +59,10 @@ const PendingTracklistItem = (props) => {
                         Remove song
                     </a>
                 </span>
+                {expand ?
+                <h1>hello</h1>
+                :
+                null}
             </li>
         </React.Fragment>
     )
