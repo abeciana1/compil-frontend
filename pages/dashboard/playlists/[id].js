@@ -13,21 +13,12 @@ import PendingTrackListing from '../../../components/containers/PendingTrackList
 
 const PlaylistShowPage = (props) => {
 
-    console.log(props)
-    // console.log(router);
-    // const router = useRouter()
-    // useEffect(() => {
-    //     props.getPlaylist(router.query.id)
-    // },[])
-
     const { playlist } = props;
     
     const [youtubeImport, setYoutubeImport] = useState(null)
     const [modal, setModal] = useState(false)
 
     // const [expandAll, setExpandAll] = useState(false)
-
-    console.log(playlist);
 
     //! created_at: "2021-06-15T02:08:11.586Z"
     //! description: "Street ethical wes anderson whatever polaroid gluten-free banh mi neutra muggle magic."
