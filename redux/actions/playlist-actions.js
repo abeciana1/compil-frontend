@@ -22,8 +22,6 @@ export const getPlaylist = (playlistId) => {
 
 export const importYouTube = (youtubePlaylistId, powerHourId) => {
 
-    // console.log(youtubePlaylistId)
-
     const options = {
         method: 'POST',
         headers: {

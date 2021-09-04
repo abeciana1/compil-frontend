@@ -42,7 +42,6 @@ class YouTubePlaylistUpload extends React.Component {
     }
 
     render() {
-        // console.log(this.props.playlist.id)
         return (
             <React.Fragment>
                 <form
@@ -75,7 +74,7 @@ class YouTubePlaylistUpload extends React.Component {
     }
 }
 
-// export default YouTubePlaylistUpload
+
 
 const mapDispatchToProps = {
     importYouTube,

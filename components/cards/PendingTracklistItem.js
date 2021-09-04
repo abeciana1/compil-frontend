@@ -1,28 +1,8 @@
 import React, { useState } from 'react';
-// import { connect } from 'react-redux'
-
-// import {
-//     findAddSong
-// } from '../../redux/actions/playlist-actions'
 
 const PendingTracklistItem = (props) => {
 
-    const { track, playlistId } = props;
-
-    console.log(track);
-
-// {
-//     "id": 33,
-//     "title": "",
-//     "artist": "",
-//     "album": "",
-//     "album_cover": "https://i.ytimg.com/vi/E7dq6w9klDg/hqdefault.jpg",
-//     "link": "https://youtu.be/E7dq6w9klDg",
-//     "start_time": "",
-//     "end_time": "",
-//     "youtube_id": "E7dq6w9klDg",
-//     "power_hour_id": 1
-// }
+    const { track } = props;
 
     return (
         <React.Fragment>
@@ -85,9 +65,3 @@ const PendingTracklistItem = (props) => {
 }
 
 export default PendingTracklistItem
-
-// const mapDispatchToProps = {
-//     findAddSong
-// }
-
-// export default connect(null, mapDispatchToProps)(PendingTracklistItem)
