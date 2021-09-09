@@ -4,6 +4,8 @@ const PendingTracklistItem = (props) => {
 
     const { track, deleteHandler } = props;
 
+    // const isCommunicative()
+
     const [ expand, setExpand ] = useState(false)
 
     return (
@@ -60,7 +62,9 @@ const PendingTracklistItem = (props) => {
                     </a>
                 </span>
                 {expand ?
-                <h1>hello</h1>
+                <section>
+                    
+                </section>
                 :
                 null}
             </li>

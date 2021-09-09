@@ -14,7 +14,6 @@ function HomePage(props) {
   const [currentVid, setCurrentVid] = useState(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
   // const [currentVid, setCurrentVid] = useState(props.firstVideo)
 
-
 const playAnotherOne = () => {
     return setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
     // setCurrentVid(`/static/videos/${Math.floor(Math.random() * 10) + 1}.mp4`)
