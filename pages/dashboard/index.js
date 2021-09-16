@@ -54,8 +54,7 @@ const Dashboard = (props) => {
                             Power Hours 
                             <span className="text-lg self-center text-center pt-2 lg:pt-0 justify-self-start lg:justify-self-center xl:pl-10">
                                 <button
-                                    className="flex items-stretch border-2 pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
-                                    style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
+                                    className="flex items-stretch bg-red text-white pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                     onClick={() => setModal(!modal)}
                                 >
                                     {/* <span className="float-right pr-1 lg:pr-2 self-center"> */}
@@ -68,7 +67,7 @@ const Dashboard = (props) => {
                                 </button>
                             </span>
                             <span className="text-lg self-center text-center pt-2 lg:pt-0 justify-self-start lg:justify-self-center xl:pl-10">
-                                <button className="flex items-stretch border-2 pl-2 pr-2 pt-0.5 pb-0.5 lg:pl-5 lg:pr-3 lg:pt-1 lg:pb-1 rounded-full focus:outline-none" style={{"backgroundColor": "#9FC2CC", "color": "#FFFDF3"}}>
+                                <button className="flex items-stretch pl-2 pr-2 pt-0.5 pb-0.5 lg:pl-5 lg:pr-3 lg:pt-1 lg:pb-1 rounded-full focus:outline-none" style={{"backgroundColor": "#9FC2CC", "color": "#FFFDF3"}}>
                                     See all power hours
                                     <span className="float-right pl-1 lg:pl-2 self-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -145,8 +144,7 @@ const Dashboard = (props) => {
                                 <button onClick={() => {
                                     setModal(false)
                                     }} 
-                                    className="z-40 float-right p-1.5 py-2.5 text-xl rounded-full focus:outline-none"
-                                    style={{"backgroundColor":"#E54B4B"}}
+                                    className="z-40 float-right p-1.5 bg-red py-2.5 text-xl rounded-full focus:outline-none"
                                 >
                                     <img
                                         src="https://a.storyblok.com/f/113855/x/37bacd6a71/close.svg"
