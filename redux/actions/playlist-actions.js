@@ -88,29 +88,25 @@ export const deleteSong = (songId) => {
 
 export const updatePowerHour = (playlistId, body) => {
 
-    console.log("playlistId", playlistId)
-    console.log("body", body)
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(body)
+    }
 
-    // const options = {
-    //     method: 'PATCH',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify(body)
-    // }
-
-    // return (dispatch) => {
-    //     fetch(BASE_URL + '/power_hours/' + playlistId, options)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // console.log("INSIDE REDUX",data)
-    //         dispatch({
-    //             type: UPDATE_POWER_HOUR,
-    //             payload: data
-    //         })
-    //     })
-    // }
+    return (dispatch) => {
+        fetch(BASE_URL + '/power_hours/' + playlistId, options)
+        .then(response => response.json())
+        .then(data => {
+            dispatch({
+                type: UPDATE_POWER_HOUR,
+                payload: data
+            })
+        })
+    }
 }
 
 // export const deletePowerHour = (playlistId) => {

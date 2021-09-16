@@ -23,10 +23,10 @@ class ClickToEditInput extends React.Component {
         e.preventDefault()
         this.props.playlist.title = this.state.text
         this.props.updatePowerHour(this.props.playlist.id, this.props.playlist)
+        this.setState({editMode: !this.state.editMode})
     }
 
     render() {
-        console.log(this.state.editMode)
         return (
             <React.Fragment>
                 {this.state.editMode ?                    
@@ -55,7 +55,7 @@ class ClickToEditInput extends React.Component {
                     </form>
                     :
                     <div
-                        className={this.state.className}
+                        className={this.state.className + " cursor-pointer"}
                         onClick={() => this.setState({editMode: true})}
                     >
                         {this.state.text}

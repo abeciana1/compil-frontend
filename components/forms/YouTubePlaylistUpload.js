@@ -25,7 +25,6 @@ class YouTubePlaylistUpload extends React.Component {
     }
 
     render() {
-        // console.log("PROPS",this.props)
         return (
             <React.Fragment>
                 <form
