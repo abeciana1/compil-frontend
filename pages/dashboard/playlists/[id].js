@@ -9,7 +9,7 @@ import { getPowerHour, deleteSong, getSongs } from '../../../redux/actions/playl
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
 import ClickToEditInput from '../../../components/forms/ClickToEditInput'
-
+import ClickToEditTextBody from '../../../components/forms/ClickToEditTextBody'
 
 const PlaylistShowPage = (props) => {
 
@@ -100,7 +100,12 @@ class RenderedPlaylist extends React.Component {
                                         text={renderedPlaylist.title}
                                         className="pt-2 lg:pt-0 text-black text-5xl hidden md:block"
                                     />
-                                    <p className="pt-4 text-black text-xl">{renderedPlaylist.description}</p>
+                                    <ClickToEditTextBody
+                                        playlist={renderedPlaylist}
+                                        text={renderedPlaylist.description}
+                                        className="pt-4 text-black text-xl"
+                                    />
+                                    {/* <p className="pt-4 text-black text-xl">{renderedPlaylist.description}</p> */}
                                     <div className="flex text-xl text-white pt-4">
                                         <p
                                             className="font-semibold cursor-pointer bg-blue-light py-0.5 px-2 rounded-full"

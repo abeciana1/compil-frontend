@@ -41,10 +41,11 @@ const playlistReducer = (state = initialState, action) => {
                 playlist: action.payload,
                 songs: action.payload.songs
             }
-        // case UPDATE_POWER_HOUR:
-        //     return {
-
-        //     }
+        case UPDATE_POWER_HOUR:
+            return {
+                playlist: action.payload,
+                songs: action.payload.songs
+            }
         default:
             return state
     }
