@@ -6,6 +6,7 @@ export const IMPORT_YOUTUBE = "IMPORT_YOUTUBE"
 export const DELETE_SONG = "DELETE_SONG"
 export const GET_POWER_HOUR = "GET_POWER_HOUR"
 export const DELETE_POWER_HOUR = "DELETE_POWER_HOUR"
+export const UPDATE_POWER_HOUR = "UPDATE_POWER_HOUR"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -85,10 +86,34 @@ export const deleteSong = (songId) => {
     }
 }
 
-export const deletePowerHour = (playlistId) => {
+export const updatePowerHour = (playlistId, body) => {
 
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(body)
+    }
 
+    return (dispatch) => {
+        fetch(BASE_URL + '/power_hours/' + playlistId, options)
+        .then(response => response.json())
+        .then(data => {
+            // console.log("INSIDE REDUX",data)
+            dispatch({
+                type: UPDATE_POWER_HOUR,
+                payload: data
+            })
+        })
+    }
 }
+
+// export const deletePowerHour = (playlistId) => {
+
+
+// }
 
 // {
 //     "kind": "youtube#playlistItem",
