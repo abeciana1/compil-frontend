@@ -102,6 +102,7 @@ class RenderedPlaylist extends React.Component {
                                 <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                     {/* <p className="pt-2 lg:pt-0 text-black text-5xl hidden md:block">{renderedPlaylist.title}</p> */}
                                     <ClickToEditInput
+                                        playlist={renderedPlaylist}
                                         text={renderedPlaylist.title}
                                         className="pt-2 lg:pt-0 text-black text-5xl hidden md:block"
                                     />

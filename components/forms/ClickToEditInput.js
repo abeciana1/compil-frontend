@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { updatePowerHour } from '../../redux/actions/playlist-actions'
 
 // TODO create playlist update action 
 
@@ -20,6 +21,8 @@ class ClickToEditInput extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
+        this.props.playlist.title = this.state.text
+        this.props.updatePowerHour(this.props.playlist.id, this.props.playlist)
     }
 
     render() {
@@ -64,7 +67,7 @@ class ClickToEditInput extends React.Component {
 }
 
 const mapDispatchToProps = {
-
+    updatePowerHour
 }
 
 export default connect(null, mapDispatchToProps)(ClickToEditInput)
