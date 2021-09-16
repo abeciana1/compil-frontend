@@ -32,7 +32,7 @@ class PendingTrackListing extends React.Component {
                     </section>
                     :
                     <h3
-                        className="text-3xl"
+                        className="text-2xl"
                     >Sorry, no songs have been added.</h3>
                 }
             </React.Fragment>
