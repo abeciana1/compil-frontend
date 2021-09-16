@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updatePowerHour } from '../../redux/actions/playlist-actions'
 
-// TODO create playlist update action 
+// * Use for updating playlist title
 
 class ClickToEditInput extends React.Component {
 

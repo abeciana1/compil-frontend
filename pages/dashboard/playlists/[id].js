@@ -23,17 +23,6 @@ const PlaylistShowPage = (props) => {
     const deleteHandler = (e) => {
         let songId = e.target.dataset.id
         deleteSong(songId)
-        // getSongs(window.location.pathname.split("/")[3])
-        // getPowerHour(window.location.pathname.split("/")[3])
-        
-        // let copySongs = [...props.playlist.songs]
-        // let foundSong = copySongs.find((song) => song.id === songId)
-        // copySongs.splice(copySongs.indexOf(foundSong), 1)
-        // getSongs(window.location.pathname.split("/")[3])
-        // this.props.setRenderSongs(copySongs)
-        // this.setState({
-        //     songs: copySongs
-        // })
     }
 
     return (
@@ -93,7 +82,12 @@ class RenderedPlaylist extends React.Component {
                         <PageMargin>
                             <section className="relative bottom-32 mx-auto lg:ml-5 xl:ml-10 2xl:ml-16 grid grid-cols-1 md:grid-cols-2 place-content-center">
                                 <div className="w-full md:w-10/12 lg:w-7/12">
-                                    <p className="text-white -mt-32 pb-10 text-5xl block md:hidden">{renderedPlaylist.title}</p>
+                                    <ClickToEditInput
+                                        playlist={renderedPlaylist}
+                                        text={renderedPlaylist.title}
+                                        className="text-white -mt-32 pb-10 text-5xl block md:hidden"
+                                    />
+                                    {/* <p className="text-white -mt-32 pb-10 text-5xl block md:hidden">{renderedPlaylist.title}</p> */}
                                     <img
                                         src={renderedPlaylist.image}
                                         alt={renderedPlaylist.title}
