@@ -3,7 +3,8 @@ import {
     GET_SONGS,
     IMPORT_YOUTUBE,
     DELETE_SONG,
-    GET_POWER_HOUR
+    GET_POWER_HOUR,
+    DELETE_POWER_HOUR
 } from '../actions/playlist-actions'
 
 
@@ -39,6 +40,10 @@ const playlistReducer = (state = initialState, action) => {
                 playlist: action.payload,
                 songs: action.payload.songs
             }
+        // case DELETE_POWER_HOUR:
+        //     return {
+
+        //     }
         default:
             return state
     }

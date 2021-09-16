@@ -5,6 +5,7 @@ export const GET_SONGS = "GET_SONGS"
 export const IMPORT_YOUTUBE = "IMPORT_YOUTUBE"
 export const DELETE_SONG = "DELETE_SONG"
 export const GET_POWER_HOUR = "GET_POWER_HOUR"
+export const DELETE_POWER_HOUR = "DELETE_POWER_HOUR"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -86,7 +87,7 @@ export const deleteSong = (songId) => {
 
 export const deletePowerHour = (playlistId) => {
 
-    
+
 }
 
 // {

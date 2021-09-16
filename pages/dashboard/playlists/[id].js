@@ -98,7 +98,7 @@ class RenderedPlaylist extends React.Component {
                                     />
                                 </div>
                                 <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
-                                    <p className="pt-2 text-black text-5xl hidden sm:block">{renderedPlaylist.title}</p>
+                                    <p className="pt-2 lg:pt-0 text-black text-5xl hidden sm:block">{renderedPlaylist.title}</p>
                                     <p className="pt-2 text-black text-xl">{renderedPlaylist.description}</p>
                                     <div className="flex text-xl text-white pt-3">
                                         <p
@@ -120,7 +120,7 @@ class RenderedPlaylist extends React.Component {
                                         <div className="pt-3">
                                             <button
                                                 id="import-btn"
-                                                className="w-auto text-lg text-white bg-black flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                                className="w-auto text-lg text-white bg-black flex items-stretch pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                                 onClick={() => this.setModal(!modal)}
                                             >
                                                 <span className="-pr-4 lg:pr-2 self-center">
@@ -134,7 +134,7 @@ class RenderedPlaylist extends React.Component {
                                         <div className="pt-3">
                                             <button
                                                 id="import-btn"
-                                                className="w-auto text-lg flex text-white bg-red items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                                className="w-auto text-lg flex text-white bg-red items-stretch pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                                 onClick={() => this.setModal(!modal)}
                                             >
                                                 <span className="-pr-4 lg:pr-2 self-center">
