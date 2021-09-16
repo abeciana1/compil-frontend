@@ -8,6 +8,8 @@ import { getPowerHour, deleteSong, getSongs } from '../../../redux/actions/playl
 
 import PendingTrackListing from '../../../components/containers/PendingTrackListing'
 
+import ClickToEditInput from '../../../components/forms/ClickToEditInput'
+
 
 const PlaylistShowPage = (props) => {
 
@@ -91,14 +93,18 @@ class RenderedPlaylist extends React.Component {
                         <PageMargin>
                             <section className="relative bottom-32 mx-auto lg:ml-5 xl:ml-10 2xl:ml-16 grid grid-cols-1 md:grid-cols-2 place-content-center">
                                 <div className="w-full md:w-10/12 lg:w-7/12">
-                                    <p className="text-white -mt-32 pb-10 text-5xl block sm:hidden">{renderedPlaylist.title}</p>
+                                    <p className="text-white -mt-32 pb-10 text-5xl block md:hidden">{renderedPlaylist.title}</p>
                                     <img
                                         src={renderedPlaylist.image}
                                         alt={renderedPlaylist.title}
                                     />
                                 </div>
                                 <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
-                                    <p className="pt-2 lg:pt-0 text-black text-5xl hidden sm:block">{renderedPlaylist.title}</p>
+                                    {/* <p className="pt-2 lg:pt-0 text-black text-5xl hidden md:block">{renderedPlaylist.title}</p> */}
+                                    <ClickToEditInput
+                                        text={renderedPlaylist.title}
+                                        className="pt-2 lg:pt-0 text-black text-5xl hidden md:block"
+                                    />
                                     <p className="pt-4 text-black text-xl">{renderedPlaylist.description}</p>
                                     <div className="flex text-xl text-white pt-4">
                                         <p
