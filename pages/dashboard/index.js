@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
 
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
+import { withRouter } from 'next/router'
+import { setPowerHourNull } from '../../redux/actions/playlist-actions'
 
 //* utils
 import PageMargin from '../../components/utils/PageMargin'
@@ -26,11 +28,17 @@ const Dashboard = (props) => {
 
     const { user } = props
 
-    let router = useRouter()
+    // console.log(props)
+    // let router = useRouter()
+
+    useEffect(() => {
+        props.setPowerHourNull()
+    }, [])
 
 
     if (user.currentUser === undefined) {
-        router.push('/login')
+        // router.push('/login')
+        props.router.push('/login')
     }
 
     const [modal, setModal] = useState(false)
@@ -42,7 +50,7 @@ const Dashboard = (props) => {
                     <h1 className="text-6xl">Hello, {user.currentUser.f_name.charAt(0).toUpperCase() + user.currentUser.f_name.substr(1).toLowerCase()}!</h1>
                     <div className="lg:ml-96 pt-10 lg:pt-5 pb-5">
                         {/* <div className="text-6xl flex flex-wrap md:flex-row items-stretch"> */}
-                        <div className="text-6xl grid grid-cols-1 md:grid-cols-3 items-stretch mx-auto xl:flex">
+                        <h1 className="text-6xl grid grid-cols-1 md:grid-cols-3 items-stretch mx-auto xl:flex">
                             Power Hours 
                             <span className="text-lg self-center text-center pt-2 lg:pt-0 justify-self-start lg:justify-self-center xl:pl-10">
                                 <button
@@ -69,7 +77,7 @@ const Dashboard = (props) => {
                                     </span>
                                 </button>
                             </span>
-                        </div>
+                        </h1>
                     </div>
                     <section className="side-bar w-4/12 lg:fixed grid grid-flow-row grid-cols-1 text-6xl z-40">
                         <div className="hidden lg:inline">
@@ -158,4 +166,8 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps, null)(Dashboard)
+const mapDispatchToProps = {
+    setPowerHourNull
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard))

@@ -7,6 +7,7 @@ export const DELETE_SONG = "DELETE_SONG"
 export const GET_POWER_HOUR = "GET_POWER_HOUR"
 export const DELETE_POWER_HOUR = "DELETE_POWER_HOUR"
 export const UPDATE_POWER_HOUR = "UPDATE_POWER_HOUR"
+export const SET_POWER_HOUR_NULL = "SET_POWER_HOUR_NULL"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -105,6 +106,16 @@ export const updatePowerHour = (playlistId, body) => {
                 type: UPDATE_POWER_HOUR,
                 payload: data
             })
+        })
+    }
+}
+
+export const setPowerHourNull = () => {
+
+    return (dispatch) => {
+        dispatch({
+            type: SET_POWER_HOUR_NULL,
+            payload: null
         })
     }
 }
