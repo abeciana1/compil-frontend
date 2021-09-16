@@ -12,6 +12,7 @@
     "@heroicons/react": "^1.0.1",
     "bbcode-to-react": "^0.2.9",
     "cookies": "^0.8.0",
+    "lodash": "^4.17.21",
     "next": "10.2.2",
     "next-redux-wrapper": "^7.0.1",
     "postcss-preset-env": "^6.7.0",

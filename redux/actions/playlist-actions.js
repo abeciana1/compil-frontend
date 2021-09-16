@@ -1,20 +1,40 @@
+  
 // export const GET_LOG_USER_PLAYLIST = "GET_LOG_USER_PLAYLIST"
 // export const CREATE_PLAYLIST = "CREATE_PLAYLIST"
-export const GET_PLAYLIST = "GET_PLAYLIST"
+export const GET_SONGS = "GET_SONGS"
 export const IMPORT_YOUTUBE = "IMPORT_YOUTUBE"
 export const DELETE_SONG = "DELETE_SONG"
+export const GET_POWER_HOUR = "GET_POWER_HOUR"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
-export const getPlaylist = (playlistId) => {
+export const getPowerHour = (playlistId) => {
 
+    // console.log("REDUX ACTION", playlistId)
+
+    return (dispatch) => {
+        fetch(BASE_URL + '/power_hours/' + playlistId)
+        .then(response => response.json())
+        .then(data => {
+            // console.log("INSIDE REDUX",data)
+            dispatch({
+                type: GET_POWER_HOUR,
+                payload: data
+            })
+        })
+    }
+}
+
+export const getSongs = (playlistId) => {
+    // console.log(playlistId)
     return (dispatch) => {
         fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
             .then(data => {
+                // console.log("DATA",data)
             dispatch({
-                type: GET_PLAYLIST,
-                payload: data,
+                type: GET_SONGS,
+                payload: data.songs,
             })
         })
     }
@@ -38,7 +58,7 @@ export const importYouTube = (youtubePlaylistId, powerHourId) => {
         fetch(BASE_URL + '/youtube-import', options)
         .then(res => res.json())
             .then(data => {
-                
+                // console.log("DATA", data)
             dispatch({
                 type: IMPORT_YOUTUBE,
                 payload: data,
@@ -52,14 +72,14 @@ export const deleteSong = (songId) => {
     const options = {
         method: 'DELETE',
     }
+
+    fetch("http://localhost:3001/api/v1/songs/" + songId, options)
+    .then(res => res.json())
+
     return (dispatch) => {
-        fetch("http://localhost:3001/api/v1/songs/" + songId, options)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: DELETE_SONG,
-                payload: data
-            })
+        dispatch({
+            type: DELETE_SONG,
+            payload: songId
         })
     }
 }

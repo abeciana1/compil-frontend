@@ -71,8 +71,8 @@ const Dashboard = (props) => {
                             </span>
                         </div>
                     </div>
-                    <section className="w-4/12 lg:fixed grid grid-flow-row grid-cols-1 text-6xl">
-                        <div className="hidden lg:block">
+                    <section className="side-bar w-4/12 lg:fixed grid grid-flow-row grid-cols-1 text-6xl z-40">
+                        <div className="hidden lg:inline">
                             <h1>Side Bar content</h1>
                             <h1>Side Bar content</h1>
                             <h1>Side Bar content</h1>

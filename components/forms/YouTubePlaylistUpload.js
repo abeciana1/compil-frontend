@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { getPlaylist, importYouTube } from '../../redux/actions/playlist-actions'
+import { getSongs, importYouTube } from '../../redux/actions/playlist-actions'
+import { compose } from 'redux'
+import { withRouter } from 'next/router'
 
 class YouTubePlaylistUpload extends React.Component {
 
@@ -17,31 +19,13 @@ class YouTubePlaylistUpload extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        this.props.setYoutubeImport(this.state)
-
-        const options = {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                youtube_playlist: this.state.youTubePlaylist
-            })
-        }
-
-        fetch(`http://localhost:3001/api/v1/power_hours/${this.props.playlist.id}`, options)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            this.props.getPlaylist(data.id)
-        })
-
-        // this.props.importYouTube(this.state)
-        this.props.setModal(false)
+        this.props.importYouTube(this.state, this.props.playlist.id)
+        // this.props.setRenderSongs(this.props.playlist.songs)
+        this.props.setModal()
     }
 
     render() {
+        // console.log("PROPS",this.props)
         return (
             <React.Fragment>
                 <form
@@ -74,11 +58,14 @@ class YouTubePlaylistUpload extends React.Component {
     }
 }
 
-
+const mapStateToProps = (state) => {
+    return state
+}
 
 const mapDispatchToProps = {
     importYouTube,
-    getPlaylist
+    getSongs
 }
 
+// export default compose(withRouter, connect(null, mapDispatchToProps)(YouTubePlaylistUpload))
 export default connect(null, mapDispatchToProps)(YouTubePlaylistUpload)

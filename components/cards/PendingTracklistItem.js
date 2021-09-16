@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+// import { debounce } from 'lodash'
 
 const PendingTracklistItem = (props) => {
 
+    // console.log(props);
+
     const { track, deleteHandler } = props;
 
-    // const isCommunicative()
-
-    const [ expand, setExpand ] = useState(false)
+    const [expand, setExpand] = useState(false)
+    
+    // const debounceDeleteHandler = useMemo(() => debounce(deleteHandler, 500), [])
 
     return (
         <React.Fragment>
@@ -35,10 +38,10 @@ const PendingTracklistItem = (props) => {
                                     YouTube Link
                                 </a>
                                 <a
+                                    data-id={track.id}
                                     className="ml-5 cursor-pointer"
-                                    onClick={() => {
-                                        deleteHandler(track.id)
-                                    }}
+                                    onClick={deleteHandler}
+                                    // onClick={() => deleteHandler(track.id)}
                                 >
                                     Remove song
                                 </a>
@@ -55,15 +58,18 @@ const PendingTracklistItem = (props) => {
                         YouTube Link
                     </a>
                     <a
+                        data-id={track.id}
                         className="ml-5 cursor-pointer"
-                        onClick={() => deleteHandler(track.id)}
+                        onClick={deleteHandler}
+                        // onClick={() => deleteHandler(track.id)}
+                        // onClick={() => debounceDeleteHandler(track.id)}
                     >
                         Remove song
                     </a>
                 </span>
                 {expand ?
-                <section>
-                    
+                    <section>
+                        
                 </section>
                 :
                 null}

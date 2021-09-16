@@ -52,3 +52,7 @@ aside {
 #profile a {
   text-decoration: underline;
 }
+
+.side-bar {
+  max-width: 340px;
+}
