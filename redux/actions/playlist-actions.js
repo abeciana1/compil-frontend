@@ -84,6 +84,11 @@ export const deleteSong = (songId) => {
     }
 }
 
+export const deletePowerHour = (playlistId) => {
+
+    
+}
+
 // {
 //     "kind": "youtube#playlistItem",
 //     "etag": "zIz7uHD4gBFsyUkf08EWl1_l40o",

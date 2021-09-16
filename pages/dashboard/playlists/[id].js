@@ -142,7 +142,7 @@ class RenderedPlaylist extends React.Component {
                                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
                                                     </svg>
                                                 </span>
-                                                Delete playlist
+                                                Delete power hour
                                             </button>
                                         </div>
                                     </div>
