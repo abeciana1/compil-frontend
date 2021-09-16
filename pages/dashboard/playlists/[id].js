@@ -100,7 +100,7 @@ class RenderedPlaylist extends React.Component {
                                 <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                     <p className="pt-2 text-black text-5xl hidden sm:block">{renderedPlaylist.title}</p>
                                     <p className="pt-2 text-black text-xl">{renderedPlaylist.description}</p>
-                                    <div className="flex text-xl text-white py-2">
+                                    <div className="flex text-xl text-white pt-3">
                                         <p
                                             className="font-semibold cursor-pointer bg-blue-light py-0.5 px-2 rounded-full"
                                             onClick={() => {
@@ -117,20 +117,33 @@ class RenderedPlaylist extends React.Component {
                                         </a>
                                     </div>
                                     <div className="grid grid-cols-1">
-                                        <div className="pt-2">
+                                        <div className="pt-3">
                                             <button
                                                 id="import-btn"
-                                                className="w-auto text-lg flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
-                                                style={{ "backgroundColor": "#E54B4B", "color": "#FFFDF3" }}
+                                                className="w-auto text-lg text-white bg-black flex items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                                 onClick={() => this.setModal(!modal)}
                                             >
                                                 <span className="-pr-4 lg:pr-2 self-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:h-3 sm:w-3 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                     </svg>
                                                 </span>
-                                        Import songs
-                                    </button>
+                                                Import songs
+                                            </button>
+                                        </div>
+                                        <div className="pt-3">
+                                            <button
+                                                id="import-btn"
+                                                className="w-auto text-lg flex text-white bg-red items-stretch border-2 pl-1.5 pr-3 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                                onClick={() => this.setModal(!modal)}
+                                            >
+                                                <span className="-pr-4 lg:pr-2 self-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </span>
+                                                Delete playlist
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
