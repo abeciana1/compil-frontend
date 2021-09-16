@@ -66,7 +66,9 @@ class RenderedPlaylist extends React.Component {
     render() {
         const { modal } = this.state
 
-        const {renderedPlaylist, songs} = this.props
+        const { renderedPlaylist, songs } = this.props
+        
+        console.log(renderedPlaylist)
 
         return (
         <React.Fragment>
@@ -156,9 +158,9 @@ class RenderedPlaylist extends React.Component {
                             </section>
                             <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                                 <h1 className="text-4xl">Tracks:</h1>
-                                {renderedPlaylist.youtube_playlist ?
+                                {/* {songs ? */}
                                     <PendingTrackListing renderSongs={songs} setRenderSongs={this.fetchSongs} deleteHandler={this.props.deleteHandler} />
-                                    : null}
+                                    {/* : null} */}
                             </section>
                         </PageMargin>
                         {modal ?

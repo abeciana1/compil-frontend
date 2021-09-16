@@ -8,6 +8,10 @@ import { withRouter } from 'next/router'
 
 class PendingTrackListing extends React.Component {
 
+    componentDidMount() {
+        this.props.getSongs(this.props.router.query.id)
+    }
+
     render() {
         
         const { deleteSong, getSongs, renderSongs, setRenderSongs } = this.props
@@ -16,14 +20,20 @@ class PendingTrackListing extends React.Component {
             this.props.router.push('/login')
         }
 
+        // useEffect(() => {
+        //     getSongs(this.props.router.query.id)
+        // }, [])
+
+        // console.log(renderSongs, this.props.router.query.id)
+
         return (
             <React.Fragment>
-                {renderSongs.length > 0 ?
+                {renderSongs ?
                     <section
                         className="pt-5"
                     >
                         <ul>
-                            {renderSongs?.map((track) => {
+                            {renderSongs.map((track) => {
                                 return (
                                     <PendingTracklistItem track={track} deleteHandler={this.props.deleteHandler} />
                                 )
@@ -31,10 +41,8 @@ class PendingTrackListing extends React.Component {
                         </ul>
                     </section>
                     :
-                    <h3
-                        className="text-2xl"
-                    >Sorry, no songs have been added.</h3>
-                }
+                null }
+                {renderSongs.length === 0 ? <h3 className="text-2xl">Sorry, no songs have been added.</h3> : null}
             </React.Fragment>
         )
     }
