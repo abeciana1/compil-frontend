@@ -51,9 +51,21 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlaylistS
 
 class RenderedPlaylist extends React.Component {
 
+    // use for icons - https://heroicons.com/
+
+    // TODO -> create click to edit status
+    // TODO -> create click to edit privacy
+    // TODO -> create click to edit image (nice to have)
+    // TODO -> add songs open section form and editing
+    // TODO -> add drag and drop reordering of tracklist
+    // TODO -> add youtube search page
+    // TODO -> fix modal popup styling (react-modal)
+    // TODO -> add youtube playlist form to react-modal
+    // TODO -> add ability to add single song upload to playlist
+    // TODO -> add ability to add single song upload to playlist from youtube search
+
+
     state = {
-        // renderedPlaylist: null,
-        // songs: [],
         modal: false
     }
     
@@ -67,8 +79,6 @@ class RenderedPlaylist extends React.Component {
         const { modal } = this.state
 
         const { renderedPlaylist, songs } = this.props
-        
-        console.log(renderedPlaylist)
 
         return (
         <React.Fragment>
@@ -110,7 +120,7 @@ class RenderedPlaylist extends React.Component {
                                     {/* <p className="pt-4 text-black text-xl">{renderedPlaylist.description}</p> */}
                                     <div className="flex text-xl text-white pt-4">
                                         <p
-                                            className="font-semibold cursor-pointer bg-blue-light py-0.5 px-2 rounded-full"
+                                            className=" cursor-pointer bg-blue-light py-1 px-3 rounded-full"
                                             onClick={() => {
                                                 navigator.clipboard.writeText(`./playlists/${renderedPlaylist.id}/present`)
                                             }}
@@ -119,7 +129,7 @@ class RenderedPlaylist extends React.Component {
                                     </p>
                                         <a
                                             href={`/playlists/${renderedPlaylist.id}/present`}
-                                            className="ml-2 font-semibold cursor-pointer bg-blue-light py-1 px-2 rounded-full"
+                                            className="ml-2 cursor-pointer bg-blue-light py-1 px-3 rounded-full"
                                         >
                                             Present
                                         </a>

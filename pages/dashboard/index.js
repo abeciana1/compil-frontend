@@ -28,16 +28,12 @@ const Dashboard = (props) => {
 
     const { user } = props
 
-    // console.log(props)
-    // let router = useRouter()
-
     useEffect(() => {
         props.setPowerHourNull()
     }, [])
 
 
     if (user.currentUser === undefined) {
-        // router.push('/login')
         props.router.push('/login')
     }
 
