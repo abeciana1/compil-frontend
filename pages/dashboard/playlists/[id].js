@@ -10,6 +10,7 @@ import PendingTrackListing from '../../../components/containers/PendingTrackList
 
 import ClickToEditInput from '../../../components/forms/ClickToEditInput'
 import ClickToEditTextBody from '../../../components/forms/ClickToEditTextBody'
+import ClickToEditStatusPrivacy from '../../../components/forms/ClickToEditStatusPrivacy'
 
 const PlaylistShowPage = (props) => {
 
@@ -80,6 +81,8 @@ class RenderedPlaylist extends React.Component {
 
         const { renderedPlaylist, songs } = this.props
 
+        console.log(renderedPlaylist)
+
         return (
         <React.Fragment>
                 {renderedPlaylist ?
@@ -104,6 +107,15 @@ class RenderedPlaylist extends React.Component {
                                         src={renderedPlaylist.image}
                                         alt={renderedPlaylist.title}
                                     />
+                                    <ClickToEditStatusPrivacy
+                                        playlist={renderedPlaylist}
+                                        privacy={renderedPlaylist.private}
+                                        className="pt-4 text-black text-xl"
+                                    />
+                                    {/* <div
+                                        className="pt-4 text-black text-xl"
+                                    >
+                                        Privacy: {`${renderedPlaylist.private}`}</div> */}
                                 </div>
                                 <div className="place-self-center xl:justify-self-start xl:-ml-32 2xl:-ml-96 text-xl lg:text-base">
                                     {/* <p className="pt-2 lg:pt-0 text-black text-5xl hidden md:block">{renderedPlaylist.title}</p> */}

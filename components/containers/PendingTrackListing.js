@@ -33,7 +33,7 @@ class PendingTrackListing extends React.Component {
                         className="pt-5"
                     >
                         <ul>
-                            {renderSongs.map((track) => {
+                            {renderSongs?.map((track) => {
                                 return (
                                     <PendingTracklistItem track={track} deleteHandler={this.props.deleteHandler} />
                                 )
@@ -42,7 +42,7 @@ class PendingTrackListing extends React.Component {
                     </section>
                     :
                 null }
-                {renderSongs.length === 0 ? <h3 className="text-2xl">Sorry, no songs have been added.</h3> : null}
+                {renderSongs?.length === 0 ? <h3 className="text-2xl">Sorry, no songs have been added.</h3> : null}
             </React.Fragment>
         )
     }
