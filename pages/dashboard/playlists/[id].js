@@ -11,6 +11,7 @@ import PendingTrackListing from '../../../components/containers/PendingTrackList
 import ClickToEditInput from '../../../components/forms/ClickToEditInput'
 import ClickToEditTextBody from '../../../components/forms/ClickToEditTextBody'
 import ClickToEditStatusPrivacy from '../../../components/forms/ClickToEditStatusPrivacy'
+import ClickToEditStatusPublish from '../../../components/forms/ClickToEditStatusPublish'
 
 const PlaylistShowPage = (props) => {
 
@@ -108,6 +109,11 @@ class RenderedPlaylist extends React.Component {
                                     <ClickToEditStatusPrivacy
                                         playlist={renderedPlaylist}
                                         privacy={renderedPlaylist.private}
+                                        className="pt-4 text-black text-xl"
+                                    />
+                                    <ClickToEditStatusPublish
+                                        playlist={renderedPlaylist}
+                                        publish={renderedPlaylist.status}
                                         className="pt-4 text-black text-xl"
                                     />
                                     {/* <div

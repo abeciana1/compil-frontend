@@ -6,37 +6,28 @@ import Dropdown from '../utils/Dropdown'
 
 // * Use for updating playlist status or privacy
 
-class ClickToEditStatusPrivacy extends React.Component {
+class ClickToEditStatusPublish extends React.Component {
 
     state = {
-        privacyStatus: this.props.privacy,
+        publishStatus: this.props.publish,
         className: this.props.className,
         editMode: false
     }
 
-    privacy = [
-        'Public',
-        'Private'
+    publish = [
+        'Draft',
+        'Published'
     ]
 
     selectHandler = (e) => {
-        if (e.target.innerText === 'Public') {
-            this.setState({
-                privacyStatus: true,
-                editMode: false
-            }, () => {
-            this.props.playlist.private = this.state.privacyStatus
+        console.log(e);
+        this.setState({
+            publishStatus: e.target.innerText,
+            editMode: false
+        }, () => {
+            this.props.playlist.status = this.state.publishStatus;
             this.props.updatePowerHour(this.props.playlist.id, this.props.playlist)
-            })
-        } else if (e.target.innerText === 'Private') {
-            this.setState({
-                privacyStatus: false,
-                editMode: false
-            }, () => {
-            this.props.playlist.private = this.state.privacyStatus
-            this.props.updatePowerHour(this.props.playlist.id, this.props.playlist)
-            })
-        }
+        })
     }
 
     render() {
@@ -45,9 +36,9 @@ class ClickToEditStatusPrivacy extends React.Component {
                 {this.state.editMode ?
                     <>
                         <Dropdown
-                            defaultVal={this.state.privacyStatus ? "Public" : "Private"}
+                            defaultVal={this.state.publishStatus}
                             onChange={this.selectHandler}
-                            options={this.privacy}
+                            options={this.publish}
                             className={this.props.className + " focus:outline-none"}
                         />
                         <div
@@ -62,9 +53,9 @@ class ClickToEditStatusPrivacy extends React.Component {
                     :
                 <div
                     onClick={() => this.setState({editMode: true})}
-                    className={this.props.className}
+                    className={this.props.className + " capitalize"}
                 >
-                    Privacy: {this.state.privacyStatus ? "Public" : "Private"}</div>
+                    Privacy: {this.state.publishStatus}</div>
                 }
             </React.Fragment>
         )
@@ -75,4 +66,4 @@ const mapDispatchToProps = {
     updatePowerHour
 }
 
-export default connect(null, mapDispatchToProps)(ClickToEditStatusPrivacy)
+export default connect(null, mapDispatchToProps)(ClickToEditStatusPublish)
