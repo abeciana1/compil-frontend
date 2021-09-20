@@ -43,7 +43,7 @@ class ClickToEditInput extends React.Component {
                             className="flex py-4"
                         >
                             <input
-                                className="py-1 px-3 rounded-full bg-black text-white cursor-pointer"
+                                className="py-1 px-3 rounded-full bg-black text-white cursor-pointer focus:outline-none"
                                 type="Submit"
                                 value="Save"
                             />

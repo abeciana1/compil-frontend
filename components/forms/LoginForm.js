@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
                             {/* <br/> */}
                             <input 
                                 type="submit"
-                                className="text-white bg-red px-3 py-1 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl"
+                                className="text-white bg-red px-3 py-1 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl cursor-pointer"
                             />
                             <div className="pt-5 cursor-pointer" onClick={() => this.props.setForgotPass(true)}>Forgot your password?</div>
                         </form>

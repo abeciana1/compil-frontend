@@ -81,8 +81,6 @@ class RenderedPlaylist extends React.Component {
 
         const { renderedPlaylist, songs } = this.props
 
-        console.log(renderedPlaylist)
-
         return (
         <React.Fragment>
                 {renderedPlaylist ?
