@@ -40,6 +40,11 @@ const NavBar = (props) => {
                                 Dashboard
                             </div>
                         </Link>
+                        <Link href={"/dashboard/search"}>
+                            <div className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
+                                YouTube Search
+                            </div>
+                        </Link>
                         <div onClick={props.logoutUser} className="bg-#28262C-900 text-#28262C px-3 py-2 rounded-md text-lg font-medium cursor-pointer">
                             Logout
                         </div>
