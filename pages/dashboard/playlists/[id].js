@@ -56,7 +56,6 @@ class RenderedPlaylist extends React.Component {
 
     // use for icons - https://heroicons.com/
 
-    // TODO -> create click to edit image (nice to have)
     // TODO -> add songs open section form and editing
     // TODO -> add drag and drop reordering of tracklist
     // TODO -> add youtube search page
