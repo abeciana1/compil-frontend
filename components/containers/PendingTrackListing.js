@@ -41,7 +41,8 @@ class PendingTrackListing extends React.Component {
                         </ul>
                     </section>
                     :
-                null }
+                    this.props.getSongs(this.props.router.query.id)
+                    }
                 {renderSongs?.length === 0 ? <h3 className="text-2xl">Sorry, no songs have been added.</h3> : null}
             </React.Fragment>
         )
