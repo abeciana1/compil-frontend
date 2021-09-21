@@ -15,8 +15,19 @@
         justify-content: center;
     }
     .dashboard-playlist {
-        max-height: 116px;
+        height: 120px;
         width: 120px;
+    }
+    .playlist-profile { 
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .playlist-profile {
+        width: 285px;
+        height: 285px;
     }
 }
 
@@ -27,14 +38,15 @@
             justify-content: flex-start;
     }
     .dashboard-playlist {
-        max-height: 139px;
+        height: 144px;
         width: 144px;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     .dashboard-playlist {
-        max-height: 216px;
+        height: 224px;
         width: 224px;
     }
 }
+

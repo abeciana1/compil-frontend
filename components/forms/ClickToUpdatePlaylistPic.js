@@ -62,7 +62,7 @@ class ClickToUpdatePlaylistPic extends React.Component {
                 <img
                     src={this.state.src}
                     alt={this.state.alt}
-                    className="cursor-pointer"
+                    className="playlist-profile cursor-pointer"
                     onClick={() => {
                         this.setState({
                             editMode: true
