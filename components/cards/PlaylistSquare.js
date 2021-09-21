@@ -35,7 +35,7 @@ const PlaylistSquare = (props) => {
                     <Box>
                         <img
                             src={playlist.image}
-                            className=""
+                            className="dashboard-playlist"
                             alt={playlist.title}
                         />
                     </Box>
