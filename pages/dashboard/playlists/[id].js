@@ -12,6 +12,7 @@ import ClickToEditInput from '../../../components/forms/ClickToEditInput'
 import ClickToEditTextBody from '../../../components/forms/ClickToEditTextBody'
 import ClickToEditStatusPrivacy from '../../../components/forms/ClickToEditStatusPrivacy'
 import ClickToEditStatusPublish from '../../../components/forms/ClickToEditStatusPublish'
+import ClickToUpdatePlaylistPic from '../../../components/forms/ClickToUpdatePlaylistPic'
 
 const PlaylistShowPage = (props) => {
 
@@ -100,7 +101,8 @@ class RenderedPlaylist extends React.Component {
                                         className="text-white -mt-32 pb-10 text-5xl block md:hidden"
                                     />
                                     {/* <p className="text-white -mt-32 pb-10 text-5xl block md:hidden">{renderedPlaylist.title}</p> */}
-                                    <img
+                                    <ClickToUpdatePlaylistPic
+                                        playlist={renderedPlaylist}
                                         src={renderedPlaylist.image}
                                         alt={renderedPlaylist.title}
                                     />

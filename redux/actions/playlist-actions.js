@@ -89,25 +89,69 @@ export const deleteSong = (songId) => {
 
 export const updatePowerHour = (playlistId, body) => {
 
-    const options = {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify(body)
+//     "image": "https://static01.nyt.com/images/2019/11/13/obituaries/11Freeman3/merlin_164214771_c6e96bd0-0579-49ea-82ff-a1962f393153-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+    console.log(typeof body.pic)
+    // let formData = new FormData()
+    // formData.append('body[title]', body.title)
+    // formData.append('body[status]', body.status)
+    // formData.append('body[private]', body.private)
+    // formData.append('body[description]', body.description)
+    // formData.append('body[pic]', body.pic)
+    // formData.append('body[user_id]', body.user_id)
+    // formData.append('body[youtube_playlist]', body.youtube_playlist)
+
+    if (typeof body.pic === 'object') {
+        let formData = new FormData()
+        formData.append('playlist[title]', body.title)
+        formData.append('playlist[pic]', body.pic)
+        formData.append('playlist[description]', body.description)
+        formData.append('playlist[status]', body.status)
+        formData.append('playlist[private]', body.private)
+        formData.append('playlist[youtube_playlist]', body.youtube_playlist)
+        formData.append('playlist[user_id]', body.user_id)
+        // debugger
+        const options = {
+            method: 'PATCH',
+            headers: {
+                // 'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: formData
+        }
+        // debugger
+        return (dispatch) => {
+            fetch(BASE_URL + '/power_hours/' + playlistId, options)
+            .then(response => response.json())
+            .then(data => {
+                console.log("DATA",data);
+                dispatch({
+                    type: UPDATE_POWER_HOUR,
+                    payload: data
+                })
+            })
+        }
+    } else {
+        const options = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(body)
+        }
+    
+        return (dispatch) => {
+            fetch(BASE_URL + '/power_hours/' + playlistId, options)
+            .then(response => response.json())
+            .then(data => {
+                dispatch({
+                    type: UPDATE_POWER_HOUR,
+                    payload: data
+                })
+            })
+        }
     }
 
-    return (dispatch) => {
-        fetch(BASE_URL + '/power_hours/' + playlistId, options)
-        .then(response => response.json())
-        .then(data => {
-            dispatch({
-                type: UPDATE_POWER_HOUR,
-                payload: data
-            })
-        })
-    }
 }
 
 export const setPowerHourNull = () => {

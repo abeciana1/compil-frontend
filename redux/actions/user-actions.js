@@ -124,7 +124,7 @@ export const checkEmail = (userEmail) => {
 
 export const createPlaylist = (playlist) => {
 
-    console.log(playlist)
+    // console.log(playlist)
     let formData = new FormData()
     formData.append('playlist[title]', playlist.title)
     formData.append('playlist[status]', playlist.status)

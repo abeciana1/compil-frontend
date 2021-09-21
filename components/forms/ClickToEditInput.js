@@ -48,7 +48,7 @@ class ClickToEditInput extends React.Component {
                                 value="Save"
                             />
                             <button
-                                className="ml-2 py-1 px-3 rounded-full bg-black text-white"
+                                className="ml-2 py-1 px-3 rounded-full bg-black text-white focus:outline-none"
                                 onClick={() => this.setState({editMode: false})}
                             >Cancel</button>
                         </div>
