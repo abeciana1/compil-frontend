@@ -1,6 +1,8 @@
 import React from 'react';
 import PageMargin from '../../components/utils/PageMargin'
 
+import YouTubeSearchForm from '../../components/forms/YouTubeSearchForm'
+
 const YouTubeSearch = (props) => {
 
     return (
@@ -11,6 +13,7 @@ const YouTubeSearch = (props) => {
                 >
                     YouTube Search
                 </h1>
+                <YouTubeSearchForm />
             </PageMargin>
         </React.Fragment>
     )
