@@ -14,7 +14,7 @@ const NavBar = (props) => {
     <Disclosure as="nav" className="bg-transparent-800">
         {({ open }) => (
         <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-10">
             <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                 <div className="flex-shrink-0 cursor-pointer">
