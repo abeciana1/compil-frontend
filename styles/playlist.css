@@ -1,0 +1,52 @@
+#import-btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#track-cover {
+    position: relative;
+    top: 0;
+}
+
+@media only screen and (min-width: 320px) {
+    .track {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: center;
+    }
+    .dashboard-playlist {
+        height: 120px;
+        width: 120px;
+    }
+    .playlist-profile { 
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .playlist-profile {
+        width: 285px;
+        height: 285px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .track {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+    }
+    .dashboard-playlist {
+        height: 144px;
+        width: 144px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .dashboard-playlist {
+        height: 224px;
+        width: 224px;
+    }
+}
+

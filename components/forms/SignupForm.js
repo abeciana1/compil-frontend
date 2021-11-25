@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { signupUser } from '../../redux/actions/user-actions'
 
 class SignupForm extends React.Component {
 
@@ -17,15 +19,17 @@ class SignupForm extends React.Component {
     
     submitHandler = (e) => {
         e.preventDefault();
-        // console.log(this.state)
-        console.log("submit")
+        // TODO add step for email verification
+        // * if true => signup user via action
+        this.props.signupUser(this.state)
+        e.target.reset()
     }
 
     render() {
         return (
             <React.Fragment>
             <div className="w-4/5 lg:w-12/12 place-self-center">
-                <div style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
+                <div className="rounded-xl" style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
                     <form className="p-10 md:p-4 lg-p-10" onSubmit={this.submitHandler}>
                     <label>First Name:</label>
                         <br/>
@@ -86,4 +90,8 @@ class SignupForm extends React.Component {
     }
 }
 
-export default SignupForm
+const mapDispatchToProps = {
+    signupUser
+}
+
+export default connect(null, mapDispatchToProps)(SignupForm)

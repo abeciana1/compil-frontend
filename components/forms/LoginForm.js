@@ -2,14 +2,16 @@ import React from 'react'
 import { loginUser } from '../../redux/actions/user-actions'
 // import { store } from '../../redux/store'
 import { connect } from 'react-redux'
+import ForgotPassForm from './ForgotPassForm'
 
 class LoginForm extends React.Component {
-
+    
     state = {
         email: "",
-        password: ""
+        password: "",
     }
 
+    
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -18,20 +20,18 @@ class LoginForm extends React.Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        // this.props.loginUser()
-        // console.log(this.state)
-        this.props.loginUser()
-        console.log("submit")
+        this.props.loginUser(this.state)
+        e.target.reset()
     }
 
     render() {
-        // console.log(this.props.loginUser)
         return (
             <React.Fragment>
-                {/* <h1 className="text-5xl">Login</h1> */}
-                {/* <div className="bg-gray-600 w-4/12 m-auto"> */}
                 <div className="w-4/5 lg:w-12/12 place-self-center">
-                    <div style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
+                    <div className="rounded-xl" style={{"zIndex": "3", "backgroundColor": "#EFEFEF", "margin": "auto"}}>
+                { this.props.forgotPassword ?
+                        <ForgotPassForm setForgotPass={this.props.setForgotPass} />
+                        :
                         <form className="p-10 md:p-14 lg-p-10" onSubmit={this.submitHandler}>
                             <label>Email:</label>
                             <br/>
@@ -59,19 +59,27 @@ class LoginForm extends React.Component {
                             {/* <br/> */}
                             <input 
                                 type="submit"
-                                className="text-white bg-red px-3 py-1 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl"
+                                className="text-white bg-red px-3 py-1 md:col-start-4 md:col-end-5 rounded-full focus:outline-none text-xl cursor-pointer"
                             />
+                            <div className="pt-5 cursor-pointer" onClick={() => this.props.setForgotPass(true)}>Forgot your password?</div>
                         </form>
+                    }
                     </div>
-                    <br/>
+                    <br />
                 </div>
+                {/* <h1 className="text-5xl">Login</h1> */}
+                {/* <div className="bg-gray-600 w-4/12 m-auto"> */}
             </React.Fragment>
         )
     }
+}
+
+const mapStateToProps = (state) => {
+    return state
 }
 
 const mapDispatchToProps = {
     loginUser
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
