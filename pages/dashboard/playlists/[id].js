@@ -54,8 +54,6 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlaylistS
 
 class RenderedPlaylist extends React.Component {
 
-    // use for icons - https://heroicons.com/
-
     // TODO -> add songs open section form and editing
     // TODO -> add drag and drop reordering of tracklist
     // TODO -> add youtube search page
@@ -63,6 +61,11 @@ class RenderedPlaylist extends React.Component {
     // TODO -> add youtube playlist form to react-modal
     // TODO -> add ability to add single song upload to playlist
     // TODO -> add ability to add single song upload to playlist from youtube search
+    // TODO -> Add ability for users to contribute songs to power hours
+    // TODO -> Add user id to a song to add reference to contributor
+    // TODO -> Add date present date to power hour 
+    // TODO -> Add "add to calendar" functionality to power hour
+    // TODO -> Add open status to power hour .... open or closed to submissions
 
 
     state = {

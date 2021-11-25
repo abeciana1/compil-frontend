@@ -7,7 +7,7 @@ const HeadTag = (props) => {
 
     useEffect(() => {
         if (localStorage.getItem('compilLogged')) {
-            props.checkUser()
+            props?.checkUser()
         } else {
             null
         }

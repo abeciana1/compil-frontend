@@ -10,6 +10,23 @@ class YouTubeSearchForm extends React.Component {
         this.setState({
             searchTerm: e.target.value
         })
+
+        // const options = {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         searchTerm: e.target.value
+        //     })
+        // }
+
+        // fetch("http://localhost:3001/api/v1/search-youtube", options)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data)
+        // })
     }
 
     render() {
