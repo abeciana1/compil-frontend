@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-// import { debounce } from 'lodash'
+import ReactPlayer from 'react-player'
 
 const PendingTracklistItem = (props) => {
 
@@ -21,6 +21,8 @@ const PendingTracklistItem = (props) => {
 //*     "youtube_id": "6PuqlOTyJt0",
 //*     "power_hour_id": 4
 //* }
+    
+    let embedStartTime = new Date(track.start_time).getTime()
 
     return (
         <React.Fragment>
@@ -80,9 +82,46 @@ const PendingTracklistItem = (props) => {
                 </span>
                 {expand ?
                     <section
-                        className=""
+                        className="grid grid-cols-2"
                     >
-                        
+                        <div
+                            className="leading-loose ml-5 justify-items-stretch"
+                        >
+                            <ul>
+                                <li
+                                    className="flex"
+                                >
+                                    <p
+                                        className="font-bold"
+                                    >Start time:</p>
+                                    <span
+                                        className="ml-2"
+                                    >{track.start_time}</span>
+                                </li>
+                                <li
+                                    className="flex"
+                                >
+                                    <p
+                                        className="font-bold"
+                                    >End time:</p>
+                                    <span
+                                        className="ml-2"
+                                    >{track.end_time}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            className=""
+                        >
+                            <iframe
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${track.youtube_id}?start=${new Date(track.start_time).getTime()}&end=${new Date(track.end_time).getTime()}`}
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
                     </section>
                 :
                 null}

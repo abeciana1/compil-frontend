@@ -31,9 +31,6 @@ const PlaylistShowPage = (props) => {
 
     return (
         <React.Fragment>
-            <Head>
-                <title>Your playlist | {props.playlist.playlist.title}</title>
-            </Head>
             <RenderedPlaylist
                 renderedPlaylist={props.playlist.playlist}
                 // songs={songs}
@@ -88,9 +85,12 @@ class RenderedPlaylist extends React.Component {
         const { renderedPlaylist, songs } = this.props
 
         return (
-        <React.Fragment>
+            <React.Fragment>
                 {renderedPlaylist ?
                     <>
+                        <Head>
+                            <title>Your playlist | {renderedPlaylist.title}</title>
+                        </Head>
                         <div>
                             <img
                                 src={renderedPlaylist.image}
