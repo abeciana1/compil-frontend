@@ -68,9 +68,11 @@ const PendingTracklistItem = (props) => {
                     </a>
                 </span>
                 {expand ?
-                    <section>
+                    <section
+                        className=""
+                    >
                         
-                </section>
+                    </section>
                 :
                 null}
             </li>
