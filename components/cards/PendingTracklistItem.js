@@ -3,13 +3,24 @@ import React, { useState, useMemo } from 'react';
 
 const PendingTracklistItem = (props) => {
 
-    // console.log(props);
-
     const { track, deleteHandler } = props;
 
     const [expand, setExpand] = useState(false)
-    
-    // const debounceDeleteHandler = useMemo(() => debounce(deleteHandler, 500), [])
+
+    console.log(track)
+
+//* {
+//*     "id": 471,
+//*     "title": "Dry Cleaning - Scratchcard Lanyard (Official Video)",
+//*     "artist": "",
+//*     "album": "",
+//*     "album_cover": "https://i.ytimg.com/vi/6PuqlOTyJt0/hqdefault.jpg",
+//*     "link": "https://youtu.be/6PuqlOTyJt0",
+//*     "start_time": "",
+//*     "end_time": "",
+//*     "youtube_id": "6PuqlOTyJt0",
+//*     "power_hour_id": 4
+//* }
 
     return (
         <React.Fragment>

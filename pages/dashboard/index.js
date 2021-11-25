@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
-
+import Head from 'next/head'
 // import { useRouter } from 'next/router'
 import { withRouter } from 'next/router'
 import { setPowerHourNull } from '../../redux/actions/playlist-actions'
@@ -16,7 +16,7 @@ import PageMargin from '../../components/utils/PageMargin'
     // TODO title
 
 const sortUserPlaylistsByDate = (playlists) => {
-
+    // * chronologically sorted
     playlists.sort((a, b) => {
         let dateA = new Date(a.created_at)
         let dateB = new Date(b.created_at)
@@ -41,6 +41,9 @@ const Dashboard = (props) => {
 
     return (
         <React.Fragment>
+            <Head>
+                <title>{user.currentUser.f_name.charAt(0).toUpperCase() + user.currentUser.f_name.substr(1).toLowerCase()}'s Dashboard</title>
+            </Head>
             {user.currentUser ?
                 <PageMargin>
                     <h1 className="text-6xl">Hello, {user.currentUser.f_name.charAt(0).toUpperCase() + user.currentUser.f_name.substr(1).toLowerCase()}!</h1>

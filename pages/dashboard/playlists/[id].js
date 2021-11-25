@@ -3,6 +3,7 @@ import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
 import { withRouter } from 'next/router'
 import { connect } from 'react-redux'
+import Head from 'next/head'
 
 import { getPowerHour, deleteSong, getSongs } from '../../../redux/actions/playlist-actions'
 
@@ -30,6 +31,9 @@ const PlaylistShowPage = (props) => {
 
     return (
         <React.Fragment>
+            <Head>
+                <title>Your playlist | {props.playlist.playlist.title}</title>
+            </Head>
             <RenderedPlaylist
                 renderedPlaylist={props.playlist.playlist}
                 // songs={songs}
