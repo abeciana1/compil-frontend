@@ -45,7 +45,7 @@ const PendingTracklistItem = (props) => {
                 </div>
                         <span
                             // className="self-center justify-center pt-2 block md:hidden flex"
-                            className="flex justify-around md:hidden"
+                            className="flex justify-around md:hidden pt-2"
                         >
                             <a
                                 href={track?.link}
@@ -57,7 +57,7 @@ const PendingTracklistItem = (props) => {
                             </a>
                     </span>
                     <span
-                        className="flex justify-around md:hidden"
+                        className="flex justify-around md:hidden pt-2"
                     >
                         <a
                                 data-id={track.id}
@@ -89,7 +89,7 @@ const PendingTracklistItem = (props) => {
                         className="grid grid-cols-1 md:grid-cols-2"
                     >
                         <div
-                            className="leading-loose ml-5 justify-items-stretch"
+                            className="leading-loose ml-5 md:ml-5 justify-items-stretch"
                         >
                             <ul>
                                 <li
