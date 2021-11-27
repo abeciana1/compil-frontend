@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import ReactPlayer from 'react-player'
 
 const PendingTracklistItem = (props) => {
 
