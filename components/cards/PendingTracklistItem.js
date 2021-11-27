@@ -38,30 +38,36 @@ const PendingTracklistItem = (props) => {
                         onClick={() => setExpand(!expand)}
                     />
                     <div
-                        className="md:self-center -ml-16 md:ml-5 grid"
+                        className="pl-10 md:self-center -ml-16 md:ml-5"
+                        // className="pl-10 md:self-center -ml-16 md:ml-5"
                     >
                         {track?.title}
-                        <div>
-                            <span className="self-center float-right pt-3 relative mr-5 block md:hidden">
-                                <a
-                                    href={track?.link}
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    YouTube Link
-                                </a>
-                                <a
-                                    data-id={track.id}
-                                    className="ml-5 cursor-pointer"
-                                    onClick={deleteHandler}
-                                    // onClick={() => deleteHandler(track.id)}
-                                >
-                                    Remove song
-                                </a>
-                            </span>
-                        </div>
-                    </div>
                 </div>
+                        <span
+                            // className="self-center justify-center pt-2 block md:hidden flex"
+                            className="flex justify-around md:hidden"
+                        >
+                            <a
+                                href={track?.link}
+                                target="_blank"
+                                rel="noopener"
+                                className=""
+                            >
+                                YouTube Link
+                            </a>
+                    </span>
+                    <span
+                        className="flex justify-around md:hidden"
+                    >
+                        <a
+                                data-id={track.id}
+                                className=""
+                                onClick={deleteHandler}
+                            >
+                                Remove song
+                            </a>
+                    </span>
+                    </div>
                 <span className="self-center float-right relative pt-1 bottom-14 mr-5 hidden md:block">
                     <a
                         href={track?.link}
@@ -74,15 +80,13 @@ const PendingTracklistItem = (props) => {
                         data-id={track.id}
                         className="ml-5 cursor-pointer"
                         onClick={deleteHandler}
-                        // onClick={() => deleteHandler(track.id)}
-                        // onClick={() => debounceDeleteHandler(track.id)}
                     >
                         Remove song
                     </a>
                 </span>
                 {expand ?
                     <section
-                        className="grid grid-cols-2"
+                        className="grid grid-cols-1 md:grid-cols-2"
                     >
                         <div
                             className="leading-loose ml-5 justify-items-stretch"
@@ -114,13 +118,13 @@ const PendingTracklistItem = (props) => {
                             className=""
                         >
                             <iframe
-                                width="560"
-                                height="315"
+                                width="100%"
+                                height="100%"
                                 src={`https://www.youtube.com/embed/${track.youtube_id}?start=${new Date(track.start_time).getTime()}&end=${new Date(track.end_time).getTime()}`}
                                 title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                                allowFullscreen></iframe>
                         </div>
                     </section>
                 :
