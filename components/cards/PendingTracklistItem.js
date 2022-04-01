@@ -1,16 +1,13 @@
 import React, { useState, useMemo } from 'react';
 
-import { Draggable } from "react-beautiful-dnd";
 
 const PendingTracklistItem = (props) => {
 
     console.log(props)
 
-    const { track, deleteHandler, index, provided } = props;
+    const { track, deleteHandler, provided } = props;
 
     const [expand, setExpand] = useState(false)
-
-    // console.log(track)
 
 //* {
 //*     "id": 471,
@@ -29,9 +26,9 @@ const PendingTracklistItem = (props) => {
 
     return (
                     <li
-                        ref={props.provided.innerRef}
-                        {...props.provided.draggableProps}
-                        {...props.provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                         className="border border-black hover:bg-black hover:text-white"
                     >
                         <div
