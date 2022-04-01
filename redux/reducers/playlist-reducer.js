@@ -17,7 +17,7 @@ const initialState = {
 }
 
 const playlistReducer = (state = initialState, action) => {
-
+    // console.log(action.payload)
     switch (action.type) {
         case GET_SONGS:
             return {
@@ -40,7 +40,7 @@ const playlistReducer = (state = initialState, action) => {
             return {
                 ...state,
                 playlist: action.payload,
-                songs: action.payload.songs
+                // songs: action.payload.songs
             }
         case UPDATE_POWER_HOUR:
             return {

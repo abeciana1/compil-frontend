@@ -1,17 +1,61 @@
 import React, {useState, useEffect} from 'react';
 import PendingTracklistItem from '../cards/PendingTracklistItem'
-// import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import { connect } from 'react-redux';
 import { importYouTube, deleteSong, getSongs } from '../../redux/actions/playlist-actions'
 import { compose } from 'redux'
 import { withRouter } from 'next/router'
 
+const finalSpaceCharacters = [
+  {
+    id: 'gary',
+    name: 'Gary Goodspeed',
+    thumb: '/images/gary.png'
+  },
+  {
+    id: 'cato',
+    name: 'Little Cato',
+    thumb: '/images/cato.png'
+  },
+  {
+    id: 'kvn',
+    name: 'KVN',
+    thumb: '/images/kvn.png'
+  },
+  {
+    id: 'mooncake',
+    name: 'Mooncake',
+    thumb: '/images/mooncake.png'
+  },
+  {
+    id: 'quinn',
+    name: 'Quinn Ergon',
+    thumb: '/images/quinn.png'
+  }
+]
+
 class PendingTrackListing extends React.Component {
+
+    state = {
+        characters: finalSpaceCharacters 
+    }
 
     componentDidMount() {
         this.props.getSongs(this.props.router.query.id)
+        // this.setState({items: this.props.renderSongs})
+    }
+
+  handleOnDragEnd(result) {  
+    if (!result.destination) return;
+    
+    // let items = Array?.from(this?.state?.characters);
+    debugger
+    let items = this.state.characters
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        this.setState({characters: items});
     }
 
     render() {
@@ -21,12 +65,8 @@ class PendingTrackListing extends React.Component {
         if (this.props.user.currentUser === undefined) {
             this.props.router.push('/login')
         }
-
-        // useEffect(() => {
-        //     getSongs(this.props.router.query.id)
-        // }, [])
-
-        // console.log(renderSongs, this.props.router.query.id)
+      
+      // console.log(renderSongs)
 
         return (
             <React.Fragment>
@@ -34,13 +74,65 @@ class PendingTrackListing extends React.Component {
                     <section
                         className="pt-5"
                     >
-                        <ul>
-                            {renderSongs?.map((track) => {
-                                return (
-                                    <PendingTracklistItem track={track} deleteHandler={this.props.deleteHandler} />
-                                )
-                            })}
-                        </ul>
+            {/* <DragDropContext onDragEnd={this.handleOnDragEnd}>
+          <Droppable droppableId="characters">
+            {(provided) => (
+              <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+                {this.state.characters.map(({id, name, thumb}, index) => {
+                  return (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                          <div className="characters-thumb">
+                            <img src={thumb} alt={`${name} Thumb`} />
+                          </div>
+                          <p>
+                            { name }
+                          </p>
+                        </li>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext> */}
+          <DragDropContext
+              onDragEnd={this.onDragEnd}
+          >
+              <Droppable droppableId="droppable">
+                  {(provided) => (
+                      <ul
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                      >
+                          {renderSongs?.map((track, index) => {
+                            console.log({track, index})
+                              return (
+                                <Draggable
+                                  key={track.id}
+                                  draggableId={track.id.toString()}
+                                  index={index}
+                                >
+                                  {(provided) => (
+                                    <PendingTracklistItem
+                                      key={track.id}
+                                      track={track}
+                                      index={index}
+                                      provided={provided}
+                                      deleteHandler={this.props.deleteHandler}
+                                    />
+                                  )}
+                                  </Draggable>
+                              )
+                          })}
+                      {provided.placeholder}
+                      </ul>
+                  )}
+              </Droppable>
+          </DragDropContext>
                     </section>
                     :
                     this.props.getSongs(this.props.router.query.id)

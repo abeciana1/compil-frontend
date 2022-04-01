@@ -34,7 +34,7 @@ export const getSongs = (playlistId) => {
         fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
             .then(data => {
-                // console.log("DATA",data)
+                console.log("DATA",data)
             dispatch({
                 type: GET_SONGS,
                 payload: data.songs,
