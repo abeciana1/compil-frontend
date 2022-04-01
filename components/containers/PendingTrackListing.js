@@ -7,34 +7,6 @@ import { importYouTube, deleteSong, getSongs } from '../../redux/actions/playlis
 import { compose } from 'redux'
 import { withRouter } from 'next/router'
 
-const finalSpaceCharacters = [
-  {
-    id: 'gary',
-    name: 'Gary Goodspeed',
-    thumb: '/images/gary.png'
-  },
-  {
-    id: 'cato',
-    name: 'Little Cato',
-    thumb: '/images/cato.png'
-  },
-  {
-    id: 'kvn',
-    name: 'KVN',
-    thumb: '/images/kvn.png'
-  },
-  {
-    id: 'mooncake',
-    name: 'Mooncake',
-    thumb: '/images/mooncake.png'
-  },
-  {
-    id: 'quinn',
-    name: 'Quinn Ergon',
-    thumb: '/images/quinn.png'
-  }
-]
-
 class PendingTrackListing extends React.Component {
 
     state = {
@@ -49,7 +21,6 @@ class PendingTrackListing extends React.Component {
   handleOnDragEnd(result) {  
     if (!result.destination) return;
     
-    // let items = Array?.from(this?.state?.characters);
     debugger
     let items = this.state.characters
         const [reorderedItem] = items.splice(result.source.index, 1);
@@ -66,39 +37,13 @@ class PendingTrackListing extends React.Component {
             this.props.router.push('/login')
         }
       
-      // console.log(renderSongs)
 
         return (
             <React.Fragment>
                 {renderSongs ?
-                    <section
-                        className="pt-5"
-                    >
-            {/* <DragDropContext onDragEnd={this.handleOnDragEnd}>
-          <Droppable droppableId="characters">
-            {(provided) => (
-              <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-                {this.state.characters.map(({id, name, thumb}, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          <div className="characters-thumb">
-                            <img src={thumb} alt={`${name} Thumb`} />
-                          </div>
-                          <p>
-                            { name }
-                          </p>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext> */}
+                <section
+                    className="pt-5"
+                >
           <DragDropContext
               onDragEnd={this.onDragEnd}
           >

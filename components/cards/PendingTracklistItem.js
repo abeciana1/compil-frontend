@@ -28,13 +28,6 @@ const PendingTracklistItem = (props) => {
     // let embedStartTime = new Date(track.start_time).getTime()
 
     return (
-        // <React.Fragment>
-            // <Draggable
-            //     key={track.id}
-            //     draggableId={track.id}
-            //     index={index}
-            // >
-                // {(provided) => (
                     <li
                         ref={props.provided.innerRef}
                         {...props.provided.draggableProps}
@@ -142,9 +135,6 @@ const PendingTracklistItem = (props) => {
                         :
                         null}
                     </li>
-                // )}
-            // </Draggable>
-        // </React.Fragment>
     )
 }
 
