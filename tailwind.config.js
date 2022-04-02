@@ -40,7 +40,10 @@ module.exports = {
       // '2xl': {'min': '1536px'},
     },
     extend: {
-
+      fontFamily: {
+        carlMarx: 'carlmarx',
+        futura: 'futura-pt'
+      }
     },
   },
   variants: {

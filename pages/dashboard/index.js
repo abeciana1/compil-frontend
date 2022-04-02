@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import PlaylistSquare from '../../components/cards/PlaylistSquare'
 import PlaylistCreator from '../../components/forms/PlaylistCreator'
-
+import Head from 'next/head'
 // import { useRouter } from 'next/router'
 import { withRouter } from 'next/router'
 import { setPowerHourNull } from '../../redux/actions/playlist-actions'
@@ -16,7 +16,7 @@ import PageMargin from '../../components/utils/PageMargin'
     // TODO title
 
 const sortUserPlaylistsByDate = (playlists) => {
-
+    // * chronologically sorted
     playlists.sort((a, b) => {
         let dateA = new Date(a.created_at)
         let dateB = new Date(b.created_at)
@@ -41,6 +41,9 @@ const Dashboard = (props) => {
 
     return (
         <React.Fragment>
+            <Head>
+                <title>Dashboard</title>
+            </Head>
             {user.currentUser ?
                 <PageMargin>
                     <h1 className="text-6xl">Hello, {user.currentUser.f_name.charAt(0).toUpperCase() + user.currentUser.f_name.substr(1).toLowerCase()}!</h1>
@@ -50,7 +53,7 @@ const Dashboard = (props) => {
                             Power Hours 
                             <span className="text-lg self-center text-center pt-2 lg:pt-0 justify-self-start lg:justify-self-center xl:pl-10">
                                 <button
-                                    className="flex items-stretch bg-red text-white pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
+                                    className="flex items-stretch bg-red font-futura text-white pl-1.5 pr-2 pt-0.5 pb-0.5 lg:pl-3 lg:pr-5 lg:pt-1 lg:pb-1 rounded-full focus:outline-none"
                                     onClick={() => setModal(!modal)}
                                 >
                                     {/* <span className="float-right pr-1 lg:pr-2 self-center"> */}
@@ -63,7 +66,7 @@ const Dashboard = (props) => {
                                 </button>
                             </span>
                             <span className="text-lg self-center text-center pt-2 lg:pt-0 justify-self-start lg:justify-self-center xl:pl-10">
-                                <button className="flex items-stretch pl-2 pr-2 pt-0.5 pb-0.5 lg:pl-5 lg:pr-3 lg:pt-1 lg:pb-1 rounded-full focus:outline-none" style={{"backgroundColor": "#9FC2CC", "color": "#FFFDF3"}}>
+                                <button className="flex items-stretch pl-2 pr-2 font-futura pt-0.5 pb-0.5 lg:pl-5 lg:pr-3 lg:pt-1 lg:pb-1 rounded-full focus:outline-none" style={{"backgroundColor": "#9FC2CC", "color": "#FFFDF3"}}>
                                     See all power hours
                                     <span className="float-right pl-1 lg:pl-2 self-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

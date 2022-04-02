@@ -41,7 +41,7 @@ const PlaylistSquare = (props) => {
                     </Box>
                     <div>
                     <h4 className="text-xl lg:text-2xl font-semibold pt-3">{playlist.title}</h4>
-                    <h5 className="text-base lg:text-lg">{playlist.description}</h5>
+                    <h5 className="text-base font-futura lg:text-lg">{playlist.description}</h5>
                     </div>
                 {/* </div> */}
             </a>

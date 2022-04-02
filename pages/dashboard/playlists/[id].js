@@ -3,6 +3,7 @@ import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
 import { withRouter } from 'next/router'
 import { connect } from 'react-redux'
+import Head from 'next/head'
 
 import { getPowerHour, deleteSong, getSongs } from '../../../redux/actions/playlist-actions'
 
@@ -84,9 +85,12 @@ class RenderedPlaylist extends React.Component {
         const { renderedPlaylist, songs } = this.props
 
         return (
-        <React.Fragment>
+            <React.Fragment>
                 {renderedPlaylist ?
                     <>
+                        <Head>
+                            <title>Your playlist | {renderedPlaylist.title}</title>
+                        </Head>
                         <div>
                             <img
                                 src={renderedPlaylist.image}

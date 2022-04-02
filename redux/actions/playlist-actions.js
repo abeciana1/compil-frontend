@@ -13,13 +13,10 @@ const BASE_URL = "http://localhost:3001/api/v1"
 
 export const getPowerHour = (playlistId) => {
 
-    // console.log("REDUX ACTION", playlistId)
-
     return (dispatch) => {
         fetch(BASE_URL + '/power_hours/' + playlistId)
         .then(response => response.json())
         .then(data => {
-            // console.log("INSIDE REDUX",data)
             dispatch({
                 type: GET_POWER_HOUR,
                 payload: data
@@ -29,12 +26,11 @@ export const getPowerHour = (playlistId) => {
 }
 
 export const getSongs = (playlistId) => {
-    // console.log(playlistId)
     return (dispatch) => {
         fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
             .then(data => {
-                // console.log("DATA",data)
+                console.log("DATA",data)
             dispatch({
                 type: GET_SONGS,
                 payload: data.songs,
@@ -61,7 +57,6 @@ export const importYouTube = (youtubePlaylistId, powerHourId) => {
         fetch(BASE_URL + '/youtube-import', options)
         .then(res => res.json())
             .then(data => {
-                // console.log("DATA", data)
             dispatch({
                 type: IMPORT_YOUTUBE,
                 payload: data,
@@ -89,16 +84,7 @@ export const deleteSong = (songId) => {
 
 export const updatePowerHour = (playlistId, body) => {
 
-//     "image": "https://static01.nyt.com/images/2019/11/13/obituaries/11Freeman3/merlin_164214771_c6e96bd0-0579-49ea-82ff-a1962f393153-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     console.log(typeof body.pic)
-    // let formData = new FormData()
-    // formData.append('body[title]', body.title)
-    // formData.append('body[status]', body.status)
-    // formData.append('body[private]', body.private)
-    // formData.append('body[description]', body.description)
-    // formData.append('body[pic]', body.pic)
-    // formData.append('body[user_id]', body.user_id)
-    // formData.append('body[youtube_playlist]', body.youtube_playlist)
 
     if (typeof body.pic === 'object') {
         let formData = new FormData()
@@ -118,7 +104,6 @@ export const updatePowerHour = (playlistId, body) => {
             },
             body: formData
         }
-        // debugger
         return (dispatch) => {
             fetch(BASE_URL + '/power_hours/' + playlistId, options)
             .then(response => response.json())
