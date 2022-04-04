@@ -10,23 +10,21 @@ import { withRouter } from 'next/router'
 class PendingTrackListing extends React.Component {
 
     state = {
-        characters: finalSpaceCharacters 
+        songs: this.props.renderSongs
     }
-
+    
     componentDidMount() {
         this.props.getSongs(this.props.router.query.id)
-        // this.setState({items: this.props.renderSongs})
+        this.setState({songs: this.props.renderSongs})
     }
 
-  handleOnDragEnd(result) {  
-    if (!result.destination) return;
-    
-    debugger
-    let items = this.state.characters
+    handleOnDragEnd(result) {
+        if (!result.destination) return;
+        let items = this.state.songs
+        console.log(items)
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0, reorderedItem);
-
-        this.setState({characters: items});
+        this.setState({songs: items});
     }
 
     render() {
@@ -36,7 +34,8 @@ class PendingTrackListing extends React.Component {
         if (this.props.user.currentUser === undefined) {
             this.props.router.push('/login')
         }
-      
+
+        console.log(this.props)
 
         return (
             <React.Fragment>
@@ -45,7 +44,7 @@ class PendingTrackListing extends React.Component {
                     className="pt-5"
                 >
           <DragDropContext
-              onDragEnd={this.onDragEnd}
+              onDragEnd={(result) => this.handleOnDragEnd(result)}
           >
               <Droppable droppableId="droppable">
                   {(provided) => (
@@ -53,8 +52,9 @@ class PendingTrackListing extends React.Component {
                           {...provided.droppableProps}
                           ref={provided.innerRef}
                       >
-                          {renderSongs?.map((track, index) => {
-                            console.log({track, index})
+                          {this.state.songs?.map((track, index) => {
+                          {/* {renderSongs?.map((track, index) => { */}
+                            {/* console.log({track, index}) */}
                               return (
                                 <Draggable
                                   key={track.id}
