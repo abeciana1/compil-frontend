@@ -59,7 +59,6 @@ export const loginUser = (user) => {
         fetch(BASE_URL + "/login", options)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             localStorage.setItem("compilLogged", true)
             dispatch({
                 type: LOGIN_USER,
@@ -124,7 +123,6 @@ export const checkEmail = (userEmail) => {
 
 export const createPlaylist = (playlist) => {
 
-    // console.log(playlist)
     let formData = new FormData()
     formData.append('playlist[title]', playlist.title)
     formData.append('playlist[status]', playlist.status)
@@ -152,7 +150,6 @@ export const createPlaylist = (playlist) => {
         fetch(BASE_URL + "/power_hours", options)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             dispatch({
                 type: CREATE_PLAYLIST,
             })

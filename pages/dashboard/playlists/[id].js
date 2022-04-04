@@ -70,7 +70,8 @@ class RenderedPlaylist extends React.Component {
 
 
     state = {
-        modal: false
+        modal: false,
+        songs: []
     }
     
     setModal = () => {
@@ -78,6 +79,7 @@ class RenderedPlaylist extends React.Component {
             modal: !this.state.modal
         })
     }
+
 
     render() {
         const { modal } = this.state
@@ -190,9 +192,8 @@ class RenderedPlaylist extends React.Component {
                             </section>
                             <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                                 <h1 className="text-4xl">Tracks:</h1>
-                                {/* {songs ? */}
                                     <PendingTrackListing renderSongs={songs} setRenderSongs={this.fetchSongs} deleteHandler={this.props.deleteHandler} />
-                                    {/* : null} */}
+                                    {/* <PendingTrackListing renderSongs={this.state.songs} setRenderSongs={this.fetchSongs} deleteHandler={this.props.deleteHandler} /> */}
                             </section>
                         </PageMargin>
                         {modal ?
