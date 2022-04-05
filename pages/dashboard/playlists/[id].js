@@ -17,7 +17,7 @@ import ClickToUpdatePlaylistPic from '../../../components/forms/ClickToUpdatePla
 
 const PlaylistShowPage = (props) => {
 
-    const {getPowerHour, deleteSong, getSongs} = props
+    const { getPowerHour, deleteSong, getSongs } = props
 
     useEffect(() => {
         getPowerHour(window.location.pathname.split("/")[3])
