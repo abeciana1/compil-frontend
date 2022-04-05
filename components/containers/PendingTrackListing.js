@@ -21,7 +21,7 @@ class PendingTrackListing extends React.Component {
     handleOnDragEnd(result) {
         if (!result.destination) return;
         let items = this.state.songs
-        console.log(items)
+        // console.log(items)
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0, reorderedItem);
         this.setState({songs: items});
@@ -35,7 +35,7 @@ class PendingTrackListing extends React.Component {
             this.props.router.push('/login')
         }
 
-        console.log(this.props)
+        
 
         return (
             <React.Fragment>

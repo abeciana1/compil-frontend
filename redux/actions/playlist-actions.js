@@ -8,6 +8,7 @@ export const GET_POWER_HOUR = "GET_POWER_HOUR"
 export const DELETE_POWER_HOUR = "DELETE_POWER_HOUR"
 export const UPDATE_POWER_HOUR = "UPDATE_POWER_HOUR"
 export const SET_POWER_HOUR_NULL = "SET_POWER_HOUR_NULL"
+export const REORDER_SONGS = "REORDER_SONGS"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -25,12 +26,36 @@ export const getPowerHour = (playlistId) => {
     }
 }
 
+export const reorderSongs = (playlistId, songs) => {
+    return (dispatch) => {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                power_hour: playlistId,
+                songs: songs
+            })
+        }
+        fetch(BASE_URL + '/reorder_songs/', options)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            // dispatch({
+            //     type: REORDER_SONGS,
+
+            // })
+        })
+    }
+}
+
 export const getSongs = (playlistId) => {
     return (dispatch) => {
         fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
             .then(data => {
-                // console.log("DATA",data)
             dispatch({
                 type: GET_SONGS,
                 payload: data.songs,
