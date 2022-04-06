@@ -17,8 +17,6 @@ import ClickToUpdatePlaylistPic from '../../../components/forms/ClickToUpdatePla
 
 const PlaylistShowPage = (props) => {
 
-    console.log(props)
-
     const { deleteSong, renderingPlaylist } = props
 
     const [ songs, setSongs ] = useState([])
@@ -26,8 +24,6 @@ const PlaylistShowPage = (props) => {
     useEffect(() => {
         setSongs(renderingPlaylist.songs)
     }, [])
-
-    console.log(songs)
 
     const deleteHandler = (e) => {
         let songId = e.target.dataset.id
