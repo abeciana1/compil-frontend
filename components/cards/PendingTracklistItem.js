@@ -3,8 +3,6 @@ import React, { useState, useMemo } from 'react';
 
 const PendingTracklistItem = (props) => {
 
-    // console.log(props)
-
     const { track, deleteHandler, provided } = props;
 
     const [expand, setExpand] = useState(false)

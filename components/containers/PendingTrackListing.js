@@ -9,17 +9,10 @@ import { withRouter } from 'next/router'
 
 const PendingTrackListing = (props) => {
 
-    // console.log(props)
-
-    const { deleteSong, getSongs, renderSongs, setRenderSongs, router, playlist, reorderSongs } = props
-
-    const [songs, setSongs] = useState([])
-    
-    // console.log(songs)
+    const { getSongs, renderSongs, router, playlist, reorderSongs } = props
 
     useEffect(() => {
         getSongs(router.query.id)
-        setSongs(renderSongs)
     }, [])
 
     const handleOnDragEnd = (result) => {
@@ -44,42 +37,42 @@ return (
         <section
             className="pt-5"
         >
-          <DragDropContext
-              onDragEnd={(result) => handleOnDragEnd(result)}
-          >
-              <Droppable droppableId="droppable">
-                  {(provided) => (
-                      <ul
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                      >
+        <DragDropContext
+                onDragEnd={(result) => handleOnDragEnd(result)}
+        >
+            <Droppable droppableId="droppable">
+                {(provided) => (
+                    <ul
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                    >
                           {/* {songs?.map((track, index) => { */}
-                          {renderSongs?.map((track, index) => {
+                        {renderSongs?.map((track, index) => {
                             {/* console.log({track, index}) */}
-                              return (
+                            return (
                                 <Draggable
-                                  key={track.id}
-                                  draggableId={track.id.toString()}
-                                  index={index}
+                                    key={track.id}
+                                    draggableId={track.id.toString()}
+                                    index={index}
                                 >
-                                  {(provided) => (
+                                {(provided) => (
                                     <PendingTracklistItem
-                                      key={track.id}
-                                      track={track}
-                                      index={index}
-                                      provided={provided}
-                                      deleteHandler={props.deleteHandler}
+                                        key={track.id}
+                                        track={track}
+                                        index={index}
+                                        provided={provided}
+                                        deleteHandler={props.deleteHandler}
                                     />
-                                  )}
-                                  </Draggable>
-                              )
-                          })}
-                      {provided.placeholder}
-                      </ul>
-                  )}
-              </Droppable>
-          </DragDropContext>
-                    </section>
+                                )}
+                                </Draggable>
+                            )
+                        })}
+                    {provided.placeholder}
+                    </ul>
+                )}
+                </Droppable>
+            </DragDropContext>
+            </section>
                     :
                     getSongs(router.query.id)
                     }
