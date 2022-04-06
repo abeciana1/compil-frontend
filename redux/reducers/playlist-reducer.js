@@ -6,7 +6,8 @@ import {
     GET_POWER_HOUR,
     DELETE_POWER_HOUR,
     UPDATE_POWER_HOUR,
-    SET_POWER_HOUR_NULL
+    SET_POWER_HOUR_NULL,
+    REORDER_SONGS
 } from '../actions/playlist-actions'
 
 
@@ -52,6 +53,10 @@ const playlistReducer = (state = initialState, action) => {
                 playlist: action.payload,
                 songs: action.payload,
                 importYouTubeItems: action.payload
+            }
+        case REORDER_SONGS:
+            return {
+                songs: action.payload
             }
         default:
             return state
