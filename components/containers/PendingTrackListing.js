@@ -3,20 +3,20 @@ import PendingTracklistItem from '../cards/PendingTracklistItem'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import { connect } from 'react-redux';
-import { importYouTube, deleteSong, getSongs, reorderSongs } from '../../redux/actions/playlist-actions'
+import { importYouTube, deleteSong, reorderSongs } from '../../redux/actions/playlist-actions'
 import { compose } from 'redux'
 import { withRouter } from 'next/router'
 
 const PendingTrackListing = (props) => {
+    const { renderSongs, router, playlist, reorderSongs } = props
 
-    const { getSongs, renderSongs, router, playlist, reorderSongs } = props
+    const [ songs, setSongs ] = useState([])
 
     useEffect(() => {
-        getSongs(router.query.id)
-    }, [])
+        setSongs(renderSongs)
+    }, [songs])
 
     const handleOnDragEnd = (result) => {
-        // console.log(result)
         if (!result.destination) return;
         let items = songs
         const [reorderedItem] = items.splice(result.source.index, 1);
@@ -46,9 +46,7 @@ return (
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                          {/* {songs?.map((track, index) => { */}
-                        {renderSongs?.map((track, index) => {
-                            {/* console.log({track, index}) */}
+                          {songs?.map((track, index) => {
                             return (
                                 <Draggable
                                     key={track.id}
@@ -89,7 +87,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     importYouTube,
     deleteSong,
-    getSongs,
     reorderSongs
 }
     
