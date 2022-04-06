@@ -8,6 +8,7 @@ export const GET_POWER_HOUR = "GET_POWER_HOUR"
 export const DELETE_POWER_HOUR = "DELETE_POWER_HOUR"
 export const UPDATE_POWER_HOUR = "UPDATE_POWER_HOUR"
 export const SET_POWER_HOUR_NULL = "SET_POWER_HOUR_NULL"
+export const REORDER_SONGS = "REORDER_SONGS"
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
@@ -25,12 +26,37 @@ export const getPowerHour = (playlistId) => {
     }
 }
 
+export const reorderSongs = (playlistId, songId, reorderedIndex) => {
+    return (dispatch) => {
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                power_hour: playlistId,
+                song_id: songId,
+                new_index: reorderedIndex
+            })
+        }
+        fetch(BASE_URL + '/reorder-songs', options)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            dispatch({
+                type: REORDER_SONGS,
+                payload: data
+            })
+        })
+    }
+}
+
 export const getSongs = (playlistId) => {
     return (dispatch) => {
         fetch(BASE_URL + "/power_hours/" + playlistId)
         .then(response => response.json())
             .then(data => {
-                // console.log("DATA",data)
             dispatch({
                 type: GET_SONGS,
                 payload: data.songs,
@@ -84,8 +110,6 @@ export const deleteSong = (songId) => {
 
 export const updatePowerHour = (playlistId, body) => {
 
-    console.log(typeof body.pic)
-
     if (typeof body.pic === 'object') {
         let formData = new FormData()
         formData.append('playlist[title]', body.title)
@@ -95,7 +119,7 @@ export const updatePowerHour = (playlistId, body) => {
         formData.append('playlist[private]', body.private)
         formData.append('playlist[youtube_playlist]', body.youtube_playlist)
         formData.append('playlist[user_id]', body.user_id)
-        // debugger
+
         const options = {
             method: 'PATCH',
             headers: {
@@ -108,7 +132,6 @@ export const updatePowerHour = (playlistId, body) => {
             fetch(BASE_URL + '/power_hours/' + playlistId, options)
             .then(response => response.json())
             .then(data => {
-                console.log("DATA",data);
                 dispatch({
                     type: UPDATE_POWER_HOUR,
                     payload: data
