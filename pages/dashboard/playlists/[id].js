@@ -19,12 +19,6 @@ const PlaylistShowPage = (props) => {
 
     const { deleteSong, renderingPlaylist } = props
 
-    const [ songs, setSongs ] = useState([])
-
-    useEffect(() => {
-        setSongs(renderingPlaylist.songs)
-    }, [])
-
     const deleteHandler = (e) => {
         let songId = e.target.dataset.id
         deleteSong(songId)
@@ -34,7 +28,7 @@ const PlaylistShowPage = (props) => {
         <React.Fragment>
             <RenderedPlaylist
                 renderedPlaylist={renderingPlaylist}
-                songs={songs}
+                songs={renderingPlaylist.songs}
                 deleteHandler={deleteHandler}
                 />
         </React.Fragment>
@@ -107,7 +101,6 @@ class RenderedPlaylist extends React.Component {
 
     state = {
         modal: false,
-        // songs: []
     }
     
     setModal = () => {
@@ -259,7 +252,7 @@ class RenderedPlaylist extends React.Component {
                                 >
                                     Uploading via individual songs .... coming soon
                             </div>
-                                <YouTubePlaylistUpload setModal={this.setModal} playlist={renderedPlaylist} renderSongs={this.state.songs} />
+                                <YouTubePlaylistUpload setModal={this.setModal} playlist={renderedPlaylist} renderSongs={this.props.songs} />
                             </div>
                             : null
                             }
