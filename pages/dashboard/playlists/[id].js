@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageMargin from '../../../components/utils/PageMargin'
 import YouTubePlaylistUpload from '../../../components/forms/YouTubePlaylistUpload'
 import { withRouter } from 'next/router'
@@ -17,12 +17,17 @@ import ClickToUpdatePlaylistPic from '../../../components/forms/ClickToUpdatePla
 
 const PlaylistShowPage = (props) => {
 
-    const { getPowerHour, deleteSong, getSongs } = props
+    console.log(props)
+
+    const { deleteSong, renderingPlaylist } = props
+
+    const [ songs, setSongs ] = useState([])
 
     useEffect(() => {
-        getPowerHour(window.location.pathname.split("/")[3])
-        getSongs(window.location.pathname.split("/")[3])
+        setSongs(renderingPlaylist.songs)
     }, [])
+
+    console.log(songs)
 
     const deleteHandler = (e) => {
         let songId = e.target.dataset.id
@@ -32,9 +37,8 @@ const PlaylistShowPage = (props) => {
     return (
         <React.Fragment>
             <RenderedPlaylist
-                renderedPlaylist={props.playlist.playlist}
-                // songs={songs}
-                songs={props.playlist.songs}
+                renderedPlaylist={renderingPlaylist}
+                songs={songs}
                 deleteHandler={deleteHandler}
                 />
         </React.Fragment>
@@ -52,6 +56,42 @@ const mapDispatchToProps = {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlaylistShowPage))
+
+export async function getStaticPaths() {
+    let paths = []
+
+    const res = await fetch("http://localhost:3001/api/v1/power_hours")
+
+    const data = await res.json()
+
+    data.forEach((playlist) => {
+        paths.push({
+            params: {
+                id: playlist.id.toString()
+            }
+        })
+    })
+
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export async function getStaticProps({ params }) {
+    
+    const playlists = await fetch("http://localhost:3001/api/v1/power_hours").then(res => res.json())
+
+    const renderingPlaylist = playlists.find((p) => p.id == params.id)
+
+    return {
+        props: {
+            renderingPlaylist
+        }
+    }
+
+}
+
 
 class RenderedPlaylist extends React.Component {
 
@@ -71,7 +111,7 @@ class RenderedPlaylist extends React.Component {
 
     state = {
         modal: false,
-        songs: []
+        // songs: []
     }
     
     setModal = () => {
@@ -80,11 +120,10 @@ class RenderedPlaylist extends React.Component {
         })
     }
 
-
     render() {
         const { modal } = this.state
 
-        const { renderedPlaylist, songs } = this.props
+        const { renderedPlaylist } = this.props
 
         return (
             <React.Fragment>
@@ -192,7 +231,7 @@ class RenderedPlaylist extends React.Component {
                             </section>
                             <section className="lg:ml-5 xl:ml-10 2xl:ml-16">
                                 <h1 className="text-4xl">Tracks:</h1>
-                                    <PendingTrackListing renderSongs={songs} setRenderSongs={this.fetchSongs} deleteHandler={this.props.deleteHandler} />
+                                    <PendingTrackListing renderSongs={this.props.songs} />
                                     {/* <PendingTrackListing renderSongs={this.state.songs} setRenderSongs={this.fetchSongs} deleteHandler={this.props.deleteHandler} /> */}
                             </section>
                         </PageMargin>
@@ -224,7 +263,7 @@ class RenderedPlaylist extends React.Component {
                                 >
                                     Uploading via individual songs .... coming soon
                             </div>
-                                <YouTubePlaylistUpload setModal={this.setModal} playlist={renderedPlaylist} renderSongs={songs} setRenderSongs={this.fetchSongs} />
+                                <YouTubePlaylistUpload setModal={this.setModal} playlist={renderedPlaylist} renderSongs={this.state.songs} />
                             </div>
                             : null
                             }
