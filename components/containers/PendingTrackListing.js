@@ -29,7 +29,7 @@ const PendingTrackListing = (props) => {
         props.router.push('/login')
     }
 
-    // let sortedSongs = songs.sort((a, b) => a.order_number - b.order_number)
+    let sortedSongs = songs.sort((a, b) => a.order_number - b.order_number)
 
 return (
         <React.Fragment>
@@ -46,7 +46,8 @@ return (
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                          {songs?.map((track, index) => {
+                        {sortedSongs?.map((track, index) => {
+                            console.log(track.order_number)
                             return (
                                 <Draggable
                                     key={track.id}
