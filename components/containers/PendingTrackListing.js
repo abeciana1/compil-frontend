@@ -47,7 +47,6 @@ return (
                         ref={provided.innerRef}
                     >
                         {sortedSongs?.map((track, index) => {
-                            console.log(track.order_number)
                             return (
                                 <Draggable
                                     key={track.id}
